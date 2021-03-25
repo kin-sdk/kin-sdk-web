@@ -1,25 +1,12 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-import { UiCard, UiCardBody, UiCardHeader } from './ui/ui-card';
-import { WalletList } from './wallet/wallet-list';
+import { UiCard } from './ui/ui-card';
+import { WebWalletFeature } from './wallet/web-wallet-feature';
 
 export function AppShell() {
   return (
     <>
-      <Route
-        path="/"
-        exact
-        render={() => (
-          <UiCard>
-            <UiCardHeader>
-              <h2 className="font-semibold text-lg">
-                Main account Balances ($27.05)
-              </h2>
-            </UiCardHeader>
-            <WalletList />
-          </UiCard>
-        )}
-      />
+      <Route path="/" exact render={WebWalletFeature} />
       <Route
         path="/accounts"
         exact

@@ -28,6 +28,7 @@
   },
   "private": true,
   "dependencies": {
+    "@mindspace-io/react": "^1.1.8",
     "@tailwindcss/jit": "^0.1.8",
     "@tailwindcss/postcss7-compat": "^2.0.4",
     "autoprefixer": "^9",
@@ -45,6 +46,7 @@
     "@babel/preset-env": "7.9.6",
     "@babel/preset-react": "7.9.4",
     "@babel/preset-typescript": "7.9.0",
+    "@mindspace-io/react-akita": "^1.2.8",
     "@nrwl/cli": "11.5.2",
     "@nrwl/cypress": "11.5.2",
     "@nrwl/eslint-plugin-nx": "11.5.2",
