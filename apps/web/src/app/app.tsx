@@ -5,7 +5,7 @@ import { UiHeader } from './ui/ui-header';
 
 export function App() {
   return (
-    <div className={'dark:bg-gray-700 dark:text-gray-300 min-h-screen'}>
+    <div className={'bg-gray-700 text-gray-300 min-h-screen'}>
       <UiHeader />
       <UiContainer>
         <AppShell />
