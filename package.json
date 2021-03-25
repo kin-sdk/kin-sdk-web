@@ -6,7 +6,7 @@
     "nx": "nx",
     "start": "nx serve",
     "dev:web": "nx serve web",
-    "build": "nx build",
+    "build": "nx build web --prod",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
