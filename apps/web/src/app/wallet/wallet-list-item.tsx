@@ -1,8 +1,9 @@
 import cx from 'classnames'
 import React, { useState } from 'react'
-import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 import { UiLogo } from '../ui/ui-logo'
+import { WalletAddress } from './wallet-address'
 import { Wallet } from './wallet-list'
 import { WalletPopup } from './wallet-popup'
 
@@ -24,7 +25,7 @@ export function WalletListItem({ wallet }: { wallet: Wallet }) {
               <div className="text-gray-100">
                 150.000 {tokenName} ({tokenSymbol})
               </div>
-              <div className="text-xs text-gray-400">{wallet.publicKey}</div>
+              <WalletAddress publicKey={wallet.publicKey} />
             </div>
           </div>
           <div className="flex justify-between items-center space-x-2">
