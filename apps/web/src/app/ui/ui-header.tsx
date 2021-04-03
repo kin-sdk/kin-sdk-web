@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Popup from 'reactjs-popup'
-import { UiPopup } from './ui-popup'
-import { UiDropDown } from './ui-drop-down'
 
 interface UiHeaderProps {
-  children?: any
+  children?: ReactNode
 }
 
 const contentStyle = {
@@ -15,41 +13,23 @@ const contentStyle = {
   padding: '0',
 }
 
-export function UiHeader() {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false)
+export function UiHeader({ children }: UiHeaderProps) {
   const [buttonPopup, setButtonPopup] = useState<boolean>(false)
-
-  // const modalHandler = {
-  //   open: (args: string) => setModals((prevstate) => prevstate.concat(args)),
-  //   close: (args: string) => setModals((prevstate) => prevstate.filter((el) => el != args)),
-  //   }
-  //   return [openModals, modalHandler] as const
-  // }
-
-  // console.log(setTrigger, "Este es el Triguer");
-
-  const toggleMenu = () => setMenuOpen(() => !menuOpen)
 
   return (
     <>
-      <header className="flex justify-between items-center shadow-lg px-6 py-4 bg-indigo-700 text-indigo-100">
+      <header className="flex justify-between items-center shadow-lg px-6 py-2 bg-indigo-700 text-indigo-100">
         <h1 className="text-xl font-semibold">
           <Link to="/">Kin Wallet</Link>
         </h1>
-        <div className="flex space-x-3 uppercase text-base">
-          <span>
-            <Link to="/accounts">Account</Link>
-          </span>
-          <span>Mainnet</span>
-        </div>
-        <UiDropDown>Prueba</UiDropDown>
-        <UiPopup setTrigger={setButtonPopup} trigger={buttonPopup}>
-          <h3>Componet Here</h3>
-          <p onClick={toggleMenu}>This is my button</p>
-        </UiPopup>
-        <button onClick={() => setButtonPopup(true)}>Open popUp</button>
-        {/* pensando en ponerle  setTrigger={setButtonPopup} */}
+        <div className="flex items-center space-x-3 uppercase text-base">{children}</div>
       </header>
+      {/* pensando en ponerle  setTrigger={setButtonPopup} */}
+      {/*<UiPopup setTrigger={setButtonPopup} trigger={buttonPopup}>*/}
+      {/*  <h3>Componet Here</h3>*/}
+      {/*  <p onClick={toggleMenu}>This is my button</p>*/}
+      {/*</UiPopup>*/}
+      {/*<button onClick={() => setButtonPopup(true)}>Open popUp</button>*/}
       <Popup
         open={buttonPopup}
         //setTrigger={setButtonPopup}
