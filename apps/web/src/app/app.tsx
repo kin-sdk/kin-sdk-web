@@ -1,7 +1,7 @@
-import React from 'react';
-import { AppShell } from './app-shell';
-import { UiContainer } from './ui/ui-container';
-import { UiHeader } from './ui/ui-header';
+import React from 'react'
+import { AppShell } from './app-shell'
+import { UiContainer } from './ui/ui-container'
+import { UiHeader } from './ui/ui-header'
 
 export function App() {
   return (
@@ -11,5 +11,5 @@ export function App() {
         <AppShell />
       </UiContainer>
     </div>
-  );
+  )
 }

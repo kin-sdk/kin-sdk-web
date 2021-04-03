@@ -1,7 +1,7 @@
-const nrwlConfig = require('@nrwl/react/plugins/webpack.js');
+const nrwlConfig = require('@nrwl/react/plugins/webpack.js')
 
 module.exports = (config) => {
-  nrwlConfig(config);
+  nrwlConfig(config)
   return {
     ...config,
     module: {
@@ -17,5 +17,5 @@ module.exports = (config) => {
         },
       ],
     },
-  };
-};
+  }
+}

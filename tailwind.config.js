@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors');
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: {
@@ -12,7 +12,7 @@ module.exports = {
         cyan: colors.cyan,
         gray: colors.trueGray,
         primary: '#4080E7',
-        secondary: '#DF40E7'
+        secondary: '#DF40E7',
       },
     },
   },
@@ -20,4 +20,4 @@ module.exports = {
     extend: {},
   },
   plugins: [require('@tailwindcss/forms')],
-};
+}
