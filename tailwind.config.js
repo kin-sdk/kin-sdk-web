@@ -11,6 +11,8 @@ module.exports = {
       colors: {
         cyan: colors.cyan,
         gray: colors.trueGray,
+        primary: '#4080E7',
+        secondary: '#DF40E7'
       },
     },
   },

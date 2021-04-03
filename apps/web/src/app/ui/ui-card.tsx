@@ -9,7 +9,9 @@ export function UiCard(props) {
 }
 
 export function UiCardHeader(props) {
-  return <div className="bg-gray-800 px-6 py-4">{props.children}</div>;
+  return <div className="bg-gray-800 px-6 py-4">{props.children}
+ 
+  </div>;
 }
 
 export function UiCardBody(props) {
