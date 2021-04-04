@@ -1388,6 +1388,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@kintegrate/google-protobuf@^3.15.7":
+  version "3.15.7"
+  resolved "https://registry.yarnpkg.com/@kintegrate/google-protobuf/-/google-protobuf-3.15.7.tgz#c855ada0c86ce2ae24ca24e784b8057533ab3b1f"
+  integrity sha512-lSUUhFs29jaGzh/CV013JS2j+0M6HeRP3YaY9trpmV0fK7naE68TKYNDQ2SLMO0Za2TIyN2taOSCyfLRkb1HBA==
+
 "@ledgerhq/devices@^5.48.0":
   version "5.48.0"
   resolved "https://registry.yarnpkg.com/@ledgerhq/devices/-/devices-5.48.0.tgz#8a05213acdd54581df52a4fb4f1b43fde1a2a018"

@@ -1,20 +1,20 @@
+import { Network } from '@kin-wallet/sdk'
 import cx from 'classnames'
 import React from 'react'
 import { BiGlobe } from 'react-icons/bi'
-import { NetworkSelectOption } from './network-select'
 
 export interface NetworkSelectItemProps {
-  network?: NetworkSelectOption
-  selected?: NetworkSelectOption
-  onSelect?: (network: NetworkSelectOption) => void
+  network?: Network
+  selected?: Network
+  onSelect?: (network: Network) => void
 }
 
-export function NetworkSelectItem({ selected, network, onSelect }: NetworkSelectItemProps) {
+export function NetworkDropdownItem({ selected, network, onSelect }: NetworkSelectItemProps) {
   const select = () => onSelect(network)
   return (
     <button
       onClick={select}
-      key={network.value}
+      key={network.id}
       className={cx(
         'w-full flex items-center px-4 py-2 space-x-2 text-primary hover:bg-indigo-200 hover:text-gray-900 hover:font-bold',
         {
@@ -24,7 +24,7 @@ export function NetworkSelectItem({ selected, network, onSelect }: NetworkSelect
       role="menuitem"
     >
       <BiGlobe className="text-xl" />
-      <span>{network.label}</span>
+      <span>{network.name}</span>
     </button>
   )
 }

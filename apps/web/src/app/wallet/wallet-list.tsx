@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { BiLoaderAlt } from 'react-icons/bi'
+import { useNetwork } from '../network-select/network.hook'
 import { UiCard } from '../ui/ui-card'
 import { WalletListHeader } from './wallet-list-header'
 import { WalletListItem } from './wallet-list-item'
@@ -11,6 +13,26 @@ export interface Wallet {
 }
 
 export function WalletList() {
+  const { network } = useNetwork()
+  const [loading, setLoading] = useState<boolean>(true)
+
+  const add = () => {
+    console.log('add')
+  }
+
+  const refresh = () => {
+    setLoading(() => true)
+    console.log('Refresh')
+    setTimeout(() => {
+      setLoading(() => false)
+    }, 1000)
+  }
+
+  useEffect(() => {
+    console.log(`Network Changed: ${network.name}`)
+    refresh()
+  }, [network])
+
   const wallets: Wallet[] = [
     {
       id: 'w1',
@@ -32,20 +54,24 @@ export function WalletList() {
     },
   ]
 
-  const add = () => {
-    console.log('add')
-  }
-
-  const refresh = () => {
-    console.log('refresh')
-  }
-
   return (
     <UiCard>
-      <WalletListHeader title="Main account Balances ($27.05)" onAdd={add} onRefresh={refresh} />
-      {wallets.map((wallet) => (
-        <WalletListItem key={wallet.id} wallet={wallet} />
-      ))}
+      <div>
+        <WalletListHeader
+          title={loading ? 'Loading...' : 'Main account Balances ($27.05)'}
+          onAdd={add}
+          onRefresh={refresh}
+        />
+        {loading ? (
+          <div className="h-36 flex flex-col justify-center items-center">
+            <div className="my-5 animate-pulse">
+              <BiLoaderAlt className="text-6xl animate-spin" />
+            </div>
+          </div>
+        ) : (
+          wallets.map((wallet) => <WalletListItem key={wallet.id} wallet={wallet} />)
+        )}
+      </div>
     </UiCard>
   )
 }

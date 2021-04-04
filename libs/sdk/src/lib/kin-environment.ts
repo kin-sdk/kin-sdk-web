@@ -1,3 +1,5 @@
+import { Network } from './interfaces/network.interface'
+
 export enum KinEnvironment {
   Prod = 'Production',
   Test = 'Test',
@@ -25,3 +27,18 @@ export function getAgoraUrls(env: KinEnvironment) {
     submitTransactionURL: `${url}/api/kin.agora.transaction.v4.Transaction/SubmitTransaction`,
   }
 }
+
+export function createNetwork(id: string, name: string, env: KinEnvironment): Network {
+  return {
+    id,
+    name,
+    env,
+    url: urls.get(env),
+    explorerUrl: explorerUrls.get(env),
+  }
+}
+
+export const NETWORKS: Network[] = [
+  createNetwork('mainnet', 'Mainnet', KinEnvironment.Prod),
+  createNetwork('testnet', 'Testnet', KinEnvironment.Test),
+]

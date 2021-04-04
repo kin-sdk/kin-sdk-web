@@ -28,6 +28,7 @@
   },
   "private": true,
   "dependencies": {
+    "@kintegrate/google-protobuf": "^3.15.7",
     "@ledgerhq/hw-transport-webusb": "^5.48.0",
     "@solana/web3.js": "^1.2.5",
     "@tailwindcss/jit": "^0.1.8",

@@ -1,4 +1,4 @@
-export class Wallet {
+export interface Wallet {
   id?: string
   name?: string
   secret?: string
