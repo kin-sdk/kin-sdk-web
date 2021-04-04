@@ -25,7 +25,7 @@ export interface BalanceResult {
 }
 
 export class KinWalletService {
-  readonly baseUrl = 'https://services-test.kintegrate.dev/api/'
+  readonly baseUrl = 'https://services.kintegrate.dev/api/'
 
   constructor(private readonly network: Network) {
     console.log(`KinWalletService: environment: ${network.name}`)
