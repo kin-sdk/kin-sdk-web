@@ -3,7 +3,7 @@ import { CircularProgress, Paper } from '@material-ui/core'
 import React, { useState } from 'react'
 import { WalletAddDialog, WalletAddType } from '../ui/wallet-add-dialog'
 
-import { useWallet } from '../data-access/wallet-hook'
+import { useWallet } from '../data-access/wallet-provider'
 import { WalletListHeader } from '../ui/wallet-list-header'
 import { WalletListItem } from '../ui/wallet-list-item'
 import { WalletTransaction } from '../ui/wallet-transaction-dialog'
@@ -43,11 +43,7 @@ export function WalletList() {
           open={showAddModal}
           onClose={handleAdd}
         />
-        <WalletListHeader
-          title={loading ? 'Loading...' : `Total Balance $${balance?.total?.usd} ₿${balance?.total?.btc}`}
-          onAdd={openAddModal}
-          onRefresh={refresh}
-        />
+        <WalletListHeader balance={balance?.total} loading={loading} onAdd={openAddModal} onRefresh={refresh} />
         {loading ? (
           <div className="h-36 flex flex-col justify-center items-center">
             <CircularProgress size={60} color="secondary" />

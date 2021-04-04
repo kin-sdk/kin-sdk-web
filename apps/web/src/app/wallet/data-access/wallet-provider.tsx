@@ -3,7 +3,7 @@ import { BalanceResult, KinWalletService } from '@kin-wallet/services'
 import { useSnackbar } from 'notistack'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { ReactNode } from 'react'
-import { useNetwork } from '../../network/data-access/network.hook'
+import { useNetwork } from '../../network/data-access/network-provider'
 
 const WALLETS: Wallet[] = [
   {

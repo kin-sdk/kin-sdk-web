@@ -3,7 +3,7 @@ import React from 'react'
 import { BiCog } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { NetworkDropdown } from './network/ui/network-dropdown'
-import { useNetwork } from './network/data-access/network.hook'
+import { useNetwork } from './network/data-access/network-provider'
 
 export function AppHeader() {
   const { networks, network, setNetwork } = useNetwork()

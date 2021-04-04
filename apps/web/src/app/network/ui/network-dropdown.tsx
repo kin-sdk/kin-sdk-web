@@ -65,7 +65,7 @@ export function NetworkDropdown({ selected, networks, onSelect }: NetworkSelectP
       >
         <NetworkLabel title={selected?.name} />
       </Button>
-      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}

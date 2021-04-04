@@ -59,7 +59,7 @@ export function WalletAddDialog({ onSelect }: WalletAddSelectProps) {
       >
         <AddIcon />
       </IconButton>
-      <Popper open={open} anchorEl={anchorRef.current} placement="bottom-end" role={undefined} transition disablePortal>
+      <Popper open={open} anchorEl={anchorRef.current} placement="bottom-end" role={undefined} transition>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}

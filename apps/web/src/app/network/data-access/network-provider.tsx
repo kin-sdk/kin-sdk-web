@@ -11,17 +11,7 @@ function NetworkProvider({ children }: { children: ReactNode }) {
   const [networks] = useState<Network[]>(NETWORKS)
   const [network, setNetwork] = useState<Network>(() => networks[0])
 
-  return (
-    <NetworkContext.Provider
-      value={{
-        network,
-        networks,
-        setNetwork,
-      }}
-    >
-      {children}
-    </NetworkContext.Provider>
-  )
+  return <NetworkContext.Provider value={{ network, networks, setNetwork }}>{children}</NetworkContext.Provider>
 }
 
 const useNetwork = () => useContext(NetworkContext)
