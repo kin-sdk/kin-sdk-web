@@ -1,9 +1,5 @@
-import { AccountSize, AuthorityType, TokenProgram } from './token-program';
-import {
-  PublicKey as SolanaPublicKey,
-  SystemProgram,
-  Transaction,
-} from '@solana/web3.js';
+import { AccountSize, AuthorityType, TokenProgram } from './token-program'
+import { PublicKey as SolanaPublicKey, SystemProgram, Transaction } from '@solana/web3.js'
 
 export function getCreateAccountTx(
   recentBlockhash: string,
@@ -12,7 +8,7 @@ export function getCreateAccountTx(
   subsidizer: SolanaPublicKey,
   tokenProgram: SolanaPublicKey,
   token: SolanaPublicKey,
-  minBalance: number
+  minBalance: number,
 ): Transaction {
   return new Transaction({
     feePayer: subsidizer,
@@ -31,7 +27,7 @@ export function getCreateAccountTx(
         mint: token,
         owner: owner,
       },
-      tokenProgram
+      tokenProgram,
     ),
     TokenProgram.setAuthority(
       {
@@ -40,7 +36,7 @@ export function getCreateAccountTx(
         newAuthority: subsidizer,
         authorityType: AuthorityType.CloseAccount,
       },
-      tokenProgram
-    )
-  );
+      tokenProgram,
+    ),
+  )
 }

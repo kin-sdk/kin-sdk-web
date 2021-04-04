@@ -10,38 +10,38 @@
 /* eslint-disable */
 // @ts-nocheck
 
-var jspb = require('google-protobuf');
-var goog = jspb;
-var global = Function('return this')();
+var jspb = require('google-protobuf')
+var goog = jspb
+var global = Function('return this')()
 
-var validate_validate_pb = require('../../validate/validate_pb.js');
-goog.object.extend(proto, validate_validate_pb);
-var common_v3_model_pb = require('../../common/v3/model_pb.js');
-goog.object.extend(proto, common_v3_model_pb);
-var common_v4_model_pb = require('../../common/v4/model_pb.js');
-goog.object.extend(proto, common_v4_model_pb);
-goog.exportSymbol('proto.kin.agora.transaction.v4.Cursor', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetHistoryRequest', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetHistoryRequest.Direction', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetHistoryResponse', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetHistoryResponse.Result', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetRecentBlockhashRequest', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetRecentBlockhashResponse', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetServiceConfigRequest', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetServiceConfigResponse', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetTransactionRequest', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetTransactionResponse', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.GetTransactionResponse.State', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.HistoryItem', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.HistoryItem.Payment', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.HistoryItem.RawTransactionCase', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.SubmitTransactionRequest', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.SubmitTransactionResponse', null, global);
-goog.exportSymbol('proto.kin.agora.transaction.v4.SubmitTransactionResponse.Result', null, global);
+var validate_validate_pb = require('../../validate/validate_pb.js')
+goog.object.extend(proto, validate_validate_pb)
+var common_v3_model_pb = require('../../common/v3/model_pb.js')
+goog.object.extend(proto, common_v3_model_pb)
+var common_v4_model_pb = require('../../common/v4/model_pb.js')
+goog.object.extend(proto, common_v4_model_pb)
+goog.exportSymbol('proto.kin.agora.transaction.v4.Cursor', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetHistoryRequest', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetHistoryRequest.Direction', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetHistoryResponse', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetHistoryResponse.Result', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetRecentBlockhashRequest', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetRecentBlockhashResponse', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetServiceConfigRequest', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetServiceConfigResponse', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetTransactionRequest', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetTransactionResponse', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.GetTransactionResponse.State', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.HistoryItem', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.HistoryItem.Payment', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.HistoryItem.RawTransactionCase', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.SubmitTransactionRequest', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.SubmitTransactionResponse', null, global)
+goog.exportSymbol('proto.kin.agora.transaction.v4.SubmitTransactionResponse.Result', null, global)
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -52,16 +52,17 @@ goog.exportSymbol('proto.kin.agora.transaction.v4.SubmitTransactionResponse.Resu
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetServiceConfigRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetServiceConfigRequest, jspb.Message);
+proto.kin.agora.transaction.v4.GetServiceConfigRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetServiceConfigRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetServiceConfigRequest.displayName = 'proto.kin.agora.transaction.v4.GetServiceConfigRequest';
+  proto.kin.agora.transaction.v4.GetServiceConfigRequest.displayName =
+    'proto.kin.agora.transaction.v4.GetServiceConfigRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -73,16 +74,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetServiceConfigResponse, jspb.Message);
+proto.kin.agora.transaction.v4.GetServiceConfigResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetServiceConfigResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetServiceConfigResponse.displayName = 'proto.kin.agora.transaction.v4.GetServiceConfigResponse';
+  proto.kin.agora.transaction.v4.GetServiceConfigResponse.displayName =
+    'proto.kin.agora.transaction.v4.GetServiceConfigResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -94,16 +96,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest, jspb.Message);
+proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.displayName = 'proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest';
+  proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.displayName =
+    'proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -115,16 +118,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse, jspb.Message);
+proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.displayName = 'proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse';
+  proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.displayName =
+    'proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -136,16 +140,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetRecentBlockhashRequest, jspb.Message);
+proto.kin.agora.transaction.v4.GetRecentBlockhashRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetRecentBlockhashRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.displayName = 'proto.kin.agora.transaction.v4.GetRecentBlockhashRequest';
+  proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.displayName =
+    'proto.kin.agora.transaction.v4.GetRecentBlockhashRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -157,16 +162,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetRecentBlockhashResponse, jspb.Message);
+proto.kin.agora.transaction.v4.GetRecentBlockhashResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetRecentBlockhashResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.displayName = 'proto.kin.agora.transaction.v4.GetRecentBlockhashResponse';
+  proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.displayName =
+    'proto.kin.agora.transaction.v4.GetRecentBlockhashResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -178,16 +184,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest, jspb.Message);
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.displayName = 'proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest';
+  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.displayName =
+    'proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -199,16 +206,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse, jspb.Message);
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.displayName = 'proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse';
+  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.displayName =
+    'proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -220,16 +228,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetHistoryRequest, jspb.Message);
+proto.kin.agora.transaction.v4.GetHistoryRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetHistoryRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetHistoryRequest.displayName = 'proto.kin.agora.transaction.v4.GetHistoryRequest';
+  proto.kin.agora.transaction.v4.GetHistoryRequest.displayName = 'proto.kin.agora.transaction.v4.GetHistoryRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -241,16 +249,23 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.kin.agora.transaction.v4.GetHistoryResponse.repeatedFields_, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetHistoryResponse, jspb.Message);
+proto.kin.agora.transaction.v4.GetHistoryResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.kin.agora.transaction.v4.GetHistoryResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetHistoryResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetHistoryResponse.displayName = 'proto.kin.agora.transaction.v4.GetHistoryResponse';
+  proto.kin.agora.transaction.v4.GetHistoryResponse.displayName = 'proto.kin.agora.transaction.v4.GetHistoryResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -262,16 +277,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.SubmitTransactionRequest, jspb.Message);
+proto.kin.agora.transaction.v4.SubmitTransactionRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.SubmitTransactionRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.SubmitTransactionRequest.displayName = 'proto.kin.agora.transaction.v4.SubmitTransactionRequest';
+  proto.kin.agora.transaction.v4.SubmitTransactionRequest.displayName =
+    'proto.kin.agora.transaction.v4.SubmitTransactionRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -283,16 +299,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.kin.agora.transaction.v4.SubmitTransactionResponse.repeatedFields_, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.SubmitTransactionResponse, jspb.Message);
+proto.kin.agora.transaction.v4.SubmitTransactionResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.kin.agora.transaction.v4.SubmitTransactionResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.kin.agora.transaction.v4.SubmitTransactionResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.SubmitTransactionResponse.displayName = 'proto.kin.agora.transaction.v4.SubmitTransactionResponse';
+  proto.kin.agora.transaction.v4.SubmitTransactionResponse.displayName =
+    'proto.kin.agora.transaction.v4.SubmitTransactionResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -304,16 +328,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetTransactionRequest, jspb.Message);
+proto.kin.agora.transaction.v4.GetTransactionRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetTransactionRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetTransactionRequest.displayName = 'proto.kin.agora.transaction.v4.GetTransactionRequest';
+  proto.kin.agora.transaction.v4.GetTransactionRequest.displayName =
+    'proto.kin.agora.transaction.v4.GetTransactionRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -325,16 +350,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.GetTransactionResponse, jspb.Message);
+proto.kin.agora.transaction.v4.GetTransactionResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.GetTransactionResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.GetTransactionResponse.displayName = 'proto.kin.agora.transaction.v4.GetTransactionResponse';
+  proto.kin.agora.transaction.v4.GetTransactionResponse.displayName =
+    'proto.kin.agora.transaction.v4.GetTransactionResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -346,16 +372,23 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.HistoryItem = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.kin.agora.transaction.v4.HistoryItem.repeatedFields_, proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_);
-};
-goog.inherits(proto.kin.agora.transaction.v4.HistoryItem, jspb.Message);
+proto.kin.agora.transaction.v4.HistoryItem = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.kin.agora.transaction.v4.HistoryItem.repeatedFields_,
+    proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_,
+  )
+}
+goog.inherits(proto.kin.agora.transaction.v4.HistoryItem, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.HistoryItem.displayName = 'proto.kin.agora.transaction.v4.HistoryItem';
+  proto.kin.agora.transaction.v4.HistoryItem.displayName = 'proto.kin.agora.transaction.v4.HistoryItem'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -367,16 +400,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.HistoryItem.Payment, jspb.Message);
+proto.kin.agora.transaction.v4.HistoryItem.Payment = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.HistoryItem.Payment, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.HistoryItem.Payment.displayName = 'proto.kin.agora.transaction.v4.HistoryItem.Payment';
+  proto.kin.agora.transaction.v4.HistoryItem.Payment.displayName = 'proto.kin.agora.transaction.v4.HistoryItem.Payment'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -388,71 +421,65 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.kin.agora.transaction.v4.Cursor = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.kin.agora.transaction.v4.Cursor, jspb.Message);
+proto.kin.agora.transaction.v4.Cursor = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.kin.agora.transaction.v4.Cursor, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.kin.agora.transaction.v4.Cursor.displayName = 'proto.kin.agora.transaction.v4.Cursor';
+  proto.kin.agora.transaction.v4.Cursor.displayName = 'proto.kin.agora.transaction.v4.Cursor'
 }
-
-
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetServiceConfigRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetServiceConfigRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetServiceConfigRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetServiceConfigRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetServiceConfigRequest.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetServiceConfigRequest.toObject(opt_includeInstance, this)
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetServiceConfigRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetServiceConfigRequest.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigRequest}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetServiceConfigRequest;
-  return proto.kin.agora.transaction.v4.GetServiceConfigRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetServiceConfigRequest()
+  return proto.kin.agora.transaction.v4.GetServiceConfigRequest.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -461,32 +488,30 @@ proto.kin.agora.transaction.v4.GetServiceConfigRequest.deserializeBinary = funct
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigRequest}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetServiceConfigRequest.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    default:
-      reader.skipField();
-      break;
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetServiceConfigRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigRequest.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetServiceConfigRequest.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -495,67 +520,62 @@ proto.kin.agora.transaction.v4.GetServiceConfigRequest.prototype.serializeBinary
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetServiceConfigRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetServiceConfigResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetServiceConfigResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    subsidizerAccount: (f = msg.getSubsidizerAccount()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
-    tokenProgram: (f = msg.getTokenProgram()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
-    token: (f = msg.getToken()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetServiceConfigRequest.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetServiceConfigResponse.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetServiceConfigResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetServiceConfigResponse.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        subsidizerAccount:
+          (f = msg.getSubsidizerAccount()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
+        tokenProgram: (f = msg.getTokenProgram()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
+        token: (f = msg.getToken()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigResponse}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetServiceConfigResponse;
-  return proto.kin.agora.transaction.v4.GetServiceConfigResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetServiceConfigResponse()
+  return proto.kin.agora.transaction.v4.GetServiceConfigResponse.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -564,47 +584,45 @@ proto.kin.agora.transaction.v4.GetServiceConfigResponse.deserializeBinary = func
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigResponse}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new common_v4_model_pb.SolanaAccountId;
-      reader.readMessage(value,common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader);
-      msg.setSubsidizerAccount(value);
-      break;
-    case 2:
-      var value = new common_v4_model_pb.SolanaAccountId;
-      reader.readMessage(value,common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader);
-      msg.setTokenProgram(value);
-      break;
-    case 3:
-      var value = new common_v4_model_pb.SolanaAccountId;
-      reader.readMessage(value,common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader);
-      msg.setToken(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new common_v4_model_pb.SolanaAccountId()
+        reader.readMessage(value, common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader)
+        msg.setSubsidizerAccount(value)
+        break
+      case 2:
+        var value = new common_v4_model_pb.SolanaAccountId()
+        reader.readMessage(value, common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader)
+        msg.setTokenProgram(value)
+        break
+      case 3:
+        var value = new common_v4_model_pb.SolanaAccountId()
+        reader.readMessage(value, common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader)
+        msg.setToken(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetServiceConfigResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetServiceConfigResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -613,200 +631,177 @@ proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.serializeBinar
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getSubsidizerAccount();
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getSubsidizerAccount()
   if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter
-    );
+    writer.writeMessage(1, f, common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter)
   }
-  f = message.getTokenProgram();
+  f = message.getTokenProgram()
   if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter
-    );
+    writer.writeMessage(2, f, common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter)
   }
-  f = message.getToken();
+  f = message.getToken()
   if (f != null) {
-    writer.writeMessage(
-      3,
-      f,
-      common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter
-    );
+    writer.writeMessage(3, f, common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter)
   }
-};
-
+}
 
 /**
  * optional kin.agora.common.v4.SolanaAccountId subsidizer_account = 1;
  * @return {?proto.kin.agora.common.v4.SolanaAccountId}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.getSubsidizerAccount = function() {
-  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.SolanaAccountId, 1));
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.getSubsidizerAccount = function () {
+  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.SolanaAccountId,
+    1,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.SolanaAccountId|undefined} value
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigResponse} returns this
-*/
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.setSubsidizerAccount = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.setSubsidizerAccount = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.clearSubsidizerAccount = function() {
-  return this.setSubsidizerAccount(undefined);
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.clearSubsidizerAccount = function () {
+  return this.setSubsidizerAccount(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.hasSubsidizerAccount = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.hasSubsidizerAccount = function () {
+  return jspb.Message.getField(this, 1) != null
+}
 
 /**
  * optional kin.agora.common.v4.SolanaAccountId token_program = 2;
  * @return {?proto.kin.agora.common.v4.SolanaAccountId}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.getTokenProgram = function() {
-  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.SolanaAccountId, 2));
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.getTokenProgram = function () {
+  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.SolanaAccountId,
+    2,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.SolanaAccountId|undefined} value
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigResponse} returns this
-*/
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.setTokenProgram = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.setTokenProgram = function (value) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.clearTokenProgram = function() {
-  return this.setTokenProgram(undefined);
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.clearTokenProgram = function () {
+  return this.setTokenProgram(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.hasTokenProgram = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.hasTokenProgram = function () {
+  return jspb.Message.getField(this, 2) != null
+}
 
 /**
  * optional kin.agora.common.v4.SolanaAccountId token = 3;
  * @return {?proto.kin.agora.common.v4.SolanaAccountId}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.getToken = function() {
-  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.SolanaAccountId, 3));
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.getToken = function () {
+  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.SolanaAccountId,
+    3,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.SolanaAccountId|undefined} value
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigResponse} returns this
-*/
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.setToken = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.setToken = function (value) {
+  return jspb.Message.setWrapperField(this, 3, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.GetServiceConfigResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.clearToken = function() {
-  return this.setToken(undefined);
-};
-
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.clearToken = function () {
+  return this.setToken(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.hasToken = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetServiceConfigResponse.prototype.hasToken = function () {
+  return jspb.Message.getField(this, 3) != null
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest}
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest;
-  return proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest()
+  return proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -815,32 +810,30 @@ proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.deserializeBinary = f
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest}
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    default:
-      reader.skipField();
-      break;
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -849,65 +842,59 @@ proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.prototype.serializeBi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    version: jspb.Message.getFieldWithDefault(msg, 1, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetMinimumKinVersionRequest.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        version: jspb.Message.getFieldWithDefault(msg, 1, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse}
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse;
-  return proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse()
+  return proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -916,36 +903,34 @@ proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.deserializeBinary = 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse}
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setVersion(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {number} */ (reader.readUint32())
+        msg.setVersion(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -954,90 +939,77 @@ proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.prototype.serializeB
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getVersion();
+proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getVersion()
   if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
+    writer.writeUint32(1, f)
   }
-};
-
+}
 
 /**
  * optional uint32 version = 1;
  * @return {number}
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.prototype.getVersion = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.prototype.getVersion = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.prototype.setVersion = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetRecentBlockhashRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetMinimumKinVersionResponse.prototype.setVersion = function (value) {
+  return jspb.Message.setProto3IntField(this, 1, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetRecentBlockhashRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetRecentBlockhashRequest}
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetRecentBlockhashRequest;
-  return proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetRecentBlockhashRequest()
+  return proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1046,32 +1018,30 @@ proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.deserializeBinary = fun
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetRecentBlockhashRequest}
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    default:
-      reader.skipField();
-      break;
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1080,65 +1050,59 @@ proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.prototype.serializeBina
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetRecentBlockhashResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    blockhash: (f = msg.getBlockhash()) && common_v4_model_pb.Blockhash.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetRecentBlockhashRequest.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetRecentBlockhashResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        blockhash: (f = msg.getBlockhash()) && common_v4_model_pb.Blockhash.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetRecentBlockhashResponse}
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetRecentBlockhashResponse;
-  return proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetRecentBlockhashResponse()
+  return proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1147,37 +1111,35 @@ proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.deserializeBinary = fu
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetRecentBlockhashResponse}
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new common_v4_model_pb.Blockhash;
-      reader.readMessage(value,common_v4_model_pb.Blockhash.deserializeBinaryFromReader);
-      msg.setBlockhash(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new common_v4_model_pb.Blockhash()
+        reader.readMessage(value, common_v4_model_pb.Blockhash.deserializeBinaryFromReader)
+        msg.setBlockhash(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1186,110 +1148,104 @@ proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.serializeBin
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getBlockhash();
+proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getBlockhash()
   if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      common_v4_model_pb.Blockhash.serializeBinaryToWriter
-    );
+    writer.writeMessage(1, f, common_v4_model_pb.Blockhash.serializeBinaryToWriter)
   }
-};
-
+}
 
 /**
  * optional kin.agora.common.v4.Blockhash blockhash = 1;
  * @return {?proto.kin.agora.common.v4.Blockhash}
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.getBlockhash = function() {
-  return /** @type{?proto.kin.agora.common.v4.Blockhash} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.Blockhash, 1));
-};
-
+proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.getBlockhash = function () {
+  return /** @type{?proto.kin.agora.common.v4.Blockhash} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.Blockhash,
+    1,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.Blockhash|undefined} value
  * @return {!proto.kin.agora.transaction.v4.GetRecentBlockhashResponse} returns this
-*/
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.setBlockhash = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.setBlockhash = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.GetRecentBlockhashResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.clearBlockhash = function() {
-  return this.setBlockhash(undefined);
-};
-
+proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.clearBlockhash = function () {
+  return this.setBlockhash(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.hasBlockhash = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    size: jspb.Message.getFieldWithDefault(msg, 1, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetRecentBlockhashResponse.prototype.hasBlockhash = function () {
+  return jspb.Message.getField(this, 1) != null
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        size: jspb.Message.getFieldWithDefault(msg, 1, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest}
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest;
-  return proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest()
+  return proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1298,36 +1254,37 @@ proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.deserial
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest}
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setSize(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {number} */ (reader.readUint64())
+        msg.setSize(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1336,90 +1293,87 @@ proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.prototyp
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getSize();
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getSize()
   if (f !== 0) {
-    writer.writeUint64(
-      1,
-      f
-    );
+    writer.writeUint64(1, f)
   }
-};
-
+}
 
 /**
  * optional uint64 size = 1;
  * @return {number}
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.prototype.getSize = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.prototype.getSize = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest} returns this
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.prototype.setSize = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    lamports: jspb.Message.getFieldWithDefault(msg, 1, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionRequest.prototype.setSize = function (value) {
+  return jspb.Message.setProto3IntField(this, 1, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        lamports: jspb.Message.getFieldWithDefault(msg, 1, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse}
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse;
-  return proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse()
+  return proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1428,36 +1382,37 @@ proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.deseria
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse}
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setLamports(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {number} */ (reader.readUint64())
+        msg.setLamports(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1466,92 +1421,84 @@ proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.prototy
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getLamports();
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getLamports()
   if (f !== 0) {
-    writer.writeUint64(
-      1,
-      f
-    );
+    writer.writeUint64(1, f)
   }
-};
-
+}
 
 /**
  * optional uint64 lamports = 1;
  * @return {number}
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.prototype.getLamports = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.prototype.getLamports = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.prototype.setLamports = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetHistoryRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetHistoryRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetHistoryRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    accountId: (f = msg.getAccountId()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
-    cursor: (f = msg.getCursor()) && proto.kin.agora.transaction.v4.Cursor.toObject(includeInstance, f),
-    direction: jspb.Message.getFieldWithDefault(msg, 3, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetMinimumBalanceForRentExemptionResponse.prototype.setLamports = function (value) {
+  return jspb.Message.setProto3IntField(this, 1, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetHistoryRequest.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetHistoryRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetHistoryRequest.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        accountId: (f = msg.getAccountId()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
+        cursor: (f = msg.getCursor()) && proto.kin.agora.transaction.v4.Cursor.toObject(includeInstance, f),
+        direction: jspb.Message.getFieldWithDefault(msg, 3, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetHistoryRequest}
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetHistoryRequest;
-  return proto.kin.agora.transaction.v4.GetHistoryRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetHistoryRequest()
+  return proto.kin.agora.transaction.v4.GetHistoryRequest.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1560,46 +1507,44 @@ proto.kin.agora.transaction.v4.GetHistoryRequest.deserializeBinary = function(by
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetHistoryRequest}
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetHistoryRequest.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new common_v4_model_pb.SolanaAccountId;
-      reader.readMessage(value,common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader);
-      msg.setAccountId(value);
-      break;
-    case 2:
-      var value = new proto.kin.agora.transaction.v4.Cursor;
-      reader.readMessage(value,proto.kin.agora.transaction.v4.Cursor.deserializeBinaryFromReader);
-      msg.setCursor(value);
-      break;
-    case 3:
-      var value = /** @type {!proto.kin.agora.transaction.v4.GetHistoryRequest.Direction} */ (reader.readEnum());
-      msg.setDirection(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new common_v4_model_pb.SolanaAccountId()
+        reader.readMessage(value, common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader)
+        msg.setAccountId(value)
+        break
+      case 2:
+        var value = new proto.kin.agora.transaction.v4.Cursor()
+        reader.readMessage(value, proto.kin.agora.transaction.v4.Cursor.deserializeBinaryFromReader)
+        msg.setCursor(value)
+        break
+      case 3:
+        var value = /** @type {!proto.kin.agora.transaction.v4.GetHistoryRequest.Direction} */ (reader.readEnum())
+        msg.setDirection(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetHistoryRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetHistoryRequest.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1608,197 +1553,183 @@ proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.serializeBinary = fun
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAccountId();
+proto.kin.agora.transaction.v4.GetHistoryRequest.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getAccountId()
   if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter
-    );
+    writer.writeMessage(1, f, common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter)
   }
-  f = message.getCursor();
+  f = message.getCursor()
   if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      proto.kin.agora.transaction.v4.Cursor.serializeBinaryToWriter
-    );
+    writer.writeMessage(2, f, proto.kin.agora.transaction.v4.Cursor.serializeBinaryToWriter)
   }
-  f = message.getDirection();
+  f = message.getDirection()
   if (f !== 0.0) {
-    writer.writeEnum(
-      3,
-      f
-    );
+    writer.writeEnum(3, f)
   }
-};
-
+}
 
 /**
  * @enum {number}
  */
 proto.kin.agora.transaction.v4.GetHistoryRequest.Direction = {
   ASC: 0,
-  DESC: 1
-};
+  DESC: 1,
+}
 
 /**
  * optional kin.agora.common.v4.SolanaAccountId account_id = 1;
  * @return {?proto.kin.agora.common.v4.SolanaAccountId}
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.getAccountId = function() {
-  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.SolanaAccountId, 1));
-};
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.getAccountId = function () {
+  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.SolanaAccountId,
+    1,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.SolanaAccountId|undefined} value
  * @return {!proto.kin.agora.transaction.v4.GetHistoryRequest} returns this
-*/
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.setAccountId = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.setAccountId = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.GetHistoryRequest} returns this
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.clearAccountId = function() {
-  return this.setAccountId(undefined);
-};
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.clearAccountId = function () {
+  return this.setAccountId(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.hasAccountId = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.hasAccountId = function () {
+  return jspb.Message.getField(this, 1) != null
+}
 
 /**
  * optional Cursor cursor = 2;
  * @return {?proto.kin.agora.transaction.v4.Cursor}
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.getCursor = function() {
-  return /** @type{?proto.kin.agora.transaction.v4.Cursor} */ (
-    jspb.Message.getWrapperField(this, proto.kin.agora.transaction.v4.Cursor, 2));
-};
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.getCursor = function () {
+  return /** @type{?proto.kin.agora.transaction.v4.Cursor} */ (jspb.Message.getWrapperField(
+    this,
+    proto.kin.agora.transaction.v4.Cursor,
+    2,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.transaction.v4.Cursor|undefined} value
  * @return {!proto.kin.agora.transaction.v4.GetHistoryRequest} returns this
-*/
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.setCursor = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.setCursor = function (value) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.GetHistoryRequest} returns this
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.clearCursor = function() {
-  return this.setCursor(undefined);
-};
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.clearCursor = function () {
+  return this.setCursor(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.hasCursor = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.hasCursor = function () {
+  return jspb.Message.getField(this, 2) != null
+}
 
 /**
  * optional Direction direction = 3;
  * @return {!proto.kin.agora.transaction.v4.GetHistoryRequest.Direction}
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.getDirection = function() {
-  return /** @type {!proto.kin.agora.transaction.v4.GetHistoryRequest.Direction} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.getDirection = function () {
+  return /** @type {!proto.kin.agora.transaction.v4.GetHistoryRequest.Direction} */ (jspb.Message.getFieldWithDefault(
+    this,
+    3,
+    0,
+  ))
+}
 
 /**
  * @param {!proto.kin.agora.transaction.v4.GetHistoryRequest.Direction} value
  * @return {!proto.kin.agora.transaction.v4.GetHistoryRequest} returns this
  */
-proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.setDirection = function(value) {
-  return jspb.Message.setProto3EnumField(this, 3, value);
-};
-
-
+proto.kin.agora.transaction.v4.GetHistoryRequest.prototype.setDirection = function (value) {
+  return jspb.Message.setProto3EnumField(this, 3, value)
+}
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.repeatedFields_ = [2];
-
-
+proto.kin.agora.transaction.v4.GetHistoryResponse.repeatedFields_ = [2]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetHistoryResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetHistoryResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetHistoryResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    result: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    itemsList: jspb.Message.toObjectList(msg.getItemsList(),
-    proto.kin.agora.transaction.v4.HistoryItem.toObject, includeInstance)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetHistoryResponse.toObject(opt_includeInstance, this)
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetHistoryResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetHistoryResponse.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        result: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        itemsList: jspb.Message.toObjectList(
+          msg.getItemsList(),
+          proto.kin.agora.transaction.v4.HistoryItem.toObject,
+          includeInstance,
+        ),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetHistoryResponse}
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetHistoryResponse;
-  return proto.kin.agora.transaction.v4.GetHistoryResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetHistoryResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetHistoryResponse()
+  return proto.kin.agora.transaction.v4.GetHistoryResponse.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1807,41 +1738,39 @@ proto.kin.agora.transaction.v4.GetHistoryResponse.deserializeBinary = function(b
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetHistoryResponse}
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetHistoryResponse.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {!proto.kin.agora.transaction.v4.GetHistoryResponse.Result} */ (reader.readEnum());
-      msg.setResult(value);
-      break;
-    case 2:
-      var value = new proto.kin.agora.transaction.v4.HistoryItem;
-      reader.readMessage(value,proto.kin.agora.transaction.v4.HistoryItem.deserializeBinaryFromReader);
-      msg.addItems(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {!proto.kin.agora.transaction.v4.GetHistoryResponse.Result} */ (reader.readEnum())
+        msg.setResult(value)
+        break
+      case 2:
+        var value = new proto.kin.agora.transaction.v4.HistoryItem()
+        reader.readMessage(value, proto.kin.agora.transaction.v4.HistoryItem.deserializeBinaryFromReader)
+        msg.addItems(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetHistoryResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetHistoryResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1850,147 +1779,141 @@ proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.serializeBinary = fu
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getResult();
+proto.kin.agora.transaction.v4.GetHistoryResponse.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getResult()
   if (f !== 0.0) {
-    writer.writeEnum(
-      1,
-      f
-    );
+    writer.writeEnum(1, f)
   }
-  f = message.getItemsList();
+  f = message.getItemsList()
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      2,
-      f,
-      proto.kin.agora.transaction.v4.HistoryItem.serializeBinaryToWriter
-    );
+    writer.writeRepeatedMessage(2, f, proto.kin.agora.transaction.v4.HistoryItem.serializeBinaryToWriter)
   }
-};
-
+}
 
 /**
  * @enum {number}
  */
 proto.kin.agora.transaction.v4.GetHistoryResponse.Result = {
   OK: 0,
-  NOT_FOUND: 1
-};
+  NOT_FOUND: 1,
+}
 
 /**
  * optional Result result = 1;
  * @return {!proto.kin.agora.transaction.v4.GetHistoryResponse.Result}
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.getResult = function() {
-  return /** @type {!proto.kin.agora.transaction.v4.GetHistoryResponse.Result} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.getResult = function () {
+  return /** @type {!proto.kin.agora.transaction.v4.GetHistoryResponse.Result} */ (jspb.Message.getFieldWithDefault(
+    this,
+    1,
+    0,
+  ))
+}
 
 /**
  * @param {!proto.kin.agora.transaction.v4.GetHistoryResponse.Result} value
  * @return {!proto.kin.agora.transaction.v4.GetHistoryResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.setResult = function(value) {
-  return jspb.Message.setProto3EnumField(this, 1, value);
-};
-
+proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.setResult = function (value) {
+  return jspb.Message.setProto3EnumField(this, 1, value)
+}
 
 /**
  * repeated HistoryItem items = 2;
  * @return {!Array<!proto.kin.agora.transaction.v4.HistoryItem>}
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.getItemsList = function() {
-  return /** @type{!Array<!proto.kin.agora.transaction.v4.HistoryItem>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.kin.agora.transaction.v4.HistoryItem, 2));
-};
-
+proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.getItemsList = function () {
+  return /** @type{!Array<!proto.kin.agora.transaction.v4.HistoryItem>} */ (jspb.Message.getRepeatedWrapperField(
+    this,
+    proto.kin.agora.transaction.v4.HistoryItem,
+    2,
+  ))
+}
 
 /**
  * @param {!Array<!proto.kin.agora.transaction.v4.HistoryItem>} value
  * @return {!proto.kin.agora.transaction.v4.GetHistoryResponse} returns this
-*/
-proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.setItemsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 2, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.setItemsList = function (value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value)
+}
 
 /**
  * @param {!proto.kin.agora.transaction.v4.HistoryItem=} opt_value
  * @param {number=} opt_index
  * @return {!proto.kin.agora.transaction.v4.HistoryItem}
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.addItems = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.kin.agora.transaction.v4.HistoryItem, opt_index);
-};
-
+proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.addItems = function (opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(
+    this,
+    2,
+    opt_value,
+    proto.kin.agora.transaction.v4.HistoryItem,
+    opt_index,
+  )
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.kin.agora.transaction.v4.GetHistoryResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.clearItemsList = function() {
-  return this.setItemsList([]);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.SubmitTransactionRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.SubmitTransactionRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    transaction: (f = msg.getTransaction()) && common_v4_model_pb.Transaction.toObject(includeInstance, f),
-    invoiceList: (f = msg.getInvoiceList()) && common_v3_model_pb.InvoiceList.toObject(includeInstance, f),
-    commitment: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    dedupeId: msg.getDedupeId_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetHistoryResponse.prototype.clearItemsList = function () {
+  return this.setItemsList([])
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.SubmitTransactionRequest.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.SubmitTransactionRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.SubmitTransactionRequest.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        transaction: (f = msg.getTransaction()) && common_v4_model_pb.Transaction.toObject(includeInstance, f),
+        invoiceList: (f = msg.getInvoiceList()) && common_v3_model_pb.InvoiceList.toObject(includeInstance, f),
+        commitment: jspb.Message.getFieldWithDefault(msg, 3, 0),
+        dedupeId: msg.getDedupeId_asB64(),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionRequest}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.SubmitTransactionRequest;
-  return proto.kin.agora.transaction.v4.SubmitTransactionRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.SubmitTransactionRequest()
+  return proto.kin.agora.transaction.v4.SubmitTransactionRequest.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1999,50 +1922,48 @@ proto.kin.agora.transaction.v4.SubmitTransactionRequest.deserializeBinary = func
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionRequest}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new common_v4_model_pb.Transaction;
-      reader.readMessage(value,common_v4_model_pb.Transaction.deserializeBinaryFromReader);
-      msg.setTransaction(value);
-      break;
-    case 2:
-      var value = new common_v3_model_pb.InvoiceList;
-      reader.readMessage(value,common_v3_model_pb.InvoiceList.deserializeBinaryFromReader);
-      msg.setInvoiceList(value);
-      break;
-    case 3:
-      var value = /** @type {!proto.kin.agora.common.v4.Commitment} */ (reader.readEnum());
-      msg.setCommitment(value);
-      break;
-    case 4:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setDedupeId(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new common_v4_model_pb.Transaction()
+        reader.readMessage(value, common_v4_model_pb.Transaction.deserializeBinaryFromReader)
+        msg.setTransaction(value)
+        break
+      case 2:
+        var value = new common_v3_model_pb.InvoiceList()
+        reader.readMessage(value, common_v3_model_pb.InvoiceList.deserializeBinaryFromReader)
+        msg.setInvoiceList(value)
+        break
+      case 3:
+        var value = /** @type {!proto.kin.agora.common.v4.Commitment} */ (reader.readEnum())
+        msg.setCommitment(value)
+        break
+      case 4:
+        var value = /** @type {!Uint8Array} */ (reader.readBytes())
+        msg.setDedupeId(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.SubmitTransactionRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.SubmitTransactionRequest.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2051,152 +1972,130 @@ proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.serializeBinar
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTransaction();
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getTransaction()
   if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      common_v4_model_pb.Transaction.serializeBinaryToWriter
-    );
+    writer.writeMessage(1, f, common_v4_model_pb.Transaction.serializeBinaryToWriter)
   }
-  f = message.getInvoiceList();
+  f = message.getInvoiceList()
   if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      common_v3_model_pb.InvoiceList.serializeBinaryToWriter
-    );
+    writer.writeMessage(2, f, common_v3_model_pb.InvoiceList.serializeBinaryToWriter)
   }
-  f = message.getCommitment();
+  f = message.getCommitment()
   if (f !== 0.0) {
-    writer.writeEnum(
-      3,
-      f
-    );
+    writer.writeEnum(3, f)
   }
-  f = message.getDedupeId_asU8();
+  f = message.getDedupeId_asU8()
   if (f.length > 0) {
-    writer.writeBytes(
-      4,
-      f
-    );
+    writer.writeBytes(4, f)
   }
-};
-
+}
 
 /**
  * optional kin.agora.common.v4.Transaction transaction = 1;
  * @return {?proto.kin.agora.common.v4.Transaction}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getTransaction = function() {
-  return /** @type{?proto.kin.agora.common.v4.Transaction} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.Transaction, 1));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getTransaction = function () {
+  return /** @type{?proto.kin.agora.common.v4.Transaction} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.Transaction,
+    1,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.Transaction|undefined} value
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionRequest} returns this
-*/
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.setTransaction = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.setTransaction = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionRequest} returns this
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.clearTransaction = function() {
-  return this.setTransaction(undefined);
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.clearTransaction = function () {
+  return this.setTransaction(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.hasTransaction = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.hasTransaction = function () {
+  return jspb.Message.getField(this, 1) != null
+}
 
 /**
  * optional kin.agora.common.v3.InvoiceList invoice_list = 2;
  * @return {?proto.kin.agora.common.v3.InvoiceList}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getInvoiceList = function() {
-  return /** @type{?proto.kin.agora.common.v3.InvoiceList} */ (
-    jspb.Message.getWrapperField(this, common_v3_model_pb.InvoiceList, 2));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getInvoiceList = function () {
+  return /** @type{?proto.kin.agora.common.v3.InvoiceList} */ (jspb.Message.getWrapperField(
+    this,
+    common_v3_model_pb.InvoiceList,
+    2,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v3.InvoiceList|undefined} value
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionRequest} returns this
-*/
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.setInvoiceList = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.setInvoiceList = function (value) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionRequest} returns this
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.clearInvoiceList = function() {
-  return this.setInvoiceList(undefined);
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.clearInvoiceList = function () {
+  return this.setInvoiceList(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.hasInvoiceList = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.hasInvoiceList = function () {
+  return jspb.Message.getField(this, 2) != null
+}
 
 /**
  * optional kin.agora.common.v4.Commitment commitment = 3;
  * @return {!proto.kin.agora.common.v4.Commitment}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getCommitment = function() {
-  return /** @type {!proto.kin.agora.common.v4.Commitment} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getCommitment = function () {
+  return /** @type {!proto.kin.agora.common.v4.Commitment} */ (jspb.Message.getFieldWithDefault(this, 3, 0))
+}
 
 /**
  * @param {!proto.kin.agora.common.v4.Commitment} value
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionRequest} returns this
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.setCommitment = function(value) {
-  return jspb.Message.setProto3EnumField(this, 3, value);
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.setCommitment = function (value) {
+  return jspb.Message.setProto3EnumField(this, 3, value)
+}
 
 /**
  * optional bytes dedupe_id = 4;
  * @return {!(string|Uint8Array)}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getDedupeId = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getDedupeId = function () {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ''))
+}
 
 /**
  * optional bytes dedupe_id = 4;
  * This is a type-conversion wrapper around `getDedupeId()`
  * @return {string}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getDedupeId_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getDedupeId()));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getDedupeId_asB64 = function () {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(this.getDedupeId()))
+}
 
 /**
  * optional bytes dedupe_id = 4;
@@ -2205,86 +2104,82 @@ proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getDedupeId_as
  * This is a type-conversion wrapper around `getDedupeId()`
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getDedupeId_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getDedupeId()));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.getDedupeId_asU8 = function () {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(this.getDedupeId()))
+}
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionRequest} returns this
  */
-proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.setDedupeId = function(value) {
-  return jspb.Message.setProto3BytesField(this, 4, value);
-};
-
-
+proto.kin.agora.transaction.v4.SubmitTransactionRequest.prototype.setDedupeId = function (value) {
+  return jspb.Message.setProto3BytesField(this, 4, value)
+}
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.repeatedFields_ = [4];
-
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.repeatedFields_ = [4]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.SubmitTransactionResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.SubmitTransactionResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    result: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    signature: (f = msg.getSignature()) && common_v4_model_pb.TransactionSignature.toObject(includeInstance, f),
-    transactionError: (f = msg.getTransactionError()) && common_v4_model_pb.TransactionError.toObject(includeInstance, f),
-    invoiceErrorsList: jspb.Message.toObjectList(msg.getInvoiceErrorsList(),
-    common_v3_model_pb.InvoiceError.toObject, includeInstance)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.SubmitTransactionResponse.toObject(opt_includeInstance, this)
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.SubmitTransactionResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.SubmitTransactionResponse.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        result: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        signature: (f = msg.getSignature()) && common_v4_model_pb.TransactionSignature.toObject(includeInstance, f),
+        transactionError:
+          (f = msg.getTransactionError()) && common_v4_model_pb.TransactionError.toObject(includeInstance, f),
+        invoiceErrorsList: jspb.Message.toObjectList(
+          msg.getInvoiceErrorsList(),
+          common_v3_model_pb.InvoiceError.toObject,
+          includeInstance,
+        ),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.SubmitTransactionResponse;
-  return proto.kin.agora.transaction.v4.SubmitTransactionResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.SubmitTransactionResponse()
+  return proto.kin.agora.transaction.v4.SubmitTransactionResponse.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2293,51 +2188,49 @@ proto.kin.agora.transaction.v4.SubmitTransactionResponse.deserializeBinary = fun
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {!proto.kin.agora.transaction.v4.SubmitTransactionResponse.Result} */ (reader.readEnum());
-      msg.setResult(value);
-      break;
-    case 2:
-      var value = new common_v4_model_pb.TransactionSignature;
-      reader.readMessage(value,common_v4_model_pb.TransactionSignature.deserializeBinaryFromReader);
-      msg.setSignature(value);
-      break;
-    case 3:
-      var value = new common_v4_model_pb.TransactionError;
-      reader.readMessage(value,common_v4_model_pb.TransactionError.deserializeBinaryFromReader);
-      msg.setTransactionError(value);
-      break;
-    case 4:
-      var value = new common_v3_model_pb.InvoiceError;
-      reader.readMessage(value,common_v3_model_pb.InvoiceError.deserializeBinaryFromReader);
-      msg.addInvoiceErrors(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {!proto.kin.agora.transaction.v4.SubmitTransactionResponse.Result} */ (reader.readEnum())
+        msg.setResult(value)
+        break
+      case 2:
+        var value = new common_v4_model_pb.TransactionSignature()
+        reader.readMessage(value, common_v4_model_pb.TransactionSignature.deserializeBinaryFromReader)
+        msg.setSignature(value)
+        break
+      case 3:
+        var value = new common_v4_model_pb.TransactionError()
+        reader.readMessage(value, common_v4_model_pb.TransactionError.deserializeBinaryFromReader)
+        msg.setTransactionError(value)
+        break
+      case 4:
+        var value = new common_v3_model_pb.InvoiceError()
+        reader.readMessage(value, common_v3_model_pb.InvoiceError.deserializeBinaryFromReader)
+        msg.addInvoiceErrors(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.SubmitTransactionResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.SubmitTransactionResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2346,41 +2239,25 @@ proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.serializeBina
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getResult();
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getResult()
   if (f !== 0.0) {
-    writer.writeEnum(
-      1,
-      f
-    );
+    writer.writeEnum(1, f)
   }
-  f = message.getSignature();
+  f = message.getSignature()
   if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      common_v4_model_pb.TransactionSignature.serializeBinaryToWriter
-    );
+    writer.writeMessage(2, f, common_v4_model_pb.TransactionSignature.serializeBinaryToWriter)
   }
-  f = message.getTransactionError();
+  f = message.getTransactionError()
   if (f != null) {
-    writer.writeMessage(
-      3,
-      f,
-      common_v4_model_pb.TransactionError.serializeBinaryToWriter
-    );
+    writer.writeMessage(3, f, common_v4_model_pb.TransactionError.serializeBinaryToWriter)
   }
-  f = message.getInvoiceErrorsList();
+  f = message.getInvoiceErrorsList()
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      4,
-      f,
-      common_v3_model_pb.InvoiceError.serializeBinaryToWriter
-    );
+    writer.writeRepeatedMessage(4, f, common_v3_model_pb.InvoiceError.serializeBinaryToWriter)
   }
-};
-
+}
 
 /**
  * @enum {number}
@@ -2391,194 +2268,188 @@ proto.kin.agora.transaction.v4.SubmitTransactionResponse.Result = {
   FAILED: 2,
   REJECTED: 3,
   INVOICE_ERROR: 4,
-  PAYER_REQUIRED: 5
-};
+  PAYER_REQUIRED: 5,
+}
 
 /**
  * optional Result result = 1;
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse.Result}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.getResult = function() {
-  return /** @type {!proto.kin.agora.transaction.v4.SubmitTransactionResponse.Result} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.getResult = function () {
+  return /** @type {!proto.kin.agora.transaction.v4.SubmitTransactionResponse.Result} */ (jspb.Message.getFieldWithDefault(
+    this,
+    1,
+    0,
+  ))
+}
 
 /**
  * @param {!proto.kin.agora.transaction.v4.SubmitTransactionResponse.Result} value
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse} returns this
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.setResult = function(value) {
-  return jspb.Message.setProto3EnumField(this, 1, value);
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.setResult = function (value) {
+  return jspb.Message.setProto3EnumField(this, 1, value)
+}
 
 /**
  * optional kin.agora.common.v4.TransactionSignature signature = 2;
  * @return {?proto.kin.agora.common.v4.TransactionSignature}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.getSignature = function() {
-  return /** @type{?proto.kin.agora.common.v4.TransactionSignature} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.TransactionSignature, 2));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.getSignature = function () {
+  return /** @type{?proto.kin.agora.common.v4.TransactionSignature} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.TransactionSignature,
+    2,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.TransactionSignature|undefined} value
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse} returns this
-*/
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.setSignature = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.setSignature = function (value) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse} returns this
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.clearSignature = function() {
-  return this.setSignature(undefined);
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.clearSignature = function () {
+  return this.setSignature(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.hasSignature = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.hasSignature = function () {
+  return jspb.Message.getField(this, 2) != null
+}
 
 /**
  * optional kin.agora.common.v4.TransactionError transaction_error = 3;
  * @return {?proto.kin.agora.common.v4.TransactionError}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.getTransactionError = function() {
-  return /** @type{?proto.kin.agora.common.v4.TransactionError} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.TransactionError, 3));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.getTransactionError = function () {
+  return /** @type{?proto.kin.agora.common.v4.TransactionError} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.TransactionError,
+    3,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.TransactionError|undefined} value
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse} returns this
-*/
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.setTransactionError = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.setTransactionError = function (value) {
+  return jspb.Message.setWrapperField(this, 3, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse} returns this
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.clearTransactionError = function() {
-  return this.setTransactionError(undefined);
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.clearTransactionError = function () {
+  return this.setTransactionError(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.hasTransactionError = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.hasTransactionError = function () {
+  return jspb.Message.getField(this, 3) != null
+}
 
 /**
  * repeated kin.agora.common.v3.InvoiceError invoice_errors = 4;
  * @return {!Array<!proto.kin.agora.common.v3.InvoiceError>}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.getInvoiceErrorsList = function() {
-  return /** @type{!Array<!proto.kin.agora.common.v3.InvoiceError>} */ (
-    jspb.Message.getRepeatedWrapperField(this, common_v3_model_pb.InvoiceError, 4));
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.getInvoiceErrorsList = function () {
+  return /** @type{!Array<!proto.kin.agora.common.v3.InvoiceError>} */ (jspb.Message.getRepeatedWrapperField(
+    this,
+    common_v3_model_pb.InvoiceError,
+    4,
+  ))
+}
 
 /**
  * @param {!Array<!proto.kin.agora.common.v3.InvoiceError>} value
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse} returns this
-*/
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.setInvoiceErrorsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 4, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.setInvoiceErrorsList = function (value) {
+  return jspb.Message.setRepeatedWrapperField(this, 4, value)
+}
 
 /**
  * @param {!proto.kin.agora.common.v3.InvoiceError=} opt_value
  * @param {number=} opt_index
  * @return {!proto.kin.agora.common.v3.InvoiceError}
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.addInvoiceErrors = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.kin.agora.common.v3.InvoiceError, opt_index);
-};
-
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.addInvoiceErrors = function (opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.kin.agora.common.v3.InvoiceError, opt_index)
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.kin.agora.transaction.v4.SubmitTransactionResponse} returns this
  */
-proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.clearInvoiceErrorsList = function() {
-  return this.setInvoiceErrorsList([]);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetTransactionRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetTransactionRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetTransactionRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    transactionId: (f = msg.getTransactionId()) && common_v4_model_pb.TransactionId.toObject(includeInstance, f),
-    commitment: jspb.Message.getFieldWithDefault(msg, 2, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.SubmitTransactionResponse.prototype.clearInvoiceErrorsList = function () {
+  return this.setInvoiceErrorsList([])
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetTransactionRequest.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetTransactionRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetTransactionRequest.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        transactionId: (f = msg.getTransactionId()) && common_v4_model_pb.TransactionId.toObject(includeInstance, f),
+        commitment: jspb.Message.getFieldWithDefault(msg, 2, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetTransactionRequest}
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetTransactionRequest;
-  return proto.kin.agora.transaction.v4.GetTransactionRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetTransactionRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetTransactionRequest()
+  return proto.kin.agora.transaction.v4.GetTransactionRequest.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2587,41 +2458,39 @@ proto.kin.agora.transaction.v4.GetTransactionRequest.deserializeBinary = functio
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetTransactionRequest}
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetTransactionRequest.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new common_v4_model_pb.TransactionId;
-      reader.readMessage(value,common_v4_model_pb.TransactionId.deserializeBinaryFromReader);
-      msg.setTransactionId(value);
-      break;
-    case 2:
-      var value = /** @type {!proto.kin.agora.common.v4.Commitment} */ (reader.readEnum());
-      msg.setCommitment(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new common_v4_model_pb.TransactionId()
+        reader.readMessage(value, common_v4_model_pb.TransactionId.deserializeBinaryFromReader)
+        msg.setTransactionId(value)
+        break
+      case 2:
+        var value = /** @type {!proto.kin.agora.common.v4.Commitment} */ (reader.readEnum())
+        msg.setCommitment(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetTransactionRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetTransactionRequest.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2630,138 +2499,122 @@ proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.serializeBinary =
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTransactionId();
+proto.kin.agora.transaction.v4.GetTransactionRequest.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getTransactionId()
   if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      common_v4_model_pb.TransactionId.serializeBinaryToWriter
-    );
+    writer.writeMessage(1, f, common_v4_model_pb.TransactionId.serializeBinaryToWriter)
   }
-  f = message.getCommitment();
+  f = message.getCommitment()
   if (f !== 0.0) {
-    writer.writeEnum(
-      2,
-      f
-    );
+    writer.writeEnum(2, f)
   }
-};
-
+}
 
 /**
  * optional kin.agora.common.v4.TransactionId transaction_id = 1;
  * @return {?proto.kin.agora.common.v4.TransactionId}
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.getTransactionId = function() {
-  return /** @type{?proto.kin.agora.common.v4.TransactionId} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.TransactionId, 1));
-};
-
+proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.getTransactionId = function () {
+  return /** @type{?proto.kin.agora.common.v4.TransactionId} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.TransactionId,
+    1,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.TransactionId|undefined} value
  * @return {!proto.kin.agora.transaction.v4.GetTransactionRequest} returns this
-*/
-proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.setTransactionId = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.setTransactionId = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.GetTransactionRequest} returns this
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.clearTransactionId = function() {
-  return this.setTransactionId(undefined);
-};
-
+proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.clearTransactionId = function () {
+  return this.setTransactionId(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.hasTransactionId = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
+proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.hasTransactionId = function () {
+  return jspb.Message.getField(this, 1) != null
+}
 
 /**
  * optional kin.agora.common.v4.Commitment commitment = 2;
  * @return {!proto.kin.agora.common.v4.Commitment}
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.getCommitment = function() {
-  return /** @type {!proto.kin.agora.common.v4.Commitment} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
+proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.getCommitment = function () {
+  return /** @type {!proto.kin.agora.common.v4.Commitment} */ (jspb.Message.getFieldWithDefault(this, 2, 0))
+}
 
 /**
  * @param {!proto.kin.agora.common.v4.Commitment} value
  * @return {!proto.kin.agora.transaction.v4.GetTransactionRequest} returns this
  */
-proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.setCommitment = function(value) {
-  return jspb.Message.setProto3EnumField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.GetTransactionResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.GetTransactionResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.GetTransactionResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    slot: jspb.Message.getFieldWithDefault(msg, 2, "0"),
-    confirmations: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    item: (f = msg.getItem()) && proto.kin.agora.transaction.v4.HistoryItem.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.GetTransactionRequest.prototype.setCommitment = function (value) {
+  return jspb.Message.setProto3EnumField(this, 2, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.GetTransactionResponse.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.GetTransactionResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.GetTransactionResponse.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        state: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        slot: jspb.Message.getFieldWithDefault(msg, 2, '0'),
+        confirmations: jspb.Message.getFieldWithDefault(msg, 3, 0),
+        item: (f = msg.getItem()) && proto.kin.agora.transaction.v4.HistoryItem.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.GetTransactionResponse}
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.GetTransactionResponse;
-  return proto.kin.agora.transaction.v4.GetTransactionResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.GetTransactionResponse()
+  return proto.kin.agora.transaction.v4.GetTransactionResponse.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2770,49 +2623,47 @@ proto.kin.agora.transaction.v4.GetTransactionResponse.deserializeBinary = functi
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.GetTransactionResponse}
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.GetTransactionResponse.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {!proto.kin.agora.transaction.v4.GetTransactionResponse.State} */ (reader.readEnum());
-      msg.setState(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readUint64String());
-      msg.setSlot(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setConfirmations(value);
-      break;
-    case 4:
-      var value = new proto.kin.agora.transaction.v4.HistoryItem;
-      reader.readMessage(value,proto.kin.agora.transaction.v4.HistoryItem.deserializeBinaryFromReader);
-      msg.setItem(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {!proto.kin.agora.transaction.v4.GetTransactionResponse.State} */ (reader.readEnum())
+        msg.setState(value)
+        break
+      case 2:
+        var value = /** @type {string} */ (reader.readUint64String())
+        msg.setSlot(value)
+        break
+      case 3:
+        var value = /** @type {number} */ (reader.readUint32())
+        msg.setConfirmations(value)
+        break
+      case 4:
+        var value = new proto.kin.agora.transaction.v4.HistoryItem()
+        reader.readMessage(value, proto.kin.agora.transaction.v4.HistoryItem.deserializeBinaryFromReader)
+        msg.setItem(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.GetTransactionResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.GetTransactionResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2821,39 +2672,25 @@ proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.serializeBinary 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getState();
+proto.kin.agora.transaction.v4.GetTransactionResponse.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getState()
   if (f !== 0.0) {
-    writer.writeEnum(
-      1,
-      f
-    );
+    writer.writeEnum(1, f)
   }
-  f = message.getSlot();
+  f = message.getSlot()
   if (parseInt(f, 10) !== 0) {
-    writer.writeUint64String(
-      2,
-      f
-    );
+    writer.writeUint64String(2, f)
   }
-  f = message.getConfirmations();
+  f = message.getConfirmations()
   if (f !== 0) {
-    writer.writeUint32(
-      3,
-      f
-    );
+    writer.writeUint32(3, f)
   }
-  f = message.getItem();
+  f = message.getItem()
   if (f != null) {
-    writer.writeMessage(
-      4,
-      f,
-      proto.kin.agora.transaction.v4.HistoryItem.serializeBinaryToWriter
-    );
+    writer.writeMessage(4, f, proto.kin.agora.transaction.v4.HistoryItem.serializeBinaryToWriter)
   }
-};
-
+}
 
 /**
  * @enum {number}
@@ -2862,107 +2699,103 @@ proto.kin.agora.transaction.v4.GetTransactionResponse.State = {
   UNKNOWN: 0,
   SUCCESS: 1,
   FAILED: 2,
-  PENDING: 3
-};
+  PENDING: 3,
+}
 
 /**
  * optional State state = 1;
  * @return {!proto.kin.agora.transaction.v4.GetTransactionResponse.State}
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.getState = function() {
-  return /** @type {!proto.kin.agora.transaction.v4.GetTransactionResponse.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.getState = function () {
+  return /** @type {!proto.kin.agora.transaction.v4.GetTransactionResponse.State} */ (jspb.Message.getFieldWithDefault(
+    this,
+    1,
+    0,
+  ))
+}
 
 /**
  * @param {!proto.kin.agora.transaction.v4.GetTransactionResponse.State} value
  * @return {!proto.kin.agora.transaction.v4.GetTransactionResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.setState = function(value) {
-  return jspb.Message.setProto3EnumField(this, 1, value);
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.setState = function (value) {
+  return jspb.Message.setProto3EnumField(this, 1, value)
+}
 
 /**
  * optional uint64 slot = 2;
  * @return {string}
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.getSlot = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, "0"));
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.getSlot = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, '0'))
+}
 
 /**
  * @param {string} value
  * @return {!proto.kin.agora.transaction.v4.GetTransactionResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.setSlot = function(value) {
-  return jspb.Message.setProto3StringIntField(this, 2, value);
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.setSlot = function (value) {
+  return jspb.Message.setProto3StringIntField(this, 2, value)
+}
 
 /**
  * optional uint32 confirmations = 3;
  * @return {number}
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.getConfirmations = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.getConfirmations = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.kin.agora.transaction.v4.GetTransactionResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.setConfirmations = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.setConfirmations = function (value) {
+  return jspb.Message.setProto3IntField(this, 3, value)
+}
 
 /**
  * optional HistoryItem item = 4;
  * @return {?proto.kin.agora.transaction.v4.HistoryItem}
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.getItem = function() {
-  return /** @type{?proto.kin.agora.transaction.v4.HistoryItem} */ (
-    jspb.Message.getWrapperField(this, proto.kin.agora.transaction.v4.HistoryItem, 4));
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.getItem = function () {
+  return /** @type{?proto.kin.agora.transaction.v4.HistoryItem} */ (jspb.Message.getWrapperField(
+    this,
+    proto.kin.agora.transaction.v4.HistoryItem,
+    4,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.transaction.v4.HistoryItem|undefined} value
  * @return {!proto.kin.agora.transaction.v4.GetTransactionResponse} returns this
-*/
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.setItem = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.setItem = function (value) {
+  return jspb.Message.setWrapperField(this, 4, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.GetTransactionResponse} returns this
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.clearItem = function() {
-  return this.setItem(undefined);
-};
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.clearItem = function () {
+  return this.setItem(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.hasItem = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
-
+proto.kin.agora.transaction.v4.GetTransactionResponse.prototype.hasItem = function () {
+  return jspb.Message.getField(this, 4) != null
+}
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.kin.agora.transaction.v4.HistoryItem.repeatedFields_ = [6];
+proto.kin.agora.transaction.v4.HistoryItem.repeatedFields_ = [6]
 
 /**
  * Oneof group definitions for this message. Each group defines the field
@@ -2972,7 +2805,7 @@ proto.kin.agora.transaction.v4.HistoryItem.repeatedFields_ = [6];
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_ = [[3,4]];
+proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_ = [[3, 4]]
 
 /**
  * @enum {number}
@@ -2980,76 +2813,81 @@ proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_ = [[3,4]];
 proto.kin.agora.transaction.v4.HistoryItem.RawTransactionCase = {
   RAW_TRANSACTION_NOT_SET: 0,
   SOLANA_TRANSACTION: 3,
-  STELLAR_TRANSACTION: 4
-};
+  STELLAR_TRANSACTION: 4,
+}
 
 /**
  * @return {proto.kin.agora.transaction.v4.HistoryItem.RawTransactionCase}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.getRawTransactionCase = function() {
-  return /** @type {proto.kin.agora.transaction.v4.HistoryItem.RawTransactionCase} */(jspb.Message.computeOneofCase(this, proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_[0]));
-};
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.HistoryItem.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.HistoryItem} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.HistoryItem.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    transactionId: (f = msg.getTransactionId()) && common_v4_model_pb.TransactionId.toObject(includeInstance, f),
-    cursor: (f = msg.getCursor()) && proto.kin.agora.transaction.v4.Cursor.toObject(includeInstance, f),
-    solanaTransaction: (f = msg.getSolanaTransaction()) && common_v4_model_pb.Transaction.toObject(includeInstance, f),
-    stellarTransaction: (f = msg.getStellarTransaction()) && common_v4_model_pb.StellarTransaction.toObject(includeInstance, f),
-    transactionError: (f = msg.getTransactionError()) && common_v4_model_pb.TransactionError.toObject(includeInstance, f),
-    paymentsList: jspb.Message.toObjectList(msg.getPaymentsList(),
-    proto.kin.agora.transaction.v4.HistoryItem.Payment.toObject, includeInstance),
-    invoiceList: (f = msg.getInvoiceList()) && common_v3_model_pb.InvoiceList.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.HistoryItem.prototype.getRawTransactionCase = function () {
+  return /** @type {proto.kin.agora.transaction.v4.HistoryItem.RawTransactionCase} */ (jspb.Message.computeOneofCase(
+    this,
+    proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_[0],
+  ))
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.HistoryItem.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.HistoryItem.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.HistoryItem} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.HistoryItem.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        transactionId: (f = msg.getTransactionId()) && common_v4_model_pb.TransactionId.toObject(includeInstance, f),
+        cursor: (f = msg.getCursor()) && proto.kin.agora.transaction.v4.Cursor.toObject(includeInstance, f),
+        solanaTransaction:
+          (f = msg.getSolanaTransaction()) && common_v4_model_pb.Transaction.toObject(includeInstance, f),
+        stellarTransaction:
+          (f = msg.getStellarTransaction()) && common_v4_model_pb.StellarTransaction.toObject(includeInstance, f),
+        transactionError:
+          (f = msg.getTransactionError()) && common_v4_model_pb.TransactionError.toObject(includeInstance, f),
+        paymentsList: jspb.Message.toObjectList(
+          msg.getPaymentsList(),
+          proto.kin.agora.transaction.v4.HistoryItem.Payment.toObject,
+          includeInstance,
+        ),
+        invoiceList: (f = msg.getInvoiceList()) && common_v3_model_pb.InvoiceList.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem}
  */
-proto.kin.agora.transaction.v4.HistoryItem.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.HistoryItem;
-  return proto.kin.agora.transaction.v4.HistoryItem.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.HistoryItem()
+  return proto.kin.agora.transaction.v4.HistoryItem.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3058,67 +2896,65 @@ proto.kin.agora.transaction.v4.HistoryItem.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem}
  */
-proto.kin.agora.transaction.v4.HistoryItem.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.HistoryItem.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new common_v4_model_pb.TransactionId;
-      reader.readMessage(value,common_v4_model_pb.TransactionId.deserializeBinaryFromReader);
-      msg.setTransactionId(value);
-      break;
-    case 2:
-      var value = new proto.kin.agora.transaction.v4.Cursor;
-      reader.readMessage(value,proto.kin.agora.transaction.v4.Cursor.deserializeBinaryFromReader);
-      msg.setCursor(value);
-      break;
-    case 3:
-      var value = new common_v4_model_pb.Transaction;
-      reader.readMessage(value,common_v4_model_pb.Transaction.deserializeBinaryFromReader);
-      msg.setSolanaTransaction(value);
-      break;
-    case 4:
-      var value = new common_v4_model_pb.StellarTransaction;
-      reader.readMessage(value,common_v4_model_pb.StellarTransaction.deserializeBinaryFromReader);
-      msg.setStellarTransaction(value);
-      break;
-    case 5:
-      var value = new common_v4_model_pb.TransactionError;
-      reader.readMessage(value,common_v4_model_pb.TransactionError.deserializeBinaryFromReader);
-      msg.setTransactionError(value);
-      break;
-    case 6:
-      var value = new proto.kin.agora.transaction.v4.HistoryItem.Payment;
-      reader.readMessage(value,proto.kin.agora.transaction.v4.HistoryItem.Payment.deserializeBinaryFromReader);
-      msg.addPayments(value);
-      break;
-    case 7:
-      var value = new common_v3_model_pb.InvoiceList;
-      reader.readMessage(value,common_v3_model_pb.InvoiceList.deserializeBinaryFromReader);
-      msg.setInvoiceList(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new common_v4_model_pb.TransactionId()
+        reader.readMessage(value, common_v4_model_pb.TransactionId.deserializeBinaryFromReader)
+        msg.setTransactionId(value)
+        break
+      case 2:
+        var value = new proto.kin.agora.transaction.v4.Cursor()
+        reader.readMessage(value, proto.kin.agora.transaction.v4.Cursor.deserializeBinaryFromReader)
+        msg.setCursor(value)
+        break
+      case 3:
+        var value = new common_v4_model_pb.Transaction()
+        reader.readMessage(value, common_v4_model_pb.Transaction.deserializeBinaryFromReader)
+        msg.setSolanaTransaction(value)
+        break
+      case 4:
+        var value = new common_v4_model_pb.StellarTransaction()
+        reader.readMessage(value, common_v4_model_pb.StellarTransaction.deserializeBinaryFromReader)
+        msg.setStellarTransaction(value)
+        break
+      case 5:
+        var value = new common_v4_model_pb.TransactionError()
+        reader.readMessage(value, common_v4_model_pb.TransactionError.deserializeBinaryFromReader)
+        msg.setTransactionError(value)
+        break
+      case 6:
+        var value = new proto.kin.agora.transaction.v4.HistoryItem.Payment()
+        reader.readMessage(value, proto.kin.agora.transaction.v4.HistoryItem.Payment.deserializeBinaryFromReader)
+        msg.addPayments(value)
+        break
+      case 7:
+        var value = new common_v3_model_pb.InvoiceList()
+        reader.readMessage(value, common_v3_model_pb.InvoiceList.deserializeBinaryFromReader)
+        msg.setInvoiceList(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.HistoryItem.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.HistoryItem.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3127,124 +2963,90 @@ proto.kin.agora.transaction.v4.HistoryItem.prototype.serializeBinary = function(
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.HistoryItem.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTransactionId();
+proto.kin.agora.transaction.v4.HistoryItem.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getTransactionId()
   if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      common_v4_model_pb.TransactionId.serializeBinaryToWriter
-    );
+    writer.writeMessage(1, f, common_v4_model_pb.TransactionId.serializeBinaryToWriter)
   }
-  f = message.getCursor();
+  f = message.getCursor()
   if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      proto.kin.agora.transaction.v4.Cursor.serializeBinaryToWriter
-    );
+    writer.writeMessage(2, f, proto.kin.agora.transaction.v4.Cursor.serializeBinaryToWriter)
   }
-  f = message.getSolanaTransaction();
+  f = message.getSolanaTransaction()
   if (f != null) {
-    writer.writeMessage(
-      3,
-      f,
-      common_v4_model_pb.Transaction.serializeBinaryToWriter
-    );
+    writer.writeMessage(3, f, common_v4_model_pb.Transaction.serializeBinaryToWriter)
   }
-  f = message.getStellarTransaction();
+  f = message.getStellarTransaction()
   if (f != null) {
-    writer.writeMessage(
-      4,
-      f,
-      common_v4_model_pb.StellarTransaction.serializeBinaryToWriter
-    );
+    writer.writeMessage(4, f, common_v4_model_pb.StellarTransaction.serializeBinaryToWriter)
   }
-  f = message.getTransactionError();
+  f = message.getTransactionError()
   if (f != null) {
-    writer.writeMessage(
-      5,
-      f,
-      common_v4_model_pb.TransactionError.serializeBinaryToWriter
-    );
+    writer.writeMessage(5, f, common_v4_model_pb.TransactionError.serializeBinaryToWriter)
   }
-  f = message.getPaymentsList();
+  f = message.getPaymentsList()
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      6,
-      f,
-      proto.kin.agora.transaction.v4.HistoryItem.Payment.serializeBinaryToWriter
-    );
+    writer.writeRepeatedMessage(6, f, proto.kin.agora.transaction.v4.HistoryItem.Payment.serializeBinaryToWriter)
   }
-  f = message.getInvoiceList();
+  f = message.getInvoiceList()
   if (f != null) {
-    writer.writeMessage(
-      7,
-      f,
-      common_v3_model_pb.InvoiceList.serializeBinaryToWriter
-    );
+    writer.writeMessage(7, f, common_v3_model_pb.InvoiceList.serializeBinaryToWriter)
   }
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.HistoryItem.Payment.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.HistoryItem.Payment} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    source: (f = msg.getSource()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
-    destination: (f = msg.getDestination()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
-    amount: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    index: jspb.Message.getFieldWithDefault(msg, 4, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.HistoryItem.Payment.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.HistoryItem.Payment} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.HistoryItem.Payment.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        source: (f = msg.getSource()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
+        destination: (f = msg.getDestination()) && common_v4_model_pb.SolanaAccountId.toObject(includeInstance, f),
+        amount: jspb.Message.getFieldWithDefault(msg, 3, 0),
+        index: jspb.Message.getFieldWithDefault(msg, 4, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem.Payment}
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.HistoryItem.Payment;
-  return proto.kin.agora.transaction.v4.HistoryItem.Payment.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.HistoryItem.Payment()
+  return proto.kin.agora.transaction.v4.HistoryItem.Payment.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3253,50 +3055,48 @@ proto.kin.agora.transaction.v4.HistoryItem.Payment.deserializeBinary = function(
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem.Payment}
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.HistoryItem.Payment.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new common_v4_model_pb.SolanaAccountId;
-      reader.readMessage(value,common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader);
-      msg.setSource(value);
-      break;
-    case 2:
-      var value = new common_v4_model_pb.SolanaAccountId;
-      reader.readMessage(value,common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader);
-      msg.setDestination(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setAmount(value);
-      break;
-    case 4:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setIndex(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new common_v4_model_pb.SolanaAccountId()
+        reader.readMessage(value, common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader)
+        msg.setSource(value)
+        break
+      case 2:
+        var value = new common_v4_model_pb.SolanaAccountId()
+        reader.readMessage(value, common_v4_model_pb.SolanaAccountId.deserializeBinaryFromReader)
+        msg.setDestination(value)
+        break
+      case 3:
+        var value = /** @type {number} */ (reader.readInt64())
+        msg.setAmount(value)
+        break
+      case 4:
+        var value = /** @type {number} */ (reader.readUint32())
+        msg.setIndex(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.HistoryItem.Payment.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.HistoryItem.Payment.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3305,465 +3105,438 @@ proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.serializeBinary = f
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getSource();
+proto.kin.agora.transaction.v4.HistoryItem.Payment.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getSource()
   if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter
-    );
+    writer.writeMessage(1, f, common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter)
   }
-  f = message.getDestination();
+  f = message.getDestination()
   if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter
-    );
+    writer.writeMessage(2, f, common_v4_model_pb.SolanaAccountId.serializeBinaryToWriter)
   }
-  f = message.getAmount();
+  f = message.getAmount()
   if (f !== 0) {
-    writer.writeInt64(
-      3,
-      f
-    );
+    writer.writeInt64(3, f)
   }
-  f = message.getIndex();
+  f = message.getIndex()
   if (f !== 0) {
-    writer.writeUint32(
-      4,
-      f
-    );
+    writer.writeUint32(4, f)
   }
-};
-
+}
 
 /**
  * optional kin.agora.common.v4.SolanaAccountId source = 1;
  * @return {?proto.kin.agora.common.v4.SolanaAccountId}
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.getSource = function() {
-  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.SolanaAccountId, 1));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.getSource = function () {
+  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.SolanaAccountId,
+    1,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.SolanaAccountId|undefined} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem.Payment} returns this
-*/
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.setSource = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.setSource = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem.Payment} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.clearSource = function() {
-  return this.setSource(undefined);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.clearSource = function () {
+  return this.setSource(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.hasSource = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.hasSource = function () {
+  return jspb.Message.getField(this, 1) != null
+}
 
 /**
  * optional kin.agora.common.v4.SolanaAccountId destination = 2;
  * @return {?proto.kin.agora.common.v4.SolanaAccountId}
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.getDestination = function() {
-  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.SolanaAccountId, 2));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.getDestination = function () {
+  return /** @type{?proto.kin.agora.common.v4.SolanaAccountId} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.SolanaAccountId,
+    2,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.SolanaAccountId|undefined} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem.Payment} returns this
-*/
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.setDestination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.setDestination = function (value) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem.Payment} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.clearDestination = function() {
-  return this.setDestination(undefined);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.clearDestination = function () {
+  return this.setDestination(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.hasDestination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.hasDestination = function () {
+  return jspb.Message.getField(this, 2) != null
+}
 
 /**
  * optional int64 amount = 3;
  * @return {number}
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.getAmount = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.getAmount = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem.Payment} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.setAmount = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.setAmount = function (value) {
+  return jspb.Message.setProto3IntField(this, 3, value)
+}
 
 /**
  * optional uint32 index = 4;
  * @return {number}
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.getIndex = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.getIndex = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem.Payment} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.setIndex = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.Payment.prototype.setIndex = function (value) {
+  return jspb.Message.setProto3IntField(this, 4, value)
+}
 
 /**
  * optional kin.agora.common.v4.TransactionId transaction_id = 1;
  * @return {?proto.kin.agora.common.v4.TransactionId}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.getTransactionId = function() {
-  return /** @type{?proto.kin.agora.common.v4.TransactionId} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.TransactionId, 1));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.getTransactionId = function () {
+  return /** @type{?proto.kin.agora.common.v4.TransactionId} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.TransactionId,
+    1,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.TransactionId|undefined} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
-*/
-proto.kin.agora.transaction.v4.HistoryItem.prototype.setTransactionId = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.HistoryItem.prototype.setTransactionId = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.clearTransactionId = function() {
-  return this.setTransactionId(undefined);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.clearTransactionId = function () {
+  return this.setTransactionId(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.hasTransactionId = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.hasTransactionId = function () {
+  return jspb.Message.getField(this, 1) != null
+}
 
 /**
  * optional Cursor cursor = 2;
  * @return {?proto.kin.agora.transaction.v4.Cursor}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.getCursor = function() {
-  return /** @type{?proto.kin.agora.transaction.v4.Cursor} */ (
-    jspb.Message.getWrapperField(this, proto.kin.agora.transaction.v4.Cursor, 2));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.getCursor = function () {
+  return /** @type{?proto.kin.agora.transaction.v4.Cursor} */ (jspb.Message.getWrapperField(
+    this,
+    proto.kin.agora.transaction.v4.Cursor,
+    2,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.transaction.v4.Cursor|undefined} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
-*/
-proto.kin.agora.transaction.v4.HistoryItem.prototype.setCursor = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.HistoryItem.prototype.setCursor = function (value) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.clearCursor = function() {
-  return this.setCursor(undefined);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.clearCursor = function () {
+  return this.setCursor(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.hasCursor = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.hasCursor = function () {
+  return jspb.Message.getField(this, 2) != null
+}
 
 /**
  * optional kin.agora.common.v4.Transaction solana_transaction = 3;
  * @return {?proto.kin.agora.common.v4.Transaction}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.getSolanaTransaction = function() {
-  return /** @type{?proto.kin.agora.common.v4.Transaction} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.Transaction, 3));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.getSolanaTransaction = function () {
+  return /** @type{?proto.kin.agora.common.v4.Transaction} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.Transaction,
+    3,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.Transaction|undefined} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
-*/
-proto.kin.agora.transaction.v4.HistoryItem.prototype.setSolanaTransaction = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 3, proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_[0], value);
-};
-
+ */
+proto.kin.agora.transaction.v4.HistoryItem.prototype.setSolanaTransaction = function (value) {
+  return jspb.Message.setOneofWrapperField(this, 3, proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_[0], value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.clearSolanaTransaction = function() {
-  return this.setSolanaTransaction(undefined);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.clearSolanaTransaction = function () {
+  return this.setSolanaTransaction(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.hasSolanaTransaction = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.hasSolanaTransaction = function () {
+  return jspb.Message.getField(this, 3) != null
+}
 
 /**
  * optional kin.agora.common.v4.StellarTransaction stellar_transaction = 4;
  * @return {?proto.kin.agora.common.v4.StellarTransaction}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.getStellarTransaction = function() {
-  return /** @type{?proto.kin.agora.common.v4.StellarTransaction} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.StellarTransaction, 4));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.getStellarTransaction = function () {
+  return /** @type{?proto.kin.agora.common.v4.StellarTransaction} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.StellarTransaction,
+    4,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.StellarTransaction|undefined} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
-*/
-proto.kin.agora.transaction.v4.HistoryItem.prototype.setStellarTransaction = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 4, proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_[0], value);
-};
-
+ */
+proto.kin.agora.transaction.v4.HistoryItem.prototype.setStellarTransaction = function (value) {
+  return jspb.Message.setOneofWrapperField(this, 4, proto.kin.agora.transaction.v4.HistoryItem.oneofGroups_[0], value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.clearStellarTransaction = function() {
-  return this.setStellarTransaction(undefined);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.clearStellarTransaction = function () {
+  return this.setStellarTransaction(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.hasStellarTransaction = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.hasStellarTransaction = function () {
+  return jspb.Message.getField(this, 4) != null
+}
 
 /**
  * optional kin.agora.common.v4.TransactionError transaction_error = 5;
  * @return {?proto.kin.agora.common.v4.TransactionError}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.getTransactionError = function() {
-  return /** @type{?proto.kin.agora.common.v4.TransactionError} */ (
-    jspb.Message.getWrapperField(this, common_v4_model_pb.TransactionError, 5));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.getTransactionError = function () {
+  return /** @type{?proto.kin.agora.common.v4.TransactionError} */ (jspb.Message.getWrapperField(
+    this,
+    common_v4_model_pb.TransactionError,
+    5,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v4.TransactionError|undefined} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
-*/
-proto.kin.agora.transaction.v4.HistoryItem.prototype.setTransactionError = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.HistoryItem.prototype.setTransactionError = function (value) {
+  return jspb.Message.setWrapperField(this, 5, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.clearTransactionError = function() {
-  return this.setTransactionError(undefined);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.clearTransactionError = function () {
+  return this.setTransactionError(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.hasTransactionError = function() {
-  return jspb.Message.getField(this, 5) != null;
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.hasTransactionError = function () {
+  return jspb.Message.getField(this, 5) != null
+}
 
 /**
  * repeated Payment payments = 6;
  * @return {!Array<!proto.kin.agora.transaction.v4.HistoryItem.Payment>}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.getPaymentsList = function() {
-  return /** @type{!Array<!proto.kin.agora.transaction.v4.HistoryItem.Payment>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.kin.agora.transaction.v4.HistoryItem.Payment, 6));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.getPaymentsList = function () {
+  return /** @type{!Array<!proto.kin.agora.transaction.v4.HistoryItem.Payment>} */ (jspb.Message.getRepeatedWrapperField(
+    this,
+    proto.kin.agora.transaction.v4.HistoryItem.Payment,
+    6,
+  ))
+}
 
 /**
  * @param {!Array<!proto.kin.agora.transaction.v4.HistoryItem.Payment>} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
-*/
-proto.kin.agora.transaction.v4.HistoryItem.prototype.setPaymentsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 6, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.HistoryItem.prototype.setPaymentsList = function (value) {
+  return jspb.Message.setRepeatedWrapperField(this, 6, value)
+}
 
 /**
  * @param {!proto.kin.agora.transaction.v4.HistoryItem.Payment=} opt_value
  * @param {number=} opt_index
  * @return {!proto.kin.agora.transaction.v4.HistoryItem.Payment}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.addPayments = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.kin.agora.transaction.v4.HistoryItem.Payment, opt_index);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.addPayments = function (opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(
+    this,
+    6,
+    opt_value,
+    proto.kin.agora.transaction.v4.HistoryItem.Payment,
+    opt_index,
+  )
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.clearPaymentsList = function() {
-  return this.setPaymentsList([]);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.clearPaymentsList = function () {
+  return this.setPaymentsList([])
+}
 
 /**
  * optional kin.agora.common.v3.InvoiceList invoice_list = 7;
  * @return {?proto.kin.agora.common.v3.InvoiceList}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.getInvoiceList = function() {
-  return /** @type{?proto.kin.agora.common.v3.InvoiceList} */ (
-    jspb.Message.getWrapperField(this, common_v3_model_pb.InvoiceList, 7));
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.getInvoiceList = function () {
+  return /** @type{?proto.kin.agora.common.v3.InvoiceList} */ (jspb.Message.getWrapperField(
+    this,
+    common_v3_model_pb.InvoiceList,
+    7,
+  ))
+}
 
 /**
  * @param {?proto.kin.agora.common.v3.InvoiceList|undefined} value
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
-*/
-proto.kin.agora.transaction.v4.HistoryItem.prototype.setInvoiceList = function(value) {
-  return jspb.Message.setWrapperField(this, 7, value);
-};
-
+ */
+proto.kin.agora.transaction.v4.HistoryItem.prototype.setInvoiceList = function (value) {
+  return jspb.Message.setWrapperField(this, 7, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.kin.agora.transaction.v4.HistoryItem} returns this
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.clearInvoiceList = function() {
-  return this.setInvoiceList(undefined);
-};
-
+proto.kin.agora.transaction.v4.HistoryItem.prototype.clearInvoiceList = function () {
+  return this.setInvoiceList(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.kin.agora.transaction.v4.HistoryItem.prototype.hasInvoiceList = function() {
-  return jspb.Message.getField(this, 7) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.kin.agora.transaction.v4.Cursor.prototype.toObject = function(opt_includeInstance) {
-  return proto.kin.agora.transaction.v4.Cursor.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.kin.agora.transaction.v4.Cursor} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.kin.agora.transaction.v4.Cursor.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    value: msg.getValue_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.kin.agora.transaction.v4.HistoryItem.prototype.hasInvoiceList = function () {
+  return jspb.Message.getField(this, 7) != null
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.kin.agora.transaction.v4.Cursor.prototype.toObject = function (opt_includeInstance) {
+    return proto.kin.agora.transaction.v4.Cursor.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.kin.agora.transaction.v4.Cursor} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.kin.agora.transaction.v4.Cursor.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        value: msg.getValue_asB64(),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.kin.agora.transaction.v4.Cursor}
  */
-proto.kin.agora.transaction.v4.Cursor.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.kin.agora.transaction.v4.Cursor;
-  return proto.kin.agora.transaction.v4.Cursor.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.kin.agora.transaction.v4.Cursor.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.kin.agora.transaction.v4.Cursor()
+  return proto.kin.agora.transaction.v4.Cursor.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3772,36 +3545,34 @@ proto.kin.agora.transaction.v4.Cursor.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.kin.agora.transaction.v4.Cursor}
  */
-proto.kin.agora.transaction.v4.Cursor.deserializeBinaryFromReader = function(msg, reader) {
+proto.kin.agora.transaction.v4.Cursor.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setValue(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {!Uint8Array} */ (reader.readBytes())
+        msg.setValue(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.Cursor.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.kin.agora.transaction.v4.Cursor.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.kin.agora.transaction.v4.Cursor.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.kin.agora.transaction.v4.Cursor.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3810,37 +3581,30 @@ proto.kin.agora.transaction.v4.Cursor.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.kin.agora.transaction.v4.Cursor.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getValue_asU8();
+proto.kin.agora.transaction.v4.Cursor.serializeBinaryToWriter = function (message, writer) {
+  var f = undefined
+  f = message.getValue_asU8()
   if (f.length > 0) {
-    writer.writeBytes(
-      1,
-      f
-    );
+    writer.writeBytes(1, f)
   }
-};
-
+}
 
 /**
  * optional bytes value = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.kin.agora.transaction.v4.Cursor.prototype.getValue = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.kin.agora.transaction.v4.Cursor.prototype.getValue = function () {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+}
 
 /**
  * optional bytes value = 1;
  * This is a type-conversion wrapper around `getValue()`
  * @return {string}
  */
-proto.kin.agora.transaction.v4.Cursor.prototype.getValue_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getValue()));
-};
-
+proto.kin.agora.transaction.v4.Cursor.prototype.getValue_asB64 = function () {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(this.getValue()))
+}
 
 /**
  * optional bytes value = 1;
@@ -3849,19 +3613,16 @@ proto.kin.agora.transaction.v4.Cursor.prototype.getValue_asB64 = function() {
  * This is a type-conversion wrapper around `getValue()`
  * @return {!Uint8Array}
  */
-proto.kin.agora.transaction.v4.Cursor.prototype.getValue_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getValue()));
-};
-
+proto.kin.agora.transaction.v4.Cursor.prototype.getValue_asU8 = function () {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(this.getValue()))
+}
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.kin.agora.transaction.v4.Cursor} returns this
  */
-proto.kin.agora.transaction.v4.Cursor.prototype.setValue = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
-};
+proto.kin.agora.transaction.v4.Cursor.prototype.setValue = function (value) {
+  return jspb.Message.setProto3BytesField(this, 1, value)
+}
 
-
-goog.object.extend(exports, proto.kin.agora.transaction.v4);
+goog.object.extend(exports, proto.kin.agora.transaction.v4)

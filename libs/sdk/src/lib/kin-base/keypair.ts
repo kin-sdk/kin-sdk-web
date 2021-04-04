@@ -1,12 +1,12 @@
-import { sign, verify } from './signing';
-import * as bs58 from 'bs58';
-import { StrKey } from './strkey';
+import { sign, verify } from './signing'
+import * as bs58 from 'bs58'
+import { StrKey } from './strkey'
 
-import * as nacl from 'tweetnacl';
+import * as nacl from 'tweetnacl'
 
 export class SimpleKeypair {
-  secret: string;
-  publicKey: string;
+  secret: string
+  publicKey: string
 }
 
 /**
@@ -27,43 +27,40 @@ export class SimpleKeypair {
  * @param {Buffer} [keys.secretKey] Raw secret key (32-byte secret seed in ed25519`)
  */
 export class Keypair {
-  private readonly type: any;
-  private readonly _secretSeed: any;
-  private readonly _secretKey: Buffer;
-  private readonly _publicKey: Buffer;
+  private readonly type: any
+  private readonly _secretSeed: any
+  private readonly _secretKey: Buffer
+  private readonly _publicKey: Buffer
 
   constructor(keys) {
     if (keys.type != 'ed25519') {
-      throw new Error('Invalid keys type');
+      throw new Error('Invalid keys type')
     }
 
-    this.type = keys.type;
+    this.type = keys.type
 
     if (keys.secretKey) {
-      keys.secretKey = Buffer.from(keys.secretKey);
+      keys.secretKey = Buffer.from(keys.secretKey)
 
       if (keys.secretKey.length != 32) {
-        throw new Error('secretKey length is invalid');
+        throw new Error('secretKey length is invalid')
       }
 
-      const secretKeyUint8 = new Uint8Array(keys.secretKey);
-      const naclKeys = nacl.sign.keyPair.fromSeed(secretKeyUint8);
+      const secretKeyUint8 = new Uint8Array(keys.secretKey)
+      const naclKeys = nacl.sign.keyPair.fromSeed(secretKeyUint8)
 
-      this._secretSeed = keys.secretKey;
-      this._secretKey = Buffer.from(naclKeys.secretKey);
-      this._publicKey = Buffer.from(naclKeys.publicKey);
+      this._secretSeed = keys.secretKey
+      this._secretKey = Buffer.from(naclKeys.secretKey)
+      this._publicKey = Buffer.from(naclKeys.publicKey)
 
-      if (
-        keys.publicKey &&
-        !this._publicKey.equals(Buffer.from(keys.publicKey))
-      ) {
-        throw new Error('secretKey does not match publicKey');
+      if (keys.publicKey && !this._publicKey.equals(Buffer.from(keys.publicKey))) {
+        throw new Error('secretKey does not match publicKey')
       }
     } else {
-      this._publicKey = Buffer.from(keys.publicKey);
+      this._publicKey = Buffer.from(keys.publicKey)
 
       if (this._publicKey.length != 32) {
-        throw new Error('publicKey length is invalid');
+        throw new Error('publicKey length is invalid')
       }
     }
   }
@@ -75,18 +72,18 @@ export class Keypair {
    * @returns {Keypair}
    */
   static fromSecretKeypair(secret) {
-    const rawSecret = StrKey.decodeEd25519SecretSeed(secret);
-    return this.fromRawEd25519Seed(rawSecret);
+    const rawSecret = StrKey.decodeEd25519SecretSeed(secret)
+    return this.fromRawEd25519Seed(rawSecret)
   }
 
   static fromSecret(secret): SimpleKeypair {
-    const rawSecret = StrKey.decodeEd25519SecretSeed(secret);
-    const keypair = this.fromRawEd25519Seed(rawSecret);
+    const rawSecret = StrKey.decodeEd25519SecretSeed(secret)
+    const keypair = this.fromRawEd25519Seed(rawSecret)
 
     return {
       secret: keypair.secret(),
       publicKey: bs58.encode(keypair._publicKey),
-    };
+    }
   }
 
   /**
@@ -96,7 +93,7 @@ export class Keypair {
    * @returns {Keypair}
    */
   static fromRawEd25519Seed(rawSeed) {
-    return new this({ type: 'ed25519', secretKey: rawSeed });
+    return new this({ type: 'ed25519', secretKey: rawSeed })
   }
 
   /**
@@ -105,11 +102,11 @@ export class Keypair {
    * @returns {Keypair}
    */
   static fromPublicKey(publicKey) {
-    publicKey = StrKey.decodeEd25519PublicKey(publicKey);
+    publicKey = StrKey.decodeEd25519PublicKey(publicKey)
     if (publicKey.length !== 32) {
-      throw new Error('Invalid Stellar public key');
+      throw new Error('Invalid Stellar public key')
     }
-    return new this({ type: 'ed25519', publicKey });
+    return new this({ type: 'ed25519', publicKey })
   }
 
   /**
@@ -117,8 +114,8 @@ export class Keypair {
    * @returns {Keypair}
    */
   static random() {
-    let secret = nacl.randomBytes(32);
-    return this.fromRawEd25519Seed(secret);
+    let secret = nacl.randomBytes(32)
+    return this.fromRawEd25519Seed(secret)
   }
 
   /**
@@ -126,12 +123,12 @@ export class Keypair {
    * @returns {Keypair}
    */
   static randomKeys(): SimpleKeypair {
-    const secret = nacl.randomBytes(32);
-    const keypair = this.fromRawEd25519Seed(secret);
+    const secret = nacl.randomBytes(32)
+    const keypair = this.fromRawEd25519Seed(secret)
     return {
       secret: keypair.secret(),
       publicKey: bs58.encode(keypair._publicKey),
-    };
+    }
   }
 
   /**
@@ -139,7 +136,7 @@ export class Keypair {
    * @returns {Buffer}
    */
   rawPublicKey() {
-    return this._publicKey;
+    return this._publicKey
   }
 
   /**
@@ -147,7 +144,7 @@ export class Keypair {
    * @returns {string}
    */
   publicKey() {
-    return StrKey.encodeEd25519PublicKey(this._publicKey);
+    return StrKey.encodeEd25519PublicKey(this._publicKey)
   }
 
   /**
@@ -156,14 +153,14 @@ export class Keypair {
    */
   secret() {
     if (!this._secretSeed) {
-      throw new Error('no secret key available');
+      throw new Error('no secret key available')
     }
 
     if (this.type == 'ed25519') {
-      return StrKey.encodeEd25519SecretSeed(this._secretSeed);
+      return StrKey.encodeEd25519SecretSeed(this._secretSeed)
     }
 
-    throw new Error('Invalid Keypair type');
+    throw new Error('Invalid Keypair type')
   }
 
   /**
@@ -171,7 +168,7 @@ export class Keypair {
    * @returns {Buffer}
    */
   rawSecretKey() {
-    return this._secretSeed;
+    return this._secretSeed
   }
 
   /**
@@ -179,7 +176,7 @@ export class Keypair {
    * @returns {boolean}
    */
   canSign() {
-    return !!this._secretKey;
+    return !!this._secretKey
   }
 
   /**
@@ -189,10 +186,10 @@ export class Keypair {
    */
   sign(data) {
     if (!this.canSign()) {
-      throw new Error('cannot sign: no secret key available');
+      throw new Error('cannot sign: no secret key available')
     }
 
-    return sign(data, this._secretKey);
+    return sign(data, this._secretKey)
   }
 
   /**
@@ -202,6 +199,6 @@ export class Keypair {
    * @returns {boolean}
    */
   verify(data, signature) {
-    return verify(data, signature, this._publicKey);
+    return verify(data, signature, this._publicKey)
   }
 }

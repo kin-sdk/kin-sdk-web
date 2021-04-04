@@ -1,88 +1,88 @@
 // package: kin.agora.transaction.v4
 // file: transaction/v4/transaction_service.proto
 
-var transaction_v4_transaction_service_pb = require("../../transaction/v4/transaction_service_pb");
-var grpc = require("@improbable-eng/grpc-web").grpc;
+var transaction_v4_transaction_service_pb = require('../../transaction/v4/transaction_service_pb')
+var grpc = require('@improbable-eng/grpc-web').grpc
 
 var Transaction = (function () {
   function Transaction() {}
-  Transaction.serviceName = "kin.agora.transaction.v4.Transaction";
-  return Transaction;
-}());
+  Transaction.serviceName = 'kin.agora.transaction.v4.Transaction'
+  return Transaction
+})()
 
 Transaction.GetServiceConfig = {
-  methodName: "GetServiceConfig",
+  methodName: 'GetServiceConfig',
   service: Transaction,
   requestStream: false,
   responseStream: false,
   requestType: transaction_v4_transaction_service_pb.GetServiceConfigRequest,
-  responseType: transaction_v4_transaction_service_pb.GetServiceConfigResponse
-};
+  responseType: transaction_v4_transaction_service_pb.GetServiceConfigResponse,
+}
 
 Transaction.GetMinimumKinVersion = {
-  methodName: "GetMinimumKinVersion",
+  methodName: 'GetMinimumKinVersion',
   service: Transaction,
   requestStream: false,
   responseStream: false,
   requestType: transaction_v4_transaction_service_pb.GetMinimumKinVersionRequest,
-  responseType: transaction_v4_transaction_service_pb.GetMinimumKinVersionResponse
-};
+  responseType: transaction_v4_transaction_service_pb.GetMinimumKinVersionResponse,
+}
 
 Transaction.GetRecentBlockhash = {
-  methodName: "GetRecentBlockhash",
+  methodName: 'GetRecentBlockhash',
   service: Transaction,
   requestStream: false,
   responseStream: false,
   requestType: transaction_v4_transaction_service_pb.GetRecentBlockhashRequest,
-  responseType: transaction_v4_transaction_service_pb.GetRecentBlockhashResponse
-};
+  responseType: transaction_v4_transaction_service_pb.GetRecentBlockhashResponse,
+}
 
 Transaction.GetMinimumBalanceForRentExemption = {
-  methodName: "GetMinimumBalanceForRentExemption",
+  methodName: 'GetMinimumBalanceForRentExemption',
   service: Transaction,
   requestStream: false,
   responseStream: false,
   requestType: transaction_v4_transaction_service_pb.GetMinimumBalanceForRentExemptionRequest,
-  responseType: transaction_v4_transaction_service_pb.GetMinimumBalanceForRentExemptionResponse
-};
+  responseType: transaction_v4_transaction_service_pb.GetMinimumBalanceForRentExemptionResponse,
+}
 
 Transaction.GetHistory = {
-  methodName: "GetHistory",
+  methodName: 'GetHistory',
   service: Transaction,
   requestStream: false,
   responseStream: false,
   requestType: transaction_v4_transaction_service_pb.GetHistoryRequest,
-  responseType: transaction_v4_transaction_service_pb.GetHistoryResponse
-};
+  responseType: transaction_v4_transaction_service_pb.GetHistoryResponse,
+}
 
 Transaction.SubmitTransaction = {
-  methodName: "SubmitTransaction",
+  methodName: 'SubmitTransaction',
   service: Transaction,
   requestStream: false,
   responseStream: false,
   requestType: transaction_v4_transaction_service_pb.SubmitTransactionRequest,
-  responseType: transaction_v4_transaction_service_pb.SubmitTransactionResponse
-};
+  responseType: transaction_v4_transaction_service_pb.SubmitTransactionResponse,
+}
 
 Transaction.GetTransaction = {
-  methodName: "GetTransaction",
+  methodName: 'GetTransaction',
   service: Transaction,
   requestStream: false,
   responseStream: false,
   requestType: transaction_v4_transaction_service_pb.GetTransactionRequest,
-  responseType: transaction_v4_transaction_service_pb.GetTransactionResponse
-};
+  responseType: transaction_v4_transaction_service_pb.GetTransactionResponse,
+}
 
-exports.Transaction = Transaction;
+exports.Transaction = Transaction
 
 function TransactionClient(serviceHost, options) {
-  this.serviceHost = serviceHost;
-  this.options = options || {};
+  this.serviceHost = serviceHost
+  this.options = options || {}
 }
 
 TransactionClient.prototype.getServiceConfig = function getServiceConfig(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Transaction.GetServiceConfig, {
     request: requestMessage,
@@ -93,27 +93,27 @@ TransactionClient.prototype.getServiceConfig = function getServiceConfig(request
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
 TransactionClient.prototype.getMinimumKinVersion = function getMinimumKinVersion(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Transaction.GetMinimumKinVersion, {
     request: requestMessage,
@@ -124,27 +124,27 @@ TransactionClient.prototype.getMinimumKinVersion = function getMinimumKinVersion
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
 TransactionClient.prototype.getRecentBlockhash = function getRecentBlockhash(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Transaction.GetRecentBlockhash, {
     request: requestMessage,
@@ -155,27 +155,31 @@ TransactionClient.prototype.getRecentBlockhash = function getRecentBlockhash(req
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-TransactionClient.prototype.getMinimumBalanceForRentExemption = function getMinimumBalanceForRentExemption(requestMessage, metadata, callback) {
+TransactionClient.prototype.getMinimumBalanceForRentExemption = function getMinimumBalanceForRentExemption(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Transaction.GetMinimumBalanceForRentExemption, {
     request: requestMessage,
@@ -186,27 +190,27 @@ TransactionClient.prototype.getMinimumBalanceForRentExemption = function getMini
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
 TransactionClient.prototype.getHistory = function getHistory(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Transaction.GetHistory, {
     request: requestMessage,
@@ -217,27 +221,27 @@ TransactionClient.prototype.getHistory = function getHistory(requestMessage, met
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
 TransactionClient.prototype.submitTransaction = function submitTransaction(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Transaction.SubmitTransaction, {
     request: requestMessage,
@@ -248,27 +252,27 @@ TransactionClient.prototype.submitTransaction = function submitTransaction(reque
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
 TransactionClient.prototype.getTransaction = function getTransaction(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Transaction.GetTransaction, {
     request: requestMessage,
@@ -279,23 +283,22 @@ TransactionClient.prototype.getTransaction = function getTransaction(requestMess
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-exports.TransactionClient = TransactionClient;
-
+exports.TransactionClient = TransactionClient

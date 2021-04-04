@@ -1,2 +1,2 @@
-export { Keypair, SimpleKeypair } from './keypair';
-export { StrKey } from './strkey';
+export { Keypair, SimpleKeypair } from './keypair'
+export { StrKey } from './strkey'
