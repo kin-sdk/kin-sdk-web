@@ -1,6 +1,9 @@
 import React, { ReactNode, useState } from 'react'
+import { BiCog, BiGlobe, BiLoader } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import Popup from 'reactjs-popup'
+import { NetworkDropdown } from '../network-select/network-dropdown'
+import { useNetwork } from '../network-select/network.hook'
 
 interface UiHeaderProps {
   children?: ReactNode
@@ -14,6 +17,7 @@ const contentStyle = {
 }
 
 export function UiHeader({ children }: UiHeaderProps) {
+  const { networks, network, setNetwork } = useNetwork()
   const [buttonPopup, setButtonPopup] = useState<boolean>(false)
 
   return (
@@ -22,7 +26,14 @@ export function UiHeader({ children }: UiHeaderProps) {
         <h1 className="text-xl font-semibold">
           <Link to="/">Kin Wallet</Link>
         </h1>
-        <div className="flex items-center space-x-3 uppercase text-base">{children}</div>
+        <div className="flex items-center space-x-3 uppercase text-base">
+          {/*<Link to="/accounts">*/}
+          {/*  <div className="inline-flex justify-center w-full rounded-md shadow-sm px-2 py-2 border-indigo-200 font-medium text-indigo-200 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-100 focus:ring-indigo-500 flex items-center space-x-2">*/}
+          {/*    <BiCog className="text-xl" />*/}
+          {/*  </div>*/}
+          {/*</Link>*/}
+          <NetworkDropdown networks={networks} selected={network} onSelect={setNetwork} />
+        </div>
       </header>
       {/* pensando en ponerle  setTrigger={setButtonPopup} */}
       {/*<UiPopup setTrigger={setButtonPopup} trigger={buttonPopup}>*/}

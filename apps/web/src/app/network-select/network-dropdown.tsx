@@ -1,7 +1,7 @@
-import { Network } from '@kin-wallet/sdk'
-import React, { useState } from 'react'
-import { BiGlobe, BiLoader } from 'react-icons/bi'
-import { NetworkDropdownItem } from './network-dropdown-item'
+import { Network } from '@kin-wallet/services'
+import { Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from '@material-ui/core'
+import React, { useEffect, useRef, useState } from 'react'
+import { BiGlobe } from 'react-icons/bi'
 
 export interface NetworkSelectProps {
   networks?: Network[]
@@ -9,49 +9,83 @@ export interface NetworkSelectProps {
   onSelect?: (network: Network) => void
 }
 
-export function NetworkDropdown({ selected, networks, onSelect }: NetworkSelectProps) {
-  const [visible, setVisible] = useState<boolean>(false)
-  const toggleVisible = () => setVisible(() => !visible)
-  const select = (option: Network) => {
-    onSelect(option)
-    setVisible(false)
-  }
+function NetworkLabel({ title }: { title: string }) {
   return (
-    <div className="relative inline-block text-left">
-      <div>
-        <button
-          onClick={toggleVisible}
-          type="button"
-          className="inline-flex justify-center w-full rounded-md border border-indigo-300 shadow-sm px-4 py-2 bg-indigo-200 font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-100 focus:ring-indigo-500"
-          aria-expanded="true"
-          aria-haspopup="true"
-        >
-          {selected ? (
-            <div className={'flex items-center space-x-2'}>
-              <BiGlobe className="text-xl" />
-              <span>{selected?.name || ''}</span>
-            </div>
-          ) : (
-            <div className={'flex items-center space-x-2 text-indigo-400'}>
-              <BiLoader className="text-xl animate-spin " />
-              <span>{'Loading'}</span>
-            </div>
-          )}
-        </button>
-      </div>
-      {visible ? (
-        <div
-          role="menu"
-          className="origin-top-right absolute right-0 mt-4 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-indigo-100 focus:outline-none"
-          aria-orientation="vertical"
-        >
-          <div className="py-1" role="none">
-            {networks.map((network) => (
-              <NetworkDropdownItem key={network.id} onSelect={select} network={network} selected={selected} />
-            ))}
-          </div>
-        </div>
-      ) : null}
+    <div className={'flex items-center space-x-2'}>
+      <BiGlobe className="text-xl" />
+      <span>{title || ''}</span>
     </div>
+  )
+}
+export function NetworkDropdown({ selected, networks, onSelect }: NetworkSelectProps) {
+  const [open, setOpen] = useState(false)
+  const anchorRef = useRef(null)
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen)
+  }
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return
+    }
+
+    setOpen(false)
+  }
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault()
+      setOpen(false)
+    }
+  }
+
+  function handleSelect(network) {
+    onSelect(network)
+    handleToggle()
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = useRef(open)
+  useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus()
+    }
+
+    prevOpen.current = open
+  }, [open])
+
+  return (
+    <>
+      <Button
+        variant="contained"
+        ref={anchorRef}
+        aria-controls={open ? 'menu-list-grow' : undefined}
+        aria-haspopup="true"
+        onClick={handleToggle}
+      >
+        <NetworkLabel title={selected?.name} />
+      </Button>
+      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                  {networks.map((network) => (
+                    <MenuItem key={network.id} onClick={() => handleSelect(network)}>
+                      <NetworkLabel title={network.name} />
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </>
   )
 }

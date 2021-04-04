@@ -102,12 +102,32 @@
             "main": "libs/sdk/src/index.ts",
             "assets": [
               "libs/sdk/*.md",
-              {
-                "glob": "**/*",
-                "input": "libs/sdk/src/generated",
-                "output": "src/generated"
-              }
+              { "glob": "**/*", "input": "libs/sdk/src/generated", "output": "src/generated" }
             ]
+          }
+        }
+      }
+    },
+    "services": {
+      "root": "libs/services",
+      "sourceRoot": "libs/services/src",
+      "projectType": "library",
+      "targets": {
+        "lint": { "executor": "@nrwl/linter:eslint", "options": { "lintFilePatterns": ["libs/services/**/*.ts"] } },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/services"],
+          "options": { "jestConfig": "libs/services/jest.config.js", "passWithNoTests": true }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/services",
+            "tsConfig": "libs/services/tsconfig.lib.json",
+            "packageJson": "libs/services/package.json",
+            "main": "libs/services/src/index.ts",
+            "assets": ["libs/services/*.md"]
           }
         }
       }

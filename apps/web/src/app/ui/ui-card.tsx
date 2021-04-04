@@ -1,7 +1,7 @@
 import React from 'react'
 
 export function UiCard(props) {
-  return <div className="bg-gray-600 border border-gray-800 overflow-hidden rounded shadow">{props.children}</div>
+  return <div className="bg-gray-600 border border-gray-800 overflow-hidden rounded-lg shadow-lg">{props.children}</div>
 }
 
 export function UiCardHeader(props) {

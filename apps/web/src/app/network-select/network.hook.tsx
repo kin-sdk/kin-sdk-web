@@ -1,4 +1,4 @@
-import { Network, NETWORKS } from '@kin-wallet/sdk'
+import { Network, NETWORKS } from '@kin-wallet/services'
 import React, { createContext, ReactNode, useContext, useState } from 'react'
 
 const NetworksContext = createContext<{

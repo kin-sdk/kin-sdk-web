@@ -18,3 +18,10 @@ export function kinToQuarks(amount: string): BigNumber {
 export function quarksToKin(amount: BigNumber | string): string {
   return new BigNumber(amount).dividedBy(1e5).toString()
 }
+
+export function elipsify(str = '', len = 10) {
+  if (str.length > 30) {
+    return str.substr(0, len) + '...' + str.substr(str.length - len, str.length)
+  }
+  return str
+}

@@ -1,64 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { BiLoaderAlt } from 'react-icons/bi'
-import { useNetwork } from '../network-select/network.hook'
 import { UiCard } from '../ui/ui-card'
+import { useWallets } from './wallet-hook'
 import { WalletListHeader } from './wallet-list-header'
 import { WalletListItem } from './wallet-list-item'
 
 export interface Wallet {
   id?: string
   name?: string
-  seed?: string
+  secret?: string
   publicKey?: string
 }
 
 export function WalletList() {
-  const { network } = useNetwork()
-  const [loading, setLoading] = useState<boolean>(true)
+  const [wallets, balance, loading, refresh] = useWallets()
 
   const add = () => {
     console.log('add')
   }
-
-  const refresh = () => {
-    setLoading(() => true)
-    console.log('Refresh')
-    setTimeout(() => {
-      setLoading(() => false)
-    }, 1000)
-  }
-
-  useEffect(() => {
-    console.log(`Network Changed: ${network.name}`)
-    refresh()
-  }, [network])
-
-  const wallets: Wallet[] = [
-    {
-      id: 'w1',
-      name: 'Account 1',
-      seed: 'x',
-      publicKey: 'B33hx7NmZXRiC5Rg2Er7pqdNeKLEm7a7uD8tt9zKG4pk',
-    },
-    {
-      id: 'w2',
-      name: 'Account 2',
-      seed: 'x',
-      publicKey: 'B33hx7NmZXRiC5Rg2Er7pqdNeKLEm7a7uD8tt9zKG4pk',
-    },
-    {
-      id: 'w3',
-      name: 'Account 3',
-      seed: 'x',
-      publicKey: 'B33hx7NmZXRiC5Rg2Er7pqdNeKLEm7a7uD8tt9zKG4pk',
-    },
-  ]
-
   return (
     <UiCard>
       <div>
         <WalletListHeader
-          title={loading ? 'Loading...' : 'Main account Balances ($27.05)'}
+          title={loading ? 'Loading...' : `Total Balance $${balance?.total?.usd} ₿${balance?.total?.btc}`}
           onAdd={add}
           onRefresh={refresh}
         />
@@ -69,7 +33,11 @@ export function WalletList() {
             </div>
           </div>
         ) : (
-          wallets.map((wallet) => <WalletListItem key={wallet.id} wallet={wallet} />)
+          <div className="divide-y divide-gray-700">
+            {wallets.map((wallet) => (
+              <WalletListItem key={wallet.id} wallet={wallet} info={balance.addressMap[wallet.publicKey]} />
+            ))}
+          </div>
         )}
       </div>
     </UiCard>

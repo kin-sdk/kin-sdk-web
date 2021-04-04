@@ -1,16 +1,17 @@
+import { AccountDetails, Wallet } from '@kin-wallet/services'
+import { Zoom } from '@material-ui/core'
+import Tooltip from '@material-ui/core/Tooltip'
 import cx from 'classnames'
 import React, { useState } from 'react'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
+import { BiChevronDown, BiChevronUp, BiCog } from 'react-icons/bi'
 import { UiLogo } from '../ui/ui-logo'
 import { WalletAddress } from './wallet-address'
-import { Wallet } from './wallet-list'
+import { WalletBalance } from './wallet-balance'
+
 import { WalletPopup } from './wallet-popup'
 
-export function WalletListItem({ wallet }: { wallet: Wallet }) {
+export function WalletListItem({ wallet, info }: { wallet: Wallet; info: AccountDetails }) {
   const [showDetails, setShowDetails] = useState(false)
-  const [tokenName] = useState('Kin')
-  const [tokenSymbol] = useState('KIN')
   const toggleDetails = () => setShowDetails(() => !showDetails)
 
   return (
@@ -22,14 +23,16 @@ export function WalletListItem({ wallet }: { wallet: Wallet }) {
               <UiLogo />
             </span>
             <div className=" flex flex-col">
-              <div className="text-gray-100">
-                150.000 {tokenName} ({tokenSymbol})
+              <div className="flex space-x-2 items-center">
+                <div>{wallet.name}</div>
               </div>
-              <WalletAddress publicKey={wallet.publicKey} />
+              <div className="text-gray-100">
+                <WalletBalance balance={info?.balance} />
+              </div>
             </div>
           </div>
           <div className="flex justify-between items-center space-x-2">
-            <span>$27.05</span>
+            <span>${info?.balance?.usd}</span>
             <button onClick={toggleDetails}>
               {showDetails ? <BiChevronDown className="text-3xl" /> : <BiChevronUp className="text-3xl" />}
             </button>
@@ -37,39 +40,22 @@ export function WalletListItem({ wallet }: { wallet: Wallet }) {
         </div>
       </div>
       {showDetails ? (
-        <div className="px-6 py-4">
+        <div className="px-6 py-4 flex flex-col space-y-6">
           <div className="flex justify-evenly">
             <WalletPopup buttonLabel="Receive" title="Receive Kin">
               <div className="w-128 py-4">
                 <pre>{JSON.stringify(wallet, null, 2)}</pre>
               </div>
             </WalletPopup>
-            <WalletPopup buttonLabel="Send" title="Send Kin">
+            <WalletPopup buttonLabel="Send" title="Send Kin" disabled={!wallet.secret}>
               <div className="w-128 py-4">
                 <pre>{JSON.stringify(wallet, null, 2)}</pre>
               </div>
             </WalletPopup>
           </div>
-          <div className="pt-2 flex flex-col space-y-3">
-            <a href="#" className="text-sm hover:underline text-blue-400">
-              Token Name: {tokenName}
-            </a>
-
-            <hr className="border-1 border-gray-300 stroke-1 border-opacity-25" />
-
-            <a href="#" className="text-sm hover:underline text-blue-400">
-              Token Symbol: {tokenSymbol}
-            </a>
-            <div className="flex justify-between pt-2">
-              <a href="#" className="text-primary font-bold hover:underline">
-                View on Solana
-              </a>
-              <CopyToClipboard text="acaBackend.post.ref" onCopy={''}>
-                <a href="#" className="text-primary font-bold hover:underline">
-                  Export
-                </a>
-              </CopyToClipboard>
-            </div>
+          <div className="flex justify-between items-center">
+            <WalletAddress publicKey={info.publicKey} explorerUrl={info.explorerUrl} />
+            <BiCog />
           </div>
         </div>
       ) : null}

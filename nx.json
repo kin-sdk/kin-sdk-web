@@ -23,6 +23,7 @@
   "projects": {
     "web": { "tags": [] },
     "web-e2e": { "tags": [], "implicitDependencies": ["web"] },
-    "sdk": { "tags": [] }
+    "sdk": { "tags": [] },
+    "services": { "tags": [] }
   }
 }
