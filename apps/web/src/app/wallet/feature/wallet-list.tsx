@@ -3,12 +3,12 @@ import { CircularProgress, Paper } from '@material-ui/core'
 import React, { useState } from 'react'
 import { WalletAddDialog, WalletAddType } from '../ui/wallet-add-dialog'
 
-import { useWallets } from '../data-access/wallet-hook'
+import { useWallet } from '../data-access/wallet-hook'
 import { WalletListHeader } from '../ui/wallet-list-header'
 import { WalletListItem } from '../ui/wallet-list-item'
 
 export function WalletList() {
-  const [wallets, balance, loading, refresh] = useWallets()
+  const [wallets, balance, loading, refresh] = useWallet()
   const [walletAddType, setWalletAddMode] = useState<WalletAddType>(null)
   const [showAddModal, setShowAddModal] = useState(false)
 

@@ -18,7 +18,7 @@ const WALLETS: Wallet[] = [
   },
 ]
 
-export const useWallets = (): [Wallet[], BalanceResult, boolean, () => Promise<void>] => {
+export const useWallet = (): [Wallet[], BalanceResult, boolean, () => Promise<void>] => {
   const { enqueueSnackbar } = useSnackbar()
   const [loading, setLoading] = useState<boolean>(true)
   const [wallets] = useState(WALLETS)
@@ -33,6 +33,9 @@ export const useWallets = (): [Wallet[], BalanceResult, boolean, () => Promise<v
       .getBalance(wallets.map((wallet) => wallet.publicKey))
       .then(setBalance)
       .then(() => setLoading(() => false))
+      .catch((e) => {
+        console.log('error', e)
+      })
   }
 
   useEffect(() => {

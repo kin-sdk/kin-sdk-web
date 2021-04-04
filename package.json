@@ -50,6 +50,7 @@
     "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
+    "react-qr-code": "^1.1.1",
     "react-router-dom": "5.2.0",
     "reactjs-popup": "^2.0.4",
     "sha.js": "^2.4.11",

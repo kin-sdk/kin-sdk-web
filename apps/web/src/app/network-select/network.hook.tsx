@@ -1,18 +1,18 @@
 import { Network, NETWORKS } from '@kin-wallet/services'
 import React, { createContext, ReactNode, useContext, useState } from 'react'
 
-const NetworksContext = createContext<{
+const NetworkContext = createContext<{
   network?: Network
   networks?: Network[]
   setNetwork?: (network: Network) => void
 }>(undefined)
 
-function NetworksProvider({ children }: { children: ReactNode }) {
+function NetworkProvider({ children }: { children: ReactNode }) {
   const [networks] = useState<Network[]>(NETWORKS)
   const [network, setNetwork] = useState<Network>(() => networks[0])
 
   return (
-    <NetworksContext.Provider
+    <NetworkContext.Provider
       value={{
         network,
         networks,
@@ -20,10 +20,10 @@ function NetworksProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </NetworksContext.Provider>
+    </NetworkContext.Provider>
   )
 }
 
-const useNetwork = () => useContext(NetworksContext)
+const useNetwork = () => useContext(NetworkContext)
 
-export { NetworksProvider, useNetwork }
+export { NetworkProvider, useNetwork }

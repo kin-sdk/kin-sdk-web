@@ -6,10 +6,10 @@ import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 import { WalletAddress } from './wallet-address'
 import { WalletBalance } from './wallet-balance'
 
-import { WalletTransactionModal } from './wallet-transaction-modal'
+import { WalletTransactionDialog } from './wallet-transaction-dialog'
 
 export function WalletListItem({ wallet, info }: { wallet: Wallet; info: AccountDetails }) {
-  const [showDetails, setShowDetails] = useState(true)
+  const [showDetails, setShowDetails] = useState(false)
   const toggleDetails = () => setShowDetails(() => !showDetails)
 
   return (
@@ -37,16 +37,14 @@ export function WalletListItem({ wallet, info }: { wallet: Wallet; info: Account
       {showDetails ? (
         <div className="px-6 py-4 flex flex-col space-y-6">
           <div className="flex justify-evenly">
-            <WalletTransactionModal type="receive" buttonLabel="Receive" title="Receive Kin">
-              <div className="w-128 py-4">
-                <pre>{JSON.stringify(wallet, null, 2)}</pre>
-              </div>
-            </WalletTransactionModal>
-            <WalletTransactionModal type="send" buttonLabel="Send" title="Send Kin" disabled={!wallet.secret}>
-              <div className="w-128 py-4">
-                <pre>{JSON.stringify(wallet, null, 2)}</pre>
-              </div>
-            </WalletTransactionModal>
+            <WalletTransactionDialog info={info} type="receive" buttonLabel="Receive" title="Receive Kin" />
+            <WalletTransactionDialog
+              info={info}
+              type="send"
+              buttonLabel="Send"
+              title="Send Kin"
+              disabled={!wallet.secret}
+            />
           </div>
           <div className="flex justify-center">
             <WalletAddress publicKey={info.publicKey} explorerUrl={info.explorerUrl} />

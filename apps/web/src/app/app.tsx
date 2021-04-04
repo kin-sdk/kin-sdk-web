@@ -2,10 +2,8 @@ import { CssBaseline, ThemeProvider, unstable_createMuiStrictModeTheme as create
 import { blue } from '@material-ui/core/colors'
 import { SnackbarProvider } from 'notistack'
 import React from 'react'
-import { AppShell } from './app-shell'
-import { NetworksProvider } from './network-select/network.hook'
-import { UiContainer } from './ui/ui-container'
-import { UiHeader } from './ui/ui-header'
+import { NetworkProvider } from './network-select/network.hook'
+import { AppLayout } from './ui/app-layout'
 
 const theme = createMuiTheme({
   palette: {
@@ -19,12 +17,9 @@ export function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <SnackbarProvider maxSnack={5}>
-        <NetworksProvider>
-          <UiHeader />
-          <UiContainer>
-            <AppShell />
-          </UiContainer>
-        </NetworksProvider>
+        <NetworkProvider>
+          <AppLayout />
+        </NetworkProvider>
       </SnackbarProvider>
     </ThemeProvider>
   )

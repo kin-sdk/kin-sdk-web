@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { NetworkDropdown } from '../network-select/network-dropdown'
 import { useNetwork } from '../network-select/network.hook'
 
-export function UiHeader() {
+export function AppHeader() {
   const { networks, network, setNetwork } = useNetwork()
 
   return (
