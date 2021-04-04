@@ -12,7 +12,7 @@ interface UiHeaderCardProps {
 
 export function WalletListHeader({ title, onAdd, onRefresh }: UiHeaderCardProps) {
   return (
-    <div className="bg-gray-800 max-w-5xl md:max-w-2xl mx-auto py-1 md:py-6 px-3 md:px-4 h-full">
+    <div className="bg-gray-800 max-w-5xl md:max-w-2xl mx-auto py-1 md:py-3 px-3 md:px-4 h-full">
       <div className="flex justify-between items-center">
         <h2 className="flex-grow font-semibold text-lg">{title}</h2>
         <div className="flex justify-evenly items-center">

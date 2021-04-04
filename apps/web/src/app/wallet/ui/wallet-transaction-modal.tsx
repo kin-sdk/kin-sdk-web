@@ -13,7 +13,7 @@ interface UiHeaderProps {
   type?: 'receive' | 'send'
 }
 
-export function WalletPopup({ children, buttonLabel, disabled, title, type }: UiHeaderProps) {
+export function WalletTransactionModal({ children, buttonLabel, disabled, title, type }: UiHeaderProps) {
   const [visible, setVisible] = useState<boolean>(false)
 
   const toggleVisible = () => !disabled && setVisible(() => !visible)

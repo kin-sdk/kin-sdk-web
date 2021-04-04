@@ -1,7 +1,7 @@
 import { Paper, Typography } from '@material-ui/core'
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
-import { WalletList } from './wallet/wallet-list'
+import { WalletList } from './wallet/feature/wallet-list'
 
 export function AppShell() {
   return (
