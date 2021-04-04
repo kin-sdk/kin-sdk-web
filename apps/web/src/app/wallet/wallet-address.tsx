@@ -8,7 +8,10 @@ import { BiLinkExternal } from 'react-icons/bi'
 
 export function WalletAddress({ explorerUrl, publicKey }: { explorerUrl?: string; publicKey: string }) {
   const { enqueueSnackbar } = useSnackbar()
-  const onCopy = () => enqueueSnackbar(`Copied address to clipboard`, { variant: 'success' })
+  const onCopy = (e) => {
+    e.stopPropagation()
+    enqueueSnackbar(`Copied address to clipboard`, { variant: 'success' })
+  }
   return (
     <div className="flex space-x-2 text-xs text-gray-400 items-center">
       <CopyToClipboard text={publicKey} onCopy={onCopy}>
@@ -20,9 +23,11 @@ export function WalletAddress({ explorerUrl, publicKey }: { explorerUrl?: string
         </Tooltip>
       </CopyToClipboard>
       {explorerUrl ? (
-        <a href={explorerUrl} target="_blank" rel="noopener noreferrer">
-          <BiLinkExternal />
-        </a>
+        <Tooltip TransitionComponent={Zoom} title="View on Solana" placement="top">
+          <a href={explorerUrl} target="_blank" rel="noopener noreferrer">
+            <BiLinkExternal />
+          </a>
+        </Tooltip>
       ) : null}
     </div>
   )

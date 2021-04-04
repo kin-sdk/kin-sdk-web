@@ -1,5 +1,7 @@
+import { Button } from '@material-ui/core'
 import Modal from '@material-ui/core/Modal'
-import cx from 'classnames'
+import GetAppIcon from '@material-ui/icons/GetApp'
+import SendIcon from '@material-ui/icons/Send'
 import React, { ReactNode, useState } from 'react'
 import { BiWindowClose } from 'react-icons/bi'
 
@@ -8,24 +10,26 @@ interface UiHeaderProps {
   buttonLabel?: string
   disabled?: boolean
   title?: string
+  type?: 'receive' | 'send'
 }
 
-export function WalletPopup({ children, buttonLabel, disabled, title }: UiHeaderProps) {
+export function WalletPopup({ children, buttonLabel, disabled, title, type }: UiHeaderProps) {
   const [visible, setVisible] = useState<boolean>(false)
 
   const toggleVisible = () => !disabled && setVisible(() => !visible)
   const close = () => setVisible(() => false)
   return (
     <div>
-      <button
+      <Button
         onClick={toggleVisible}
-        className={cx('px-4 py-2 rounded-3xl border  hover:font-bold hover:text-white', {
-          'border-indigo-400 text-indigo-400 hover:bg-indigo-400': !disabled,
-          'border-gray-400 text-gray-400 hover:bg-gray-400': disabled,
-        })}
+        disabled={disabled}
+        variant="contained"
+        color="primary"
+        startIcon={type === 'receive' ? <GetAppIcon /> : <SendIcon />}
       >
         {buttonLabel}
-      </button>
+      </Button>
+
       <Modal
         open={visible}
         onClose={setVisible}

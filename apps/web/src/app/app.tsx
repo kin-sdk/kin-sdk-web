@@ -1,5 +1,5 @@
-import { unstable_createMuiStrictModeTheme as createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core'
-import { orange } from '@material-ui/core/colors'
+import { CssBaseline, ThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core'
+import { blue } from '@material-ui/core/colors'
 import { SnackbarProvider } from 'notistack'
 import React from 'react'
 import { AppShell } from './app-shell'
@@ -9,6 +9,7 @@ import { UiHeader } from './ui/ui-header'
 
 const theme = createMuiTheme({
   palette: {
+    primary: blue,
     type: 'dark',
   },
 })
@@ -19,12 +20,10 @@ export function App() {
       <CssBaseline />
       <SnackbarProvider maxSnack={5}>
         <NetworksProvider>
-          <div className={'bg-gray-700 text-gray-300 min-h-screen relative'}>
-            <UiHeader />
-            <UiContainer>
-              <AppShell />
-            </UiContainer>
-          </div>
+          <UiHeader />
+          <UiContainer>
+            <AppShell />
+          </UiContainer>
         </NetworksProvider>
       </SnackbarProvider>
     </ThemeProvider>
