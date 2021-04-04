@@ -2,8 +2,8 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import React from 'react'
 import { BiCog } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
-import { NetworkDropdown } from '../network-select/network-dropdown'
-import { useNetwork } from '../network-select/network.hook'
+import { NetworkDropdown } from './network/ui/network-dropdown'
+import { useNetwork } from './network/data-access/network.hook'
 
 export function AppHeader() {
   const { networks, network, setNetwork } = useNetwork()

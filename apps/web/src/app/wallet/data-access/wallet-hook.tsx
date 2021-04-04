@@ -1,8 +1,9 @@
 import { Wallet } from '@kin-wallet/services'
 import { BalanceResult, KinWalletService } from '@kin-wallet/services'
 import { useSnackbar } from 'notistack'
-import { useEffect, useState } from 'react'
-import { useNetwork } from '../../network-select/network.hook'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { ReactNode } from 'react'
+import { useNetwork } from '../../network/data-access/network.hook'
 
 const WALLETS: Wallet[] = [
   {
@@ -18,7 +19,9 @@ const WALLETS: Wallet[] = [
   },
 ]
 
-export const useWallet = (): [Wallet[], BalanceResult, boolean, () => Promise<void>] => {
+const WalletContext = createContext<[Wallet[], BalanceResult, boolean, () => Promise<void>]>(undefined)
+
+function WalletProvider({ children }: { children: ReactNode }) {
   const { enqueueSnackbar } = useSnackbar()
   const [loading, setLoading] = useState<boolean>(true)
   const [wallets] = useState(WALLETS)
@@ -43,5 +46,9 @@ export const useWallet = (): [Wallet[], BalanceResult, boolean, () => Promise<vo
     Promise.resolve().then(() => refresh())
   }, [network])
 
-  return [wallets, balance, loading, refresh]
+  return <WalletContext.Provider value={[wallets, balance, loading, refresh]}>{children}</WalletContext.Provider>
 }
+
+const useWallet = () => useContext(WalletContext)
+
+export { WalletProvider, useWallet }

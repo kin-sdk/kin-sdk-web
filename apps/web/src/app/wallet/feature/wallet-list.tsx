@@ -6,6 +6,7 @@ import { WalletAddDialog, WalletAddType } from '../ui/wallet-add-dialog'
 import { useWallet } from '../data-access/wallet-hook'
 import { WalletListHeader } from '../ui/wallet-list-header'
 import { WalletListItem } from '../ui/wallet-list-item'
+import { WalletTransaction } from '../ui/wallet-transaction-dialog'
 
 export function WalletList() {
   const [wallets, balance, loading, refresh] = useWallet()
@@ -20,6 +21,17 @@ export function WalletList() {
   const handleAdd = (wallet?: Wallet) => {
     setShowAddModal(false)
     console.log(wallet)
+  }
+
+  const handleTransaction = (wallet: Wallet, transaction: WalletTransaction): Promise<[string, string?]> => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (transaction.destination.length < 10) {
+          return reject([false, `Destination address too short`])
+        }
+        return resolve([`Transaction sent.`])
+      }, 1000)
+    })
   }
 
   return (
@@ -43,7 +55,12 @@ export function WalletList() {
         ) : (
           <div className="divide-y divide-gray-800">
             {wallets.map((wallet) => (
-              <WalletListItem key={wallet.id} wallet={wallet} info={balance.addressMap[wallet.publicKey]} />
+              <WalletListItem
+                key={wallet.id}
+                wallet={wallet}
+                info={balance.addressMap[wallet.publicKey]}
+                handleTransaction={handleTransaction}
+              />
             ))}
           </div>
         )}

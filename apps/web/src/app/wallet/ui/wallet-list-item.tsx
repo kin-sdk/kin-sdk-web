@@ -6,12 +6,25 @@ import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 import { WalletAddress } from './wallet-address'
 import { WalletBalance } from './wallet-balance'
 
-import { WalletTransactionDialog } from './wallet-transaction-dialog'
+import { WalletTransaction, WalletTransactionDialog } from './wallet-transaction-dialog'
 
-export function WalletListItem({ wallet, info }: { wallet: Wallet; info: AccountDetails }) {
+export function WalletListItem({
+  wallet,
+  info,
+  handleTransaction,
+}: {
+  wallet: Wallet
+  info: AccountDetails
+  handleTransaction?: (wallet: Wallet, transaction: WalletTransaction) => Promise<[string, string?]>
+}) {
   const [showDetails, setShowDetails] = useState(false)
   const toggleDetails = () => setShowDetails(() => !showDetails)
-
+  const sendTransaction = (transaction: WalletTransaction) => {
+    if (!wallet.secret) {
+      return Promise.reject(`Error reading wallet secret`)
+    }
+    return handleTransaction(wallet, transaction)
+  }
   return (
     <div className={cx({ 'bg-gray-700': showDetails })}>
       <div className="px-4 py-4 hover:bg-gray-700 cursor-pointer" onClick={toggleDetails}>
@@ -43,6 +56,7 @@ export function WalletListItem({ wallet, info }: { wallet: Wallet; info: Account
               type="send"
               buttonLabel="Send"
               title="Send Kin"
+              sendTransaction={sendTransaction}
               disabled={!wallet.secret}
             />
           </div>

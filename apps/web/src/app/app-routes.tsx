@@ -3,7 +3,7 @@ import React from 'react'
 import { Link, Route } from 'react-router-dom'
 import { WalletList } from './wallet/feature/wallet-list'
 
-export function AppShell() {
+export function AppRoutes() {
   return (
     <>
       <Route path="/" exact render={() => <WalletList />} />
