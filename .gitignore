@@ -37,3 +37,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+libs/sdk/proto
+libs/sdk/proto-common

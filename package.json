@@ -28,11 +28,17 @@
   },
   "private": true,
   "dependencies": {
+    "@ledgerhq/hw-transport-webusb": "^5.48.0",
+    "@solana/web3.js": "^1.2.5",
     "@tailwindcss/jit": "^0.1.8",
     "@tailwindcss/postcss7-compat": "^2.0.4",
     "autoprefixer": "^9",
+    "base32.js": "^0.1.0",
+    "bignumber.js": "^9.0.1",
+    "bs58": "^4.0.1",
     "classnames": "^2.3.1",
     "core-js": "^3.6.5",
+    "crc": "^3.8.0",
     "document-register-element": "1.13.1",
     "postcss": "^7",
     "react": "17.0.1",
@@ -41,8 +47,11 @@
     "react-icons": "^4.2.0",
     "react-router-dom": "5.2.0",
     "reactjs-popup": "^2.0.4",
+    "sha.js": "^2.4.11",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "tslib": "^2.0.0"
+    "ts-protoc-gen": "^0.14.0",
+    "tslib": "^2.0.0",
+    "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
@@ -54,6 +63,7 @@
     "@nrwl/eslint-plugin-nx": "11.5.2",
     "@nrwl/jest": "11.5.2",
     "@nrwl/linter": "11.5.2",
+    "@nrwl/node": "^11.6.1",
     "@nrwl/nx-cloud": "11.2.0",
     "@nrwl/react": "11.5.2",
     "@nrwl/tao": "11.5.2",
