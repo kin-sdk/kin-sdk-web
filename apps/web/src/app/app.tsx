@@ -8,9 +8,9 @@ import { UiContainer } from './ui/ui-container'
 import { UiHeader } from './ui/ui-header'
 
 const theme = createMuiTheme({
-  // status: {
-  //   danger: orange[500],
-  // },
+  palette: {
+    type: 'dark',
+  },
 })
 
 export function App() {
