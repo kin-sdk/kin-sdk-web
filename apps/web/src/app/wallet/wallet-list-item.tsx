@@ -1,10 +1,8 @@
 import { AccountDetails, Wallet } from '@kin-wallet/services'
-import { Zoom } from '@material-ui/core'
-import Tooltip from '@material-ui/core/Tooltip'
+import { Avatar } from '@material-ui/core'
 import cx from 'classnames'
 import React, { useState } from 'react'
 import { BiChevronDown, BiChevronUp, BiCog } from 'react-icons/bi'
-import { UiLogo } from '../ui/ui-logo'
 import { WalletAddress } from './wallet-address'
 import { WalletBalance } from './wallet-balance'
 
@@ -19,9 +17,7 @@ export function WalletListItem({ wallet, info }: { wallet: Wallet; info: Account
       <div className="px-4 py-4 hover:bg-gray-700 cursor-pointer" onClick={toggleDetails}>
         <div className="flex justify-between items-center">
           <div className="flex justify-between items-center space-x-2">
-            <span>
-              <UiLogo />
-            </span>
+            <Avatar alt="Kin Logo" src="assets/kin-logo.svg" title="Kin Logo" />
             <div className=" flex flex-col">
               <div className="flex space-x-2 items-center">
                 <div>{wallet.name}</div>

@@ -19,7 +19,7 @@ const WALLETS: Wallet[] = [
 ]
 
 export const useWallets = (): [Wallet[], BalanceResult, boolean, () => Promise<void>] => {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
+  const { enqueueSnackbar } = useSnackbar()
   const [loading, setLoading] = useState<boolean>(true)
   const [wallets] = useState(WALLETS)
   const [balance, setBalance] = useState<BalanceResult>(null)
@@ -32,9 +32,7 @@ export const useWallets = (): [Wallet[], BalanceResult, boolean, () => Promise<v
     return service
       .getBalance(wallets.map((wallet) => wallet.publicKey))
       .then(setBalance)
-      .then(() => {
-        setLoading(() => false)
-      })
+      .then(() => setLoading(() => false))
   }
 
   useEffect(() => {

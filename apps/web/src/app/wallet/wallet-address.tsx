@@ -11,14 +11,14 @@ export function WalletAddress({ explorerUrl, publicKey }: { explorerUrl?: string
   const onCopy = () => enqueueSnackbar(`Copied address to clipboard`, { variant: 'success' })
   return (
     <div className="flex space-x-2 text-xs text-gray-400 items-center">
-      <Tooltip TransitionComponent={Zoom} title="Click to copy" placement="top">
-        <CopyToClipboard text={publicKey} onCopy={onCopy}>
+      <CopyToClipboard text={publicKey} onCopy={onCopy}>
+        <Tooltip TransitionComponent={Zoom} title="Click to copy" placement="top">
           <button>
             <span className="hidden md:block">{publicKey}</span>
             <span className="block md:hidden">{elipsify(publicKey)}</span>
           </button>
-        </CopyToClipboard>
-      </Tooltip>
+        </Tooltip>
+      </CopyToClipboard>
       {explorerUrl ? (
         <a href={explorerUrl} target="_blank" rel="noopener noreferrer">
           <BiLinkExternal />

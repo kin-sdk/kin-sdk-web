@@ -1,6 +1,6 @@
+import { Paper, Typography } from '@material-ui/core'
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
-import { UiCard } from './ui/ui-card'
 import { WalletList } from './wallet/wallet-list'
 
 export function AppShell() {
@@ -8,15 +8,17 @@ export function AppShell() {
     <>
       <Route path="/" exact render={() => <WalletList />} />
       <Route
-        path="/accounts"
+        path="/settings"
         exact
         render={() => (
-          <UiCard>
-            <h2 className="text-xl p-4">ACCOUNTS</h2>
-            <Link className="ml-4 pb-2" to="/">
-              Click here to go back to root page.
-            </Link>
-          </UiCard>
+          <Paper elevation={5}>
+            <div className="p-4">
+              <Typography variant="h4">Settings</Typography>
+              <Link className="ml-4 pb-2" to="/">
+                Back to Wallet.
+              </Link>
+            </div>
+          </Paper>
         )}
       />
     </>
