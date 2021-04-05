@@ -2,12 +2,10 @@ import { Paper } from '@material-ui/core'
 import BackIcon from '@material-ui/icons/ArrowLeft'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useNetwork } from '../../network/data-access'
 
 import { useSettings } from '../data-access'
 
 export function SettingsIndex() {
-  const { networks } = useNetwork()
   const { settings } = useSettings()
 
   return (
@@ -22,7 +20,6 @@ export function SettingsIndex() {
       </div>
       <div className="p-4">
         <pre>{JSON.stringify(settings, null, 2)}</pre>
-        <pre>{JSON.stringify(networks, null, 2)}</pre>
       </div>
     </Paper>
   )

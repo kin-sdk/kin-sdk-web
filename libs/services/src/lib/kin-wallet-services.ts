@@ -30,12 +30,12 @@ export class KinWalletService {
   readonly client: KinClient
 
   constructor(private readonly network: Network, private readonly baseUrl = 'https://services.kintegrate.dev/api/') {
-    console.log(`KinWalletService: ${network.name}`)
-    this.client = new KinClient(network.env)
+    console.log(`KinWalletService: ${network?.name}`)
+    this.client = new KinClient(network?.env)
   }
 
   api(path: string, params?: string) {
-    return axios.get(`${this.baseUrl}${path}?env=${this.network.env}${params}`).then((res) => res.data)
+    return axios.get(`${this.baseUrl}${path}?env=${this.network?.env}${params}`).then((res) => res.data)
   }
 
   getBalance(publicKey: string | string[]): Promise<BalanceResult> {

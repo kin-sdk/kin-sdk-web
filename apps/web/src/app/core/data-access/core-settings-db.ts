@@ -7,9 +7,9 @@ export const settingsSchema: RxJsonSchema<Setting> = {
   version: 0,
   keyCompression: true,
   type: 'object',
-  indexes: ['key'],
+  indexes: ['id'],
   properties: {
-    key: {
+    id: {
       type: 'string',
       primary: true,
     },
@@ -17,5 +17,5 @@ export const settingsSchema: RxJsonSchema<Setting> = {
       type: 'string',
     },
   },
-  required: ['key', 'value'],
+  required: ['id', 'value'],
 }

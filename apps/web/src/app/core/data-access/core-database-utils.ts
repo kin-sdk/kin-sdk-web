@@ -27,6 +27,10 @@ export class Collection<T> {
       .then((res) => !!res)
   }
 
+  findMany(): Promise<T[]> {
+    return this.collection?.find().exec()
+  }
+
   findOne(itemId: string): Promise<T> {
     return this.collection
       ?.findOne({ selector: { id: itemId } })
@@ -34,8 +38,8 @@ export class Collection<T> {
       .then((res) => res?.toJSON())
   }
 
-  findMany(): Promise<T[]> {
-    return this.collection?.find().exec()
+  updateItem(id: string, data: Partial<T>): Promise<T> {
+    return this.collection.upsert({ ...data, id }).then((res) => this.findOne(res.id))
   }
 }
 

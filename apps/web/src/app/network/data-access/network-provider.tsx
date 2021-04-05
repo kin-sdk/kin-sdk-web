@@ -9,16 +9,27 @@ const NetworkContext = createContext<{
 }>(undefined)
 
 function NetworkProvider({ children }: { children: ReactNode }) {
-  const { settings } = useSettings()
+  const { settings, updateNetwork } = useSettings()
   const [networks] = useState<Network[]>(NETWORKS)
   const [network, setNetwork] = useState<Network>()
+
+  const handleSetNetwork = (val: Network) => {
+    console.log('val, val', val)
+    updateNetwork(val.id as any).then(() => {
+      console.log('done')
+    })
+  }
 
   useEffect(() => {
     const find = networks.find((network) => network.id === settings?.network)
     setNetwork(find)
   }, [settings, networks, setNetwork])
 
-  return <NetworkContext.Provider value={{ network, networks, setNetwork }}>{children}</NetworkContext.Provider>
+  return (
+    <NetworkContext.Provider value={{ network, networks, setNetwork: handleSetNetwork }}>
+      {children}
+    </NetworkContext.Provider>
+  )
 }
 
 const useNetwork = () => useContext(NetworkContext)

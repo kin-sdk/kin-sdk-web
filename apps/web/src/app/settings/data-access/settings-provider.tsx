@@ -1,21 +1,46 @@
-import React, { createContext, ReactNode, useContext } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { useDatabase } from '../../core/data-access'
 import { Setting } from './interfaces/setting'
 
+export type AppSettingsNetwork = 'mainnet' | 'testnet'
+
 export interface AppSettings {
-  network: 'mainnet' | 'testnet'
+  network?: AppSettingsNetwork
 }
 
 const SettingsContext = createContext<{
   settings?: AppSettings
   setSettings?: (setting: Setting) => void
+  updateNetwork?: (value: AppSettingsNetwork) => Promise<void>
 }>(undefined)
 
 function SettingsProvider({ children }: { children: ReactNode }) {
-  const settings: AppSettings = {
-    network: 'mainnet',
+  const [db] = useDatabase()
+  const [dbSettings, setDbSettings] = useState<Setting[]>([])
+  const [settings, setSettings] = useState<AppSettings>({})
+
+  const updateNetwork = async (value: AppSettingsNetwork) => {
+    db.settings.updateItem('network', { value }).then(() => {
+      loadSettings()
+    })
   }
 
-  return <SettingsContext.Provider value={{ settings }}>{children}</SettingsContext.Provider>
+  const loadSettings = async () => {
+    db?.settings?.findMany().then(setDbSettings)
+  }
+
+  useEffect(() => {
+    if (dbSettings.length) {
+      const network = dbSettings.find((setting) => setting.id === 'network')
+      setSettings((settings) => ({ ...settings, network: network?.value as AppSettingsNetwork }))
+    }
+  }, [dbSettings, setDbSettings])
+
+  useEffect(() => {
+    loadSettings()
+  }, [db])
+
+  return <SettingsContext.Provider value={{ settings, updateNetwork }}>{children}</SettingsContext.Provider>
 }
 
 const useSettings = () => useContext(SettingsContext)
