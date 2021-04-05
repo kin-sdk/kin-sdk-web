@@ -6,7 +6,7 @@ import { useWallet, WalletTransaction } from '../data-access'
 import { WalletListHeader, WalletListItem } from '../ui'
 
 export function WalletList() {
-  const { wallets, balance, loading, refresh } = useWallet()
+  const { wallets, balance, loading, refresh, deleteWallet } = useWallet()
 
   const handleTransaction = (wallet: Wallet, transaction: WalletTransaction): Promise<[string, string?]> => {
     return new Promise((resolve, reject) => {
@@ -28,19 +28,20 @@ export function WalletList() {
         </div>
       ) : (
         <div className="divide-y divide-gray-800">
-          {!wallets.length ? (
+          {!wallets?.length ? (
             <div className="h-36 flex flex-col justify-center items-center">
               <Typography variant="h6" className={''}>
                 No accounts found.
               </Typography>
             </div>
           ) : (
-            wallets.map((wallet, index) => (
+            wallets?.map((wallet, index) => (
               <WalletListItem
                 open={index === 0}
                 key={wallet.id}
                 wallet={wallet}
                 info={balance?.addressMap[wallet.publicKey]}
+                handleDelete={deleteWallet}
                 handleTransaction={handleTransaction}
               />
             ))

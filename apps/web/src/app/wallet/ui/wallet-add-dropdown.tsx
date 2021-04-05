@@ -60,7 +60,7 @@ export function WalletAddDropdown({ onSelect }: WalletAddSelectProps) {
       >
         <div className={'flex items-center space-x-2'}>
           <AddIcon />
-          <span>Add Account</span>
+          <span className="hidden md:inline-block">Add Account</span>
         </div>
       </Button>
       <Popper open={open} anchorEl={anchorRef.current} placement="bottom-end" role={undefined} transition>

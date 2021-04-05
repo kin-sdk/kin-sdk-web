@@ -1,6 +1,13 @@
 import { AccountDetails, Wallet } from '@kin-wallet/services'
-import { Avatar } from '@material-ui/core'
+import { Avatar, Zoom } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton'
+import Tooltip from '@material-ui/core/Tooltip'
+import DeleteIcon from '@material-ui/icons/Delete'
+import VpnKeyIcon from '@material-ui/icons/VpnKey'
+import { Alert } from '@material-ui/lab'
 import cx from 'classnames'
+import { useSnackbar } from 'notistack'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import React, { useState } from 'react'
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 import { WalletAddress } from './wallet-address'
@@ -13,13 +20,16 @@ export function WalletListItem({
   wallet,
   open,
   info,
+  handleDelete,
   handleTransaction,
 }: {
   wallet: Wallet
   open?: boolean
   info: AccountDetails
+  handleDelete?: (wallet: Wallet) => Promise<boolean>
   handleTransaction?: (wallet: Wallet, transaction: WalletTransaction) => Promise<[string, string?]>
 }) {
+  const { enqueueSnackbar } = useSnackbar()
   const [showDetails, setShowDetails] = useState(open)
   const toggleDetails = () => setShowDetails(() => !showDetails)
   const sendTransaction = (transaction: WalletTransaction) => {
@@ -28,6 +38,19 @@ export function WalletListItem({
     }
     return handleTransaction(wallet, transaction)
   }
+
+  function onCopy() {
+    enqueueSnackbar(`Copied secret to clipboard`, { variant: 'success' })
+  }
+
+  function onDelete() {
+    if (window.confirm(`Are you sure?`)) {
+      handleDelete(wallet).then(() => {
+        enqueueSnackbar(`Account ${wallet.name} deleted`, { variant: 'success' })
+      })
+    }
+  }
+
   return (
     <div className={cx({ 'bg-gray-700': showDetails })}>
       <div className="px-4 py-4 hover:bg-gray-700 cursor-pointer" onClick={toggleDetails}>
@@ -42,7 +65,13 @@ export function WalletListItem({
           </div>
           <div className="flex justify-between items-center space-x-2">
             <div className="flex flex-col">
-              <WalletBalance balance={info?.balance} />
+              {info?.error ? (
+                <Alert severity="error" variant="outlined">
+                  {info?.error}
+                </Alert>
+              ) : (
+                <WalletBalance balance={info?.balance} />
+              )}
             </div>
             <button onClick={toggleDetails}>
               {showDetails ? <BiChevronDown className="text-3xl" /> : <BiChevronUp className="text-3xl" />}
@@ -63,8 +92,26 @@ export function WalletListItem({
               disabled={!wallet.secret}
             />
           </div>
-          <div className="flex justify-center">
-            <WalletAddress publicKey={info?.publicKey} explorerUrl={info?.explorerUrl} />
+          <div className="flex justify-between items-center">
+            <div>
+              <WalletAddress publicKey={wallet?.publicKey} explorerUrl={info?.explorerUrl} />
+            </div>
+            <div className="flex items-center space-x-2">
+              {wallet.secret && (
+                <CopyToClipboard text={wallet.secret || 'no wallet secret found'} onCopy={onCopy}>
+                  <Tooltip TransitionComponent={Zoom} title="Copy secret to clipboard" placement="top">
+                    <IconButton size="small">
+                      <VpnKeyIcon color="disabled" />
+                    </IconButton>
+                  </Tooltip>
+                </CopyToClipboard>
+              )}
+              <Tooltip TransitionComponent={Zoom} title="Delete this account" placement="top">
+                <IconButton size="small" onClick={onDelete}>
+                  <DeleteIcon color="disabled" />
+                </IconButton>
+              </Tooltip>
+            </div>
           </div>
         </div>
       ) : null}

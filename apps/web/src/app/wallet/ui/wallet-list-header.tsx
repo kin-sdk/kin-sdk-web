@@ -16,7 +16,7 @@ export function WalletListHeader({ loading, balance, onRefresh }: UiHeaderCardPr
       <div className="flex justify-between items-center">
         <h2 className="flex-grow font-semibold text-lg">
           <span className="flex space-x-2">
-            <span>{loading ? 'Loading...' : `Balance`}</span>
+            {loading ? <span>Loading...</span> : <span className="hidden md:inline-block">Balance</span>}
             <WalletBalance balance={balance} inline />
           </span>
         </h2>

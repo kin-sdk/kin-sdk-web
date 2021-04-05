@@ -110,7 +110,7 @@ export function WalletTransactionDialog({
             <div className="flex flex-col items-center justify-center space-y-6">
               <WalletAddress publicKey={info?.publicKey} explorerUrl={info?.explorerUrl} />
               <div className="p-4 bg-white">
-                <QRCode size={300} value={info?.publicKey} />
+                <QRCode value={info?.publicKey} />
               </div>
             </div>
           )}
