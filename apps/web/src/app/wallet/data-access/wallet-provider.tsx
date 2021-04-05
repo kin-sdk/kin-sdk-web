@@ -1,9 +1,8 @@
-import { Wallet } from '@kin-wallet/services'
-import { BalanceResult, KinWalletService } from '@kin-wallet/services'
+import { BalanceResult, KinWalletService, Wallet } from '@kin-wallet/services'
 import { useSnackbar } from 'notistack'
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { ReactNode } from 'react'
-import { useNetwork } from '../../network/data-access/network-provider'
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { useNetwork } from '../../network/data-access'
+import { WalletAddType } from './interfaces/wallet-add-type'
 
 const WALLETS: Wallet[] = [
   {
@@ -19,16 +18,27 @@ const WALLETS: Wallet[] = [
   },
 ]
 
-const WalletContext = createContext<[Wallet[], BalanceResult, boolean, () => Promise<void>]>(undefined)
+export interface WalletContextProps {
+  wallets?: Wallet[]
+  balance?: BalanceResult
+  loading?: boolean
+  refresh?: () => Promise<void>
+  addWallet?: ([WalletAddType, Wallet]) => Promise<[string, string?]>
+}
+
+const WalletContext = createContext<WalletContextProps>(undefined)
 
 function WalletProvider({ children }: { children: ReactNode }) {
   const { enqueueSnackbar } = useSnackbar()
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(false)
   const [wallets] = useState(WALLETS)
   const [balance, setBalance] = useState<BalanceResult>(null)
   const { network } = useNetwork()
 
   const refresh = (): Promise<void> => {
+    if (!wallets.length) {
+      return Promise.resolve()
+    }
     const service = new KinWalletService(network)
     setLoading(() => true)
     setBalance(null)
@@ -41,12 +51,22 @@ function WalletProvider({ children }: { children: ReactNode }) {
       })
   }
 
+  const addWallet = async ([type, wallet]: [WalletAddType, Wallet]): Promise<[string, string?]> => {
+    console.log('type', type)
+    console.log('wallet', wallet)
+    return Promise.resolve(['TBD'])
+  }
+
   useEffect(() => {
     enqueueSnackbar(`Selecting network ${network.name}`, { variant: 'info' })
     Promise.resolve().then(() => refresh())
   }, [network])
 
-  return <WalletContext.Provider value={[wallets, balance, loading, refresh]}>{children}</WalletContext.Provider>
+  return (
+    <WalletContext.Provider value={{ wallets, balance, loading, refresh, addWallet }}>
+      {children}
+    </WalletContext.Provider>
+  )
 }
 
 const useWallet = () => useContext(WalletContext)

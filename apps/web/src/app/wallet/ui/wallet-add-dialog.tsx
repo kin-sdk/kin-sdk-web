@@ -3,13 +3,14 @@ import { Button, DialogActions, DialogContent, DialogContentText, TextField } fr
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import React, { useState } from 'react'
+import { WalletAddType } from '../data-access'
 
-export type WalletAddType = 'create' | 'import' | 'watch'
 export interface WalletAddDialogProps {
   open: boolean
   name?: string
   type: WalletAddType
-  onClose: (wallet: Wallet) => void
+  onClose: () => void
+  onSubmit: (wallet: Wallet) => void
 }
 
 function getContent(type: WalletAddType) {
@@ -23,17 +24,19 @@ function getContent(type: WalletAddType) {
   }
 }
 
-export function WalletAddDialog({ name, onClose, open, type }: WalletAddDialogProps) {
+export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletAddDialogProps) {
   const [accountName, setAccountName] = useState<string>(name)
   const [accountSecret, setAccountSecret] = useState<string>('')
   const [accountAddress, setAccountAddress] = useState<string>('')
 
-  const handleClose = () =>
-    onClose({
+  const handleClose = () => onClose()
+  const handleSubmit = () =>
+    onSubmit({
       publicKey: accountAddress,
       name: accountName,
       secret: accountSecret,
     })
+
   return (
     <Dialog aria-labelledby="simple-dialog-title" open={open}>
       <DialogTitle id="simple-dialog-title" className="capitalize">
@@ -79,7 +82,7 @@ export function WalletAddDialog({ name, onClose, open, type }: WalletAddDialogPr
         <Button variant="outlined" onClick={handleClose} color="primary">
           Cancel
         </Button>
-        <Button type="submit" variant="contained" onClick={handleClose} color="default">
+        <Button type="submit" variant="contained" onClick={handleSubmit} color="default">
           {type}
         </Button>
       </DialogActions>

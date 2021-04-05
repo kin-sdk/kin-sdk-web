@@ -2,9 +2,9 @@ import { CssBaseline, ThemeProvider, unstable_createMuiStrictModeTheme as create
 import { blue } from '@material-ui/core/colors'
 import { SnackbarProvider } from 'notistack'
 import React from 'react'
-import { NetworkProvider } from './network/data-access/network-provider'
+import { NetworkProvider } from './network/data-access'
 import { AppLayout } from './app-layout'
-import { WalletProvider } from './wallet/data-access/wallet-provider'
+import { WalletProvider } from './wallet/data-access'
 
 const theme = createMuiTheme({
   palette: {

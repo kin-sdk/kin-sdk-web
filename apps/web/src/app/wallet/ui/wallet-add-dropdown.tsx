@@ -1,17 +1,18 @@
-import { ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from '@material-ui/core'
+import { Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import AddIcon from '@material-ui/icons/Add'
 import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import React, { useEffect, useRef, useState } from 'react'
-import { WalletAddType } from './wallet-add-dialog'
+import { BiGlobe } from 'react-icons/bi'
+import { WalletAddType } from '../data-access'
 
 export interface WalletAddSelectProps {
   onSelect: (type: WalletAddType) => void
 }
 
-export function WalletAddDialog({ onSelect }: WalletAddSelectProps) {
+export function WalletAddDropdown({ onSelect }: WalletAddSelectProps) {
   const [open, setOpen] = useState(false)
   const anchorRef = useRef(null)
 
@@ -51,14 +52,17 @@ export function WalletAddDialog({ onSelect }: WalletAddSelectProps) {
 
   return (
     <>
-      <IconButton
+      <Button
         ref={anchorRef}
         aria-controls={open ? 'menu-list-grow' : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        <AddIcon />
-      </IconButton>
+        <div className={'flex items-center space-x-2'}>
+          <AddIcon />
+          <span>Add Account</span>
+        </div>
+      </Button>
       <Popper open={open} anchorEl={anchorRef.current} placement="bottom-end" role={undefined} transition>
         {({ TransitionProps, placement }) => (
           <Grow

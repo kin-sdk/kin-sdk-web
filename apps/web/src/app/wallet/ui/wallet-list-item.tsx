@@ -5,20 +5,22 @@ import React, { useState } from 'react'
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 import { WalletAddress } from './wallet-address'
 import { WalletBalance } from './wallet-balance'
-import { WalletTransaction } from '../data-access/interfaces/wallet-transaction'
+import { WalletTransaction } from '../data-access'
 
 import { WalletTransactionDialog } from './wallet-transaction-dialog'
 
 export function WalletListItem({
   wallet,
+  open,
   info,
   handleTransaction,
 }: {
   wallet: Wallet
+  open?: boolean
   info: AccountDetails
   handleTransaction?: (wallet: Wallet, transaction: WalletTransaction) => Promise<[string, string?]>
 }) {
-  const [showDetails, setShowDetails] = useState(true)
+  const [showDetails, setShowDetails] = useState(open)
   const toggleDetails = () => setShowDetails(() => !showDetails)
   const sendTransaction = (transaction: WalletTransaction) => {
     if (!wallet.secret) {
@@ -62,7 +64,7 @@ export function WalletListItem({
             />
           </div>
           <div className="flex justify-center">
-            <WalletAddress publicKey={info.publicKey} explorerUrl={info.explorerUrl} />
+            <WalletAddress publicKey={info?.publicKey} explorerUrl={info?.explorerUrl} />
           </div>
         </div>
       ) : null}

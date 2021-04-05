@@ -9,8 +9,8 @@ import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 
 import QRCode from 'react-qr-code'
+import { WalletTransaction } from '../data-access'
 import { WalletAddress } from './wallet-address'
-import { WalletTransaction } from '../data-access/interfaces/wallet-transaction'
 import { WalletTransactionForm } from './wallet-transaction-form'
 
 export interface WalletTransactionDialogProps {
@@ -110,7 +110,7 @@ export function WalletTransactionDialog({
             <div className="flex flex-col items-center justify-center space-y-6">
               <WalletAddress publicKey={info?.publicKey} explorerUrl={info?.explorerUrl} />
               <div className="p-4 bg-white">
-                <QRCode size={300} value={info.publicKey} />
+                <QRCode size={300} value={info?.publicKey} />
               </div>
             </div>
           )}

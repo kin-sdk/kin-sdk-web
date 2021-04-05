@@ -1,6 +1,6 @@
 import { FormControl, FormGroup, FormLabel, TextField } from '@material-ui/core'
 import React from 'react'
-import { WalletTransaction } from '../data-access/interfaces/wallet-transaction'
+import { WalletTransaction } from '../data-access'
 
 export interface WalletTransactionFormProps {
   disableForm?: boolean
