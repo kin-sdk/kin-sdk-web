@@ -1,12 +1,12 @@
 import { Wallet } from '@kin-wallet/services'
 import { CircularProgress, Paper } from '@material-ui/core'
 import React, { useState } from 'react'
-import { WalletAddDialog, WalletAddType } from '../ui/wallet-add-dialog'
+import { WalletTransaction } from '../data-access/interfaces/wallet-transaction'
 
 import { useWallet } from '../data-access/wallet-provider'
+import { WalletAddDialog, WalletAddType } from '../ui/wallet-add-dialog'
 import { WalletListHeader } from '../ui/wallet-list-header'
 import { WalletListItem } from '../ui/wallet-list-item'
-import { WalletTransaction } from '../ui/wallet-transaction-dialog'
 
 export function WalletList() {
   const [wallets, balance, loading, refresh] = useWallet()
@@ -24,6 +24,10 @@ export function WalletList() {
   }
 
   const handleTransaction = (wallet: Wallet, transaction: WalletTransaction): Promise<[string, string?]> => {
+    console.log({
+      wallet,
+      transaction,
+    })
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (transaction.destination.length < 10) {
