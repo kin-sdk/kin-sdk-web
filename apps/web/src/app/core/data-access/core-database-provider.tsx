@@ -1,22 +1,23 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { Database } from './core-database-utils'
-import { getWalletDb } from './core-wallet-db'
+import { getDb } from './core-get-db'
 
-const DatabaseContext = createContext<[Database<any>, boolean]>(undefined)
+const DatabaseContext = createContext<[Database, boolean]>(undefined)
 
 function DatabaseProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState<boolean>(false)
-  const [walletDb, setWalletDb] = useState<Database<any>>(null)
+  const [db, setDb] = useState<Database>(null)
+
   useEffect(() => {
-    if (!walletDb) {
+    if (!db) {
       setLoading(true)
-      getWalletDb()
-        .then(setWalletDb)
+      getDb()
+        .then(setDb)
         .then(() => setLoading(false))
     }
-  }, [setWalletDb])
+  }, [db, setDb])
 
-  return <DatabaseContext.Provider value={[walletDb, loading]}>{children}</DatabaseContext.Provider>
+  return <DatabaseContext.Provider value={[db, loading]}>{children}</DatabaseContext.Provider>
 }
 
 const useDatabase = () => useContext(DatabaseContext)

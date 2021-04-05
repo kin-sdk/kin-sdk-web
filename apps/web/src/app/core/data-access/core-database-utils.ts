@@ -1,61 +1,75 @@
-import { addRxPlugin, createRxDatabase, RxDatabase } from 'rxdb'
-
-export interface Database<T> {
-  db: RxDatabase
-  items: () => Promise<T[]>
-  createItem: (data: Partial<T>) => Promise<T>
-  deleteItem: (itemId: string) => Promise<boolean>
-  item: (itemId: string) => Promise<T>
-}
+import { Wallet } from '@kin-wallet/sdk'
+import { addRxPlugin, createRxDatabase, RxCollection, RxDatabase } from 'rxdb'
+import { Setting } from '../../settings/data-access'
+import { settingsSchema } from './core-settings-db'
+import { walletSchema } from './core-wallet-db'
 
 const generateId = (size = 8) => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
 
-export async function createDatabase<T>(adapter, adapterName, name, schema): Promise<Database<T>> {
-  addRxPlugin(adapter)
-  let dbPromise: Database<T> = null
-  const collections = [{ name, schema }]
+export interface Database {
+  db?: RxDatabase
+  wallets?: Collection<Wallet>
+  settings?: Collection<Setting>
+}
 
-  const _create = async (): Promise<Database<T>> => {
-    console.log('DatabaseService: creating database..')
-    const db = await createRxDatabase({
+export class Collection<T> {
+  constructor(private readonly collection: RxCollection) {}
+
+  createItem(data: Partial<T>): Promise<T> {
+    const id = (data as any).id || generateId()
+    return this.collection.insert({ ...data, id }).then((res) => this.findOne(res.id))
+  }
+
+  deleteItem(itemId: string): Promise<boolean> {
+    return this.collection
+      ?.findOne({ selector: { id: itemId } })
+      .remove()
+      .then((res) => !!res)
+  }
+
+  findOne(itemId: string): Promise<T> {
+    return this.collection
+      ?.findOne({ selector: { id: itemId } })
+      .exec()
+      .then((res) => res?.toJSON())
+  }
+
+  findMany(): Promise<T[]> {
+    return this.collection?.find().exec()
+  }
+}
+
+export async function createDatabase(adapter, adapterName): Promise<Database> {
+  addRxPlugin(adapter)
+  let dbPromise: Database = {}
+  const collections = [
+    { name: 'wallets', schema: walletSchema },
+    { name: 'settings', schema: settingsSchema },
+  ]
+
+  const create = async (): Promise<Database> => {
+    dbPromise.db = await createRxDatabase({
       name: 'database',
       adapter: adapterName,
     })
-    console.log('DatabaseService: created database')
-    window['db'] = db // write to window for debugging
+
+    // write to window for debugging
+    // window['db'] = dbPromise.db
 
     // create collections
-    console.log('DatabaseService: create collections')
-    await Promise.all(collections.map((colData) => db.collection(colData)))
+    await Promise.all(
+      collections.map((colData) => {
+        return dbPromise.db.collection(colData)
+      }),
+    )
 
-    const createItem = (data: Partial<T>): Promise<T> => {
-      const id = (data as any).id || generateId()
-      return db.wallets.insert({ ...data, id }).then((res) => item(res.id))
-    }
-
-    const deleteItem = (itemId: string): Promise<boolean> => {
-      return db?.wallets
-        ?.findOne({ selector: { id: itemId } })
-        .remove()
-        .then((res) => !!res)
-    }
-
-    const item = (itemId: string): Promise<T> => {
-      return db?.wallets
-        ?.findOne({ selector: { id: itemId } })
-        .exec()
-        .then((res) => res?.toJSON())
-    }
-
-    const items = (): Promise<T[]> => {
-      return db?.wallets?.find().exec()
-    }
-
-    return { db, createItem, deleteItem, item, items }
+    dbPromise.settings = new Collection<Setting>(dbPromise.db.settings)
+    dbPromise.wallets = new Collection<Wallet>(dbPromise.db.wallets)
+    return dbPromise
   }
 
-  if (!dbPromise) {
-    dbPromise = await _create()
+  if (!dbPromise.db) {
+    dbPromise = await create()
   }
 
   return dbPromise

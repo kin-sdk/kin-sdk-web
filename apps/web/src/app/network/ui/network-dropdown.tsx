@@ -1,5 +1,6 @@
 import { Network } from '@kin-wallet/services'
 import { Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from '@material-ui/core'
+import { useSnackbar } from 'notistack'
 import React, { useEffect, useRef, useState } from 'react'
 import { BiGlobe } from 'react-icons/bi'
 
@@ -13,12 +14,13 @@ function NetworkLabel({ title }: { title: string }) {
   return (
     <div className={'flex items-center space-x-2'}>
       <BiGlobe className="text-xl" />
-      <span>{title || ''}</span>
+      <span>{title || 'Loading'}</span>
     </div>
   )
 }
 export function NetworkDropdown({ selected, networks, onSelect }: NetworkSelectProps) {
   const [open, setOpen] = useState(false)
+  const { enqueueSnackbar } = useSnackbar()
   const anchorRef = useRef(null)
 
   const handleToggle = () => {
@@ -42,6 +44,7 @@ export function NetworkDropdown({ selected, networks, onSelect }: NetworkSelectP
 
   function handleSelect(network) {
     onSelect(network)
+    enqueueSnackbar(`Selected network ${network.name}`, { variant: 'info' })
     handleToggle()
   }
 

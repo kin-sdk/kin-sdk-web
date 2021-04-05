@@ -1,5 +1,6 @@
 import { Wallet } from '@kin-wallet/services'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
+import SettingsIcon from '@material-ui/icons/Settings'
 import { useSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -49,6 +50,9 @@ export function AppHeader() {
           <div className="flex items-center">
             <WalletAddDropdown onSelect={handleAdd} />
             <NetworkDropdown networks={networks} selected={network} onSelect={setNetwork} />
+            <Link to="/settings">
+              <SettingsIcon color="disabled" fontSize="small" />
+            </Link>
           </div>
         </Toolbar>
       </AppBar>

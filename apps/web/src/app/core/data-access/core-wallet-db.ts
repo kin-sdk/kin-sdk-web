@@ -1,7 +1,5 @@
 import { Wallet } from '@kin-wallet/sdk'
-import * as adapter from 'pouchdb-adapter-idb'
 import { RxJsonSchema } from 'rxdb'
-import { createDatabase } from './core-database-utils'
 
 export const walletSchema: RxJsonSchema<Wallet> = {
   title: 'Wallet Schema',
@@ -27,5 +25,3 @@ export const walletSchema: RxJsonSchema<Wallet> = {
   },
   required: ['id', 'name', 'publicKey'],
 }
-
-export const getWalletDb = () => createDatabase<Wallet>(adapter, 'idb', 'wallets', walletSchema)

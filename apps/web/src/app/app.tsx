@@ -6,6 +6,7 @@ import { AppLayout } from './app-layout'
 
 import { DatabaseProvider } from './core/data-access'
 import { NetworkProvider } from './network/data-access'
+import { SettingsProvider } from './settings/data-access'
 import { WalletProvider } from './wallet/data-access'
 
 const theme = createMuiTheme({ palette: { primary: blue, type: 'dark' } })
@@ -16,11 +17,13 @@ export function App() {
       <CssBaseline />
       <SnackbarProvider maxSnack={5}>
         <DatabaseProvider>
-          <NetworkProvider>
-            <WalletProvider>
-              <AppLayout />
-            </WalletProvider>
-          </NetworkProvider>
+          <SettingsProvider>
+            <NetworkProvider>
+              <WalletProvider>
+                <AppLayout />
+              </WalletProvider>
+            </NetworkProvider>
+          </SettingsProvider>
         </DatabaseProvider>
       </SnackbarProvider>
     </ThemeProvider>

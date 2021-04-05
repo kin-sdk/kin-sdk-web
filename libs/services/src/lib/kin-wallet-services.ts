@@ -1,5 +1,6 @@
 import { KinEnvironment, Network } from '@kin-wallet/sdk'
 import axios from 'axios'
+import { KinClient } from './kin-client'
 
 export interface AccountBalance {
   kin?: string
@@ -26,10 +27,11 @@ export interface BalanceResult {
 }
 
 export class KinWalletService {
-  readonly baseUrl = 'https://services-test.kintegrate.dev/api/'
+  readonly client: KinClient
 
-  constructor(private readonly network: Network) {
-    console.log(`KinWalletService: environment: ${network.name}`)
+  constructor(private readonly network: Network, private readonly baseUrl = 'https://services.kintegrate.dev/api/') {
+    console.log(`KinWalletService: ${network.name}`)
+    this.client = new KinClient(network.env)
   }
 
   api(path: string, params?: string) {

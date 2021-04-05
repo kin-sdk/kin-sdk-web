@@ -1,5 +1,6 @@
 import { Network, NETWORKS } from '@kin-wallet/services'
-import React, { createContext, ReactNode, useContext, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { useSettings } from '../../settings/data-access'
 
 const NetworkContext = createContext<{
   network?: Network
@@ -8,8 +9,14 @@ const NetworkContext = createContext<{
 }>(undefined)
 
 function NetworkProvider({ children }: { children: ReactNode }) {
+  const { settings } = useSettings()
   const [networks] = useState<Network[]>(NETWORKS)
-  const [network, setNetwork] = useState<Network>(() => networks[0])
+  const [network, setNetwork] = useState<Network>()
+
+  useEffect(() => {
+    const find = networks.find((network) => network.id === settings?.network)
+    setNetwork(find)
+  }, [settings, networks, setNetwork])
 
   return <NetworkContext.Provider value={{ network, networks, setNetwork }}>{children}</NetworkContext.Provider>
 }
