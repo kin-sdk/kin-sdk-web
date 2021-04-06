@@ -9,6 +9,8 @@ export interface WalletContextProps {
   wallets?: Wallet[]
   balance?: BalanceResult
   loading?: boolean
+  loadingBalance?: boolean
+  error?: string
   refresh?: () => Promise<void>
   reload?: () => Promise<void>
   addWallet?: ([WalletAddType, Wallet]) => Promise<[string, string?]>
@@ -20,23 +22,29 @@ const WalletContext = createContext<WalletContextProps>(undefined)
 function WalletProvider({ children }: { children: ReactNode }) {
   const [db, loadingDb] = useDatabase()
   const [loading, setLoading] = useState<boolean>(true)
+  const [loadingBalance, setLoadingBalance] = useState<boolean>(true)
+  const [error, setError] = useState<string>()
   const [wallets, setWallets] = useState(null)
   const [balance, setBalance] = useState<BalanceResult>(null)
   const { network } = useNetwork()
 
   const refresh = (): Promise<void> => {
-    if (!wallets?.length) {
+    if (!wallets?.length || !network) {
       return Promise.resolve()
     }
     const service = new KinWalletService(network)
-    setLoading(() => true)
+    // setLoading(() => true)
+    setLoadingBalance(() => true)
     setBalance(null)
+    setError(null)
     return service
       .getBalance(wallets?.map((wallet) => wallet.publicKey))
       .then(setBalance)
-      .then(() => setLoading(() => false))
+      .then(() => setLoadingBalance(() => false))
       .catch((e) => {
-        console.log('error', e)
+        console.log('An error occurred', e?.message)
+        setError(e?.message)
+        setLoadingBalance(() => false)
       })
   }
 
@@ -101,7 +109,9 @@ function WalletProvider({ children }: { children: ReactNode }) {
   }, [wallets, network])
 
   return (
-    <WalletContext.Provider value={{ wallets, balance, loading, refresh, reload, addWallet, deleteWallet }}>
+    <WalletContext.Provider
+      value={{ wallets, balance, error, loading, loadingBalance, refresh, reload, addWallet, deleteWallet }}
+    >
       {children}
     </WalletContext.Provider>
   )

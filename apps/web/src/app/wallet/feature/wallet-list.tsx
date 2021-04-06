@@ -1,13 +1,15 @@
 import { Wallet } from '@kin-wallet/services'
 import { CircularProgress, Paper, Typography } from '@material-ui/core'
-import React from 'react'
+import Alert from '@material-ui/lab/Alert'
+import { useSnackbar } from 'notistack'
+import React, { useEffect } from 'react'
 import { useWallet, WalletTransaction } from '../data-access'
 
 import { WalletListHeader, WalletListItem } from '../ui'
 
 export function WalletList() {
-  const { wallets, balance, loading, refresh, deleteWallet } = useWallet()
-
+  const { enqueueSnackbar } = useSnackbar()
+  const { wallets, balance, error, loading, loadingBalance, refresh, deleteWallet } = useWallet()
   const handleTransaction = (wallet: Wallet, transaction: WalletTransaction): Promise<[string, string?]> => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -19,9 +21,16 @@ export function WalletList() {
     })
   }
 
+  useEffect(() => {
+    if (error) {
+      enqueueSnackbar(`${error}`, { variant: 'error' })
+    }
+  }, [error])
+
   return (
     <Paper elevation={5}>
-      <WalletListHeader balance={balance?.total} loading={loading} onRefresh={refresh} />
+      <WalletListHeader balance={balance?.total} loading={loadingBalance} onRefresh={refresh} />
+      { error ? <Alert variant='filled' className='m-4' severity="error">{error}</Alert> : null }
       {loading ? (
         <div className="h-36 flex flex-col justify-center items-center">
           <CircularProgress size={60} color="secondary" />

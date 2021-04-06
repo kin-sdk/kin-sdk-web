@@ -64,13 +64,15 @@ export function WalletListItem({
             </div>
           </div>
           <div className="flex justify-between items-center space-x-2">
-            <div className="flex flex-col">
+            <div className="flex flex-col items-center">
               {info?.error ? (
                 <Alert severity="error" variant="outlined">
                   {info?.error}
                 </Alert>
-              ) : (
+              ) : info?.balance ? (
                 <WalletBalance balance={info?.balance} />
+              ) : (
+                <div className="text-xs text-gray-500 animate-pulse">Loading</div>
               )}
             </div>
             <button onClick={toggleDetails}>

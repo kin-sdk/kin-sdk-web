@@ -20,7 +20,7 @@ function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>({})
 
   const updateNetwork = async (value: AppSettingsNetwork) => {
-    db.settings.updateItem('network', { value }).then(() => {
+    db?.settings?.updateItem('network', { value }).then(() => {
       loadSettings()
     })
   }
