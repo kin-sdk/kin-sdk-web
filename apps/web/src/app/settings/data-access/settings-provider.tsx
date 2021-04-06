@@ -32,7 +32,11 @@ function SettingsProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (dbSettings.length) {
       const network = dbSettings.find((setting) => setting.id === 'network')
-      setSettings((settings) => ({ ...settings, network: network?.value as AppSettingsNetwork }))
+      if (network?.value) {
+        setSettings((settings) => ({ ...settings, network: network?.value as AppSettingsNetwork }))
+      }
+    } else {
+      updateNetwork('mainnet')
     }
   }, [dbSettings, setDbSettings])
 
