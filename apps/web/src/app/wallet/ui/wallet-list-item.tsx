@@ -72,7 +72,7 @@ export function WalletListItem({
               ) : info?.balance ? (
                 <WalletBalance balance={info?.balance} />
               ) : (
-                <div className="text-xs text-gray-500 animate-pulse">Loading</div>
+                <div className="text-sm text-gray-500 animate-pulse">Loading</div>
               )}
             </div>
             <button onClick={toggleDetails}>

@@ -30,7 +30,11 @@ export function WalletList() {
   return (
     <Paper elevation={5}>
       <WalletListHeader balance={balance?.total} loading={loadingBalance} onRefresh={refresh} />
-      { error ? <Alert variant='filled' className='m-4' severity="error">{error}</Alert> : null }
+      {error ? (
+        <Alert variant="filled" className="m-4" severity="error">
+          {error}
+        </Alert>
+      ) : null}
       {loading ? (
         <div className="h-36 flex flex-col justify-center items-center">
           <CircularProgress size={60} color="secondary" />
@@ -46,7 +50,6 @@ export function WalletList() {
           ) : (
             wallets?.map((wallet, index) => (
               <WalletListItem
-                open={index === 0}
                 key={wallet.id}
                 wallet={wallet}
                 info={balance?.addressMap[wallet.publicKey]}
