@@ -5,7 +5,7 @@ import React from 'react'
 import { AppLayout } from './app-layout'
 
 import { DatabaseProvider } from './core/data-access'
-import { NetworkProvider } from './network/data-access'
+import { NetworkProvider, PricesProvider } from './network/data-access'
 import { SettingsProvider } from './settings/data-access'
 import { WalletProvider } from './wallet/data-access'
 
@@ -19,9 +19,11 @@ export function App() {
         <DatabaseProvider>
           <SettingsProvider>
             <NetworkProvider>
-              <WalletProvider>
-                <AppLayout />
-              </WalletProvider>
+              <PricesProvider>
+                <WalletProvider>
+                  <AppLayout />
+                </WalletProvider>
+              </PricesProvider>
             </NetworkProvider>
           </SettingsProvider>
         </DatabaseProvider>

@@ -26,12 +26,22 @@ export interface BalanceResult {
   total: AccountBalance
 }
 
+export interface Prices {
+  kin: {
+    btc: number
+    btc_24h_change: number
+    usd: number
+    usd_24h_change: number
+  }
+}
+
 export class KinWalletService {
   readonly client: KinClient
 
   constructor(private readonly network: Network, private readonly baseUrl = 'https://services.kintegrate.dev/api/') {
     console.log(`KinWalletService: ${network?.name}`)
     this.client = new KinClient(network?.env)
+    this.getPrices()
   }
 
   api(path: string, params?: string) {
@@ -41,5 +51,11 @@ export class KinWalletService {
   getBalance(publicKey: string | string[]): Promise<BalanceResult> {
     publicKey = Array.isArray(publicKey) ? publicKey : [publicKey]
     return this.api('prices', `&publicKey=${publicKey.join(',')}`)
+  }
+
+  getPrices(): Promise<Prices> {
+    return axios
+      .get(`https://api.coingecko.com/api/v3/simple/price?ids=kin&vs_currencies=usd%2Cbtc&include_24hr_change=true`)
+      .then((res) => res.data)
   }
 }

@@ -1,4 +1,4 @@
-import { AccountDetails, Wallet } from '@kin-wallet/services'
+import { AccountDetails, Prices, Wallet } from '@kin-wallet/services'
 import { Avatar, Zoom } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -19,15 +19,21 @@ import { WalletTransactionDialog } from './wallet-transaction-dialog'
 export function WalletListItem({
   wallet,
   open,
+  balance,
+  status,
   info,
   handleDelete,
   handleTransaction,
+  prices,
 }: {
   wallet: Wallet
+  balance?: string
+  status?: string
   open?: boolean
   info: AccountDetails
   handleDelete?: (wallet: Wallet) => Promise<boolean>
   handleTransaction?: (wallet: Wallet, transaction: WalletTransaction) => Promise<[string, string?]>
+  prices?: Prices
 }) {
   const { enqueueSnackbar } = useSnackbar()
   const [showDetails, setShowDetails] = useState(open)
@@ -69,8 +75,8 @@ export function WalletListItem({
                 <Alert severity="error" variant="outlined">
                   {info?.error}
                 </Alert>
-              ) : info?.balance ? (
-                <WalletBalance balance={info?.balance} />
+              ) : balance ? (
+                <WalletBalance balance={balance} prices={prices} />
               ) : (
                 <div className="text-sm text-gray-500 animate-pulse">Loading</div>
               )}

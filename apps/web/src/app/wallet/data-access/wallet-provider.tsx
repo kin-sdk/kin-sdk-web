@@ -1,4 +1,4 @@
-import { BalanceResult, Keypair, KinWalletService, Wallet } from '@kin-wallet/services'
+import { BalanceResult, Keypair, Wallet } from '@kin-wallet/services'
 import { orderBy } from 'lodash'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { useDatabase } from '../../core/data-access'
@@ -6,11 +6,14 @@ import { useNetwork } from '../../network/data-access'
 import { WalletAddType } from './interfaces/wallet-add-type'
 
 export interface WalletContextProps {
+  accountBalance?: Record<string, string>
+  accountStatus?: Record<string, string>
   wallets?: Wallet[]
   balance?: BalanceResult
   loading?: boolean
   loadingBalance?: boolean
   error?: string
+  totalBalance?: string
   refresh?: () => Promise<void>
   reload?: () => Promise<void>
   addWallet?: ([WalletAddType, Wallet]) => Promise<[string, string?]>
@@ -19,6 +22,31 @@ export interface WalletContextProps {
 
 const WalletContext = createContext<WalletContextProps>(undefined)
 
+export function createWallet(type: 'create' | 'import' | 'watch', wallet: Wallet): Wallet {
+  switch (type) {
+    case 'watch':
+      return {
+        name: wallet.name,
+        publicKey: wallet.publicKey,
+        secret: '',
+      }
+    case 'import': {
+      const keys = Keypair.fromSecret(wallet.secret)
+      return {
+        name: wallet.name,
+        ...keys,
+      }
+    }
+    case 'create': {
+      const keys = Keypair.randomKeys()
+      return {
+        name: wallet.name,
+        ...keys,
+      }
+    }
+  }
+}
+
 function WalletProvider({ children }: { children: ReactNode }) {
   const [db, loadingDb] = useDatabase()
   const [loading, setLoading] = useState<boolean>(true)
@@ -26,51 +54,67 @@ function WalletProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string>()
   const [wallets, setWallets] = useState(null)
   const [balance, setBalance] = useState<BalanceResult>(null)
-  const { network } = useNetwork()
+  const [totalBalance, setTotalBalance] = useState<string>('0')
+  const { network, service } = useNetwork()
+  const [accountBalance, setAccountBalance] = useState({})
+  const [accountStatus, setAccountStatus] = useState({})
 
-  const refresh = (): Promise<void> => {
-    if (!wallets?.length || !network) {
-      return Promise.resolve()
-    }
-    const service = new KinWalletService(network)
-    // setLoading(() => true)
-    setLoadingBalance(() => true)
-    setBalance(null)
-    setError(null)
-    return service
-      .getBalance(wallets?.map((wallet) => wallet.publicKey))
-      .then(setBalance)
-      .then(() => setLoadingBalance(() => false))
-      .catch((e) => {
-        console.log('An error occurred', e?.message)
-        setError(e?.message)
-        setLoadingBalance(() => false)
-      })
+  const createAccount = (secret: string) => {
+    return service?.client.createAccount(secret).then((res) => {
+      console.log('res', res)
+      return res
+    })
   }
 
-  async function createWallet(type: 'create' | 'import' | 'watch', wallet: Wallet): Promise<Wallet> {
-    switch (type) {
-      case 'watch':
-        return {
-          name: wallet.name,
-          publicKey: wallet.publicKey,
-          secret: '',
-        }
-      case 'import': {
-        const keys = Keypair.fromSecret(wallet.secret)
-        return {
-          name: wallet.name,
-          ...keys,
-        }
+  const resolveTokenAccount = (publicKey: string): Promise<{ balances?: any; error?: string }> | undefined => {
+    return service?.client.resolveTokenAccounts(publicKey)
+  }
+
+  const handleAccountRefresh = async (wallet: Wallet) => {
+    console.log('Refresh Account')
+    const ta = await resolveTokenAccount(wallet.publicKey)
+    console.log('Token Account', ta)
+
+    if (ta.balances?.length) {
+      console.log('Token Account', ta.balances)
+      if (ta.error) {
+        setAccountStatus((current) => ({ ...current, [wallet.publicKey]: ta.error }))
       }
-      case 'create': {
-        const keys = Keypair.randomKeys()
-        return {
-          name: wallet.name,
-          ...keys,
-        }
-      }
+      ta.balances.map((res) => {
+        setAccountBalance((current) => ({ ...current, [res.account]: res.balance }))
+        setAccountStatus((current) => ({ ...current, [res.account]: 'Active' }))
+      })
+
+      setTotalBalance(ta.balances.reduce((acc, cur) => acc + parseInt(cur?.balance, 10), 0))
+    } else {
+      console.log('Creating Account')
+      await createAccount(wallet.secret)
     }
+  }
+
+  const refresh = async (): Promise<void> => {
+    if (!wallets?.length || !network || !service) {
+      // console.error(`Can't refresh`, { wallets: wallets?.length, network, service })
+      return Promise.resolve()
+    }
+    // const service = new KinWalletService(network)
+    // setLoading(() => true)
+    // setLoadingBalance(() => true)
+    setBalance(null)
+    setError(null)
+
+    const accounts = wallets.reduce((acc, curr) => {
+      return { ...acc, [curr.publicKey]: 'Refreshing' }
+    })
+    console.log('accounts, accounts', accounts)
+    // setAccountStatus(() =>
+    //
+    // )
+    const resolved = await Promise.all(wallets.map(handleAccountRefresh))
+
+    console.log(resolved)
+
+    return Promise.resolve()
   }
 
   const reload = async () => {
@@ -110,7 +154,20 @@ function WalletProvider({ children }: { children: ReactNode }) {
 
   return (
     <WalletContext.Provider
-      value={{ wallets, balance, error, loading, loadingBalance, refresh, reload, addWallet, deleteWallet }}
+      value={{
+        accountBalance,
+        accountStatus,
+        totalBalance,
+        error,
+        loading,
+        loadingBalance,
+        balance,
+        wallets,
+        refresh,
+        reload,
+        addWallet,
+        deleteWallet,
+      }}
     >
       {children}
     </WalletContext.Provider>

@@ -13,3 +13,9 @@ export * from './solana/create-account-tx'
 export * from './solana/ledger-utils'
 export * from './solana/memo-program'
 export * from './solana/token-program'
+
+export {
+  Account as SolanaAccount,
+  Transaction as SolanaTransaction,
+  PublicKey as SolanaPublicKey,
+} from '@solana/web3.js'

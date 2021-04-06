@@ -17,6 +17,7 @@ export const urls = new Map<KinEnvironment, string>([
 
 export function getAgoraUrls(env: KinEnvironment) {
   const url = urls.get(env)
+  console.log('url', env, url)
   return {
     createAccountURL: `${url}/api/kin.agora.account.v4.Account/CreateAccount`,
     resolveTokenAccountsURL: `${url}/api/kin.agora.account.v4.Account/ResolveTokenAccounts`,
