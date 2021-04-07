@@ -1,1 +1,1 @@
-export type WalletStatus = 'Active' | 'Loading' | 'NotFound' | 'Refreshing'
+export type WalletStatus = 'Active' | 'Creating' | 'Loading' | 'NotFound' | 'Refreshing'

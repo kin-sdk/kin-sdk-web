@@ -13,8 +13,10 @@ export function WalletList() {
     wallets,
     balance,
     accountBalance,
+    accountError,
     accountStatus,
     totalBalance,
+    createAccount,
     error,
     loading,
     refresh,
@@ -70,8 +72,11 @@ export function WalletList() {
                 wallet={wallet}
                 info={balance?.addressMap[wallet.publicKey]}
                 balance={accountBalance[wallet.publicKey]}
+                open={!!accountError[wallet.publicKey]}
+                error={accountError[wallet.publicKey]}
                 status={accountStatus[wallet.publicKey]}
                 handleDelete={deleteWallet}
+                createAccount={createAccount}
                 handleTransaction={handleTransaction}
               />
             ))

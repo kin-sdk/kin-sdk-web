@@ -9,6 +9,7 @@ import { WalletStatus } from './interfaces/wallet-status.type'
 
 export interface WalletContextProps {
   accountBalance?: Record<string, AccountBalance>
+  accountError?: Record<string, string>
   accountStatus?: Record<string, WalletStatus>
   wallets?: Wallet[]
   balance?: BalanceResult
@@ -19,6 +20,7 @@ export interface WalletContextProps {
   refresh?: () => Promise<void>
   reload?: () => Promise<void>
   addWallet?: ([WalletAddType, Wallet]) => Promise<[string, string?]>
+  createAccount?: (wallet: Wallet) => Promise<void>
   deleteWallet?: (wallet: Wallet) => Promise<boolean>
 }
 
@@ -36,13 +38,19 @@ function WalletProvider({ children }: { children: ReactNode }) {
   const [balance, setBalance] = useState<BalanceResult>(null)
   const [totalBalance, setTotalBalance] = useState<AccountBalance>(null)
   const [accountBalance, setAccountBalance] = useState({})
+  const [accountError, setAccountError] = useState({})
   const [accountStatus, setAccountStatus] = useState({})
 
-  const createAccount = (secret: string) => {
-    return service?.client.createAccount(secret).then((res) => {
-      console.log('res', res)
-      return res
-    })
+  const createAccount = (wallet: Wallet): Promise<void> => {
+    setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Creating' }))
+    setAccountError((current) => ({ ...current, [wallet.publicKey]: undefined }))
+    return service?.client
+      .createAccount(wallet.secret)
+      .then((res) => {
+        setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Submitted' }))
+        return handleAccountRefresh(wallet)
+      })
+      .then(() => reload())
   }
 
   const resolveTokenAccount = (publicKey: string): Promise<{ balances?: any; error?: string }> | undefined => {
@@ -52,6 +60,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
   const handleAccountRefresh = async (wallet: Wallet): Promise<{ balance?: string; error?: string }> => {
     let balance = '0'
     setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Loading' }))
+    setAccountError((current) => ({ ...current, [wallet.publicKey]: null }))
     const ta = await resolveTokenAccount(wallet.publicKey)
 
     if (ta.balances?.length) {
@@ -70,6 +79,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
     }
 
     if (ta.error) {
+      setAccountError((current) => ({ ...current, [wallet.publicKey]: ta?.error }))
       setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Error' }))
       return { error: ta.error, balance }
     }
@@ -137,7 +147,9 @@ function WalletProvider({ children }: { children: ReactNode }) {
     <WalletContext.Provider
       value={{
         accountBalance,
+        accountError,
         accountStatus,
+        createAccount,
         totalBalance,
         error,
         loading,

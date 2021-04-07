@@ -1,5 +1,5 @@
 import { AccountBalance, AccountDetails, Wallet } from '@kin-wallet/services'
-import { Avatar, Zoom } from '@material-ui/core'
+import { Avatar, Button, Zoom } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -20,16 +20,20 @@ export function WalletListItem({
   wallet,
   open,
   balance,
+  error,
   status,
   info,
+  createAccount,
   handleDelete,
   handleTransaction,
 }: {
   wallet: Wallet
   balance?: AccountBalance
+  error?: string
   status?: WalletStatus
   open?: boolean
   info: AccountDetails
+  createAccount?: (wallet: Wallet) => Promise<void>
   handleDelete?: (wallet: Wallet) => Promise<boolean>
   handleTransaction?: (wallet: Wallet, transaction: WalletTransaction) => Promise<[string, string?]>
 }) {
@@ -43,9 +47,9 @@ export function WalletListItem({
     return handleTransaction(wallet, transaction)
   }
 
-  function onCopy() {
-    enqueueSnackbar(`Copied secret to clipboard`, { variant: 'success' })
-  }
+  const createTokenAccount = () => createAccount(wallet)
+
+  const onCopy = () => enqueueSnackbar(`Copied secret to clipboard`, { variant: 'success' })
 
   function onDelete() {
     if (window.confirm(`Are you sure?`)) {
@@ -69,11 +73,7 @@ export function WalletListItem({
           </div>
           <div className="flex justify-between items-center space-x-2">
             <div className="flex flex-col items-center">
-              {info?.error ? (
-                <Alert severity="error" variant="outlined">
-                  {info?.error}
-                </Alert>
-              ) : balance ? (
+              {balance ? (
                 <WalletBalance balance={balance} />
               ) : (
                 <div className="text-sm text-gray-500 animate-pulse">{status}</div>
@@ -85,40 +85,56 @@ export function WalletListItem({
           </div>
         </div>
       </div>
-      {showDetails ? (
+      {showDetails || error ? (
         <div className="px-6 py-4 flex flex-col space-y-6">
-          <div className="flex justify-evenly">
-            <WalletTransactionDialog info={info} type="receive" buttonLabel="Receive" title="Receive Kin" />
-            <WalletTransactionDialog
-              info={info}
-              type="send"
-              buttonLabel="Send"
-              title="Send Kin"
-              sendTransaction={sendTransaction}
-              disabled={!wallet.secret}
-            />
-          </div>
-          <div className="flex justify-between items-center">
+          {error ? (
+            error === 'No Kin token accounts found' ? (
+              <div className="flex justify-center">
+                <Button variant="contained" color="primary" size="large" onClick={createTokenAccount}>
+                  Create Token Account
+                </Button>
+              </div>
+            ) : (
+              <Alert severity="error" variant="outlined">
+                {error}
+              </Alert>
+            )
+          ) : (
             <div>
-              <WalletAddress publicKey={wallet?.publicKey} explorerUrl={info?.explorerUrl} />
-            </div>
-            <div className="flex items-center space-x-2">
-              {wallet.secret && (
-                <CopyToClipboard text={wallet.secret || 'no wallet secret found'} onCopy={onCopy}>
-                  <Tooltip TransitionComponent={Zoom} title="Copy secret to clipboard" placement="top">
-                    <IconButton size="small">
-                      <VpnKeyIcon color="disabled" />
+              <div className="flex justify-evenly">
+                <WalletTransactionDialog info={info} type="receive" buttonLabel="Receive" title="Receive Kin" />
+                <WalletTransactionDialog
+                  info={info}
+                  type="send"
+                  buttonLabel="Send"
+                  title="Send Kin"
+                  sendTransaction={sendTransaction}
+                  disabled={!wallet.secret}
+                />
+              </div>
+              <div className="flex justify-between items-center">
+                <div>
+                  <WalletAddress publicKey={wallet?.publicKey} explorerUrl={info?.explorerUrl} />
+                </div>
+                <div className="flex items-center space-x-2">
+                  {wallet.secret && (
+                    <CopyToClipboard text={wallet.secret || 'no wallet secret found'} onCopy={onCopy}>
+                      <Tooltip TransitionComponent={Zoom} title="Copy secret to clipboard" placement="top">
+                        <IconButton size="small">
+                          <VpnKeyIcon color="disabled" />
+                        </IconButton>
+                      </Tooltip>
+                    </CopyToClipboard>
+                  )}
+                  <Tooltip TransitionComponent={Zoom} title="Delete this account" placement="top">
+                    <IconButton size="small" onClick={onDelete}>
+                      <DeleteIcon color="disabled" />
                     </IconButton>
                   </Tooltip>
-                </CopyToClipboard>
-              )}
-              <Tooltip TransitionComponent={Zoom} title="Delete this account" placement="top">
-                <IconButton size="small" onClick={onDelete}>
-                  <DeleteIcon color="disabled" />
-                </IconButton>
-              </Tooltip>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       ) : null}
     </div>
