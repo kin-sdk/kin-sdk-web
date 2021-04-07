@@ -1,4 +1,4 @@
-import { AccountDetails, Prices, Wallet } from '@kin-wallet/services'
+import { AccountBalance, AccountDetails, Wallet } from '@kin-wallet/services'
 import { Avatar, Zoom } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -7,12 +7,12 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey'
 import { Alert } from '@material-ui/lab'
 import cx from 'classnames'
 import { useSnackbar } from 'notistack'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import React, { useState } from 'react'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
+import { WalletStatus, WalletTransaction } from '../data-access'
 import { WalletAddress } from './wallet-address'
 import { WalletBalance } from './wallet-balance'
-import { WalletTransaction } from '../data-access'
 
 import { WalletTransactionDialog } from './wallet-transaction-dialog'
 
@@ -24,16 +24,14 @@ export function WalletListItem({
   info,
   handleDelete,
   handleTransaction,
-  prices,
 }: {
   wallet: Wallet
-  balance?: string
-  status?: string
+  balance?: AccountBalance
+  status?: WalletStatus
   open?: boolean
   info: AccountDetails
   handleDelete?: (wallet: Wallet) => Promise<boolean>
   handleTransaction?: (wallet: Wallet, transaction: WalletTransaction) => Promise<[string, string?]>
-  prices?: Prices
 }) {
   const { enqueueSnackbar } = useSnackbar()
   const [showDetails, setShowDetails] = useState(open)
@@ -58,7 +56,7 @@ export function WalletListItem({
   }
 
   return (
-    <div className={cx({ 'bg-gray-700': showDetails })}>
+    <div className={cx({ ' x': showDetails })}>
       <div className="px-4 py-4 hover:bg-gray-700 cursor-pointer" onClick={toggleDetails}>
         <div className="flex justify-between items-center">
           <div className="flex justify-between items-center space-x-2">
@@ -76,9 +74,9 @@ export function WalletListItem({
                   {info?.error}
                 </Alert>
               ) : balance ? (
-                <WalletBalance balance={balance} prices={prices} />
+                <WalletBalance balance={balance} />
               ) : (
-                <div className="text-sm text-gray-500 animate-pulse">Loading</div>
+                <div className="text-sm text-gray-500 animate-pulse">{status}</div>
               )}
             </div>
             <button onClick={toggleDetails}>

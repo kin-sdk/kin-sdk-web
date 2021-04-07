@@ -3,14 +3,12 @@ import { CircularProgress, Paper, Typography } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 import { useSnackbar } from 'notistack'
 import React, { useEffect } from 'react'
-import { usePrices } from '../../network/data-access'
 import { useWallet, WalletTransaction } from '../data-access'
 
 import { WalletListHeader, WalletListItem } from '../ui'
 
 export function WalletList() {
   const { enqueueSnackbar } = useSnackbar()
-  const { prices, refreshPrices } = usePrices()
   const {
     wallets,
     balance,
@@ -43,10 +41,8 @@ export function WalletList() {
     <Paper elevation={5}>
       <WalletListHeader
         balance={totalBalance}
-        prices={prices}
         loading={loading}
         onRefresh={() => {
-          refreshPrices().then()
           refresh().then()
         }}
       />
@@ -72,7 +68,6 @@ export function WalletList() {
               <WalletListItem
                 key={wallet.id}
                 wallet={wallet}
-                prices={prices}
                 info={balance?.addressMap[wallet.publicKey]}
                 balance={accountBalance[wallet.publicKey]}
                 status={accountStatus[wallet.publicKey]}
@@ -83,8 +78,8 @@ export function WalletList() {
           )}
         </div>
       )}
-      <pre>{JSON.stringify(accountBalance, null, 2)}</pre>
-      <pre>{JSON.stringify(accountStatus, null, 2)}</pre>
+      {/*<pre>{JSON.stringify(totalBalance, null, 2)}</pre>*/}
+      {/*<pre>{JSON.stringify(accountStatus, null, 2)}</pre>*/}
     </Paper>
   )
 }
