@@ -58,7 +58,6 @@ export class KinClient {
   async ensureServiceConfig() {
     if (!this.serviceConfig) {
       this.serviceConfig = await this.getServiceConfig()
-      console.log('this.serviceConfig, ', this.serviceConfig)
     }
   }
 
@@ -73,8 +72,6 @@ export class KinClient {
   async createAccount(secret: string): Promise<{ result?: any; error?: string }> {
     await this.ensureServiceConfig()
     const owner = PrivateKey.fromString(secret)
-    console.log('secret', secret)
-    console.log('owner', owner)
 
     return this.createAccountTransaction(owner).then((tx) => {
       return this.createAccountRequest(tx)
@@ -235,10 +232,6 @@ export class KinClient {
           subsidizer: subsidizer,
         }
       })
-      .then((res) => {
-        console.log('res', res)
-        return res
-      })
   }
 
   submitAgoraReq(url: string, data: Uint8Array): Promise<AxiosResponse> {
@@ -304,14 +297,8 @@ export class KinClient {
     tokenAccount: string
     memo?: string
     secret: string
-  }) {
-    console.log({
-      amount,
-      tokenAccount,
-      destination,
-      memo,
-      secret,
-    })
+  }): Promise<[string, string?]> {
+    await this.ensureServiceConfig()
     const transaction = this.createSolanaTransaction({
       publicKey: Keypair.fromSecret(secret).publicKey,
       tokenAccount,
@@ -321,15 +308,7 @@ export class KinClient {
       subsidizer: this.serviceConfig?.subsidizer,
       tokenProgram: this.serviceConfig?.tokenProgram,
     })
-
-    let pk: PrivateKey
-    try {
-      pk = PrivateKey.fromString(secret)
-    } catch (_) {
-      pk = PrivateKey.fromBase58(secret)
-    }
-
-    console.log('pk', pk)
+    const pk: PrivateKey = PrivateKey.fromString(secret)
     const req = new GetRecentBlockhashRequest()
 
     return this.submitAgoraReq(this.urls?.getRecentBlockhashURL, req.serializeBinary())
@@ -344,12 +323,11 @@ export class KinClient {
             verifySignatures: false,
           }),
         )
-        console.log(protoTx)
         return this.submitTransaction(protoTx)
       })
   }
 
-  submitTransaction(tx: Transaction) {
+  submitTransaction(tx: Transaction): Promise<[string, string?]> {
     const submitReq = new SubmitTransactionRequest()
     submitReq.setTransaction(tx)
     submitReq.setCommitment(Commitment.SINGLE)
@@ -359,45 +337,30 @@ export class KinClient {
       .then((res) => this.handleSubmitTransactionResponse(res))
   }
 
-  handleSubmitTransactionResponse(res: SubmitTransactionResponse) {
+  handleSubmitTransactionResponse(res: SubmitTransactionResponse): [string, string?] {
     switch (res.getResult()) {
       case SubmitTransactionResponse.Result.OK:
       case SubmitTransactionResponse.Result.ALREADY_SUBMITTED:
-        console.log({
-          type: 'SET_SUBMITTED_TRANSACTION',
-          payload: {
-            submitResponse: res,
-            signature: res.getSignature().getValue_asU8(),
-          },
-        })
-        break
+        return ['The transaction is submitted', null]
       case SubmitTransactionResponse.Result.FAILED:
         switch (res.getTransactionError().getReason()) {
           case TransactionError.Reason.UNAUTHORIZED:
-            console.log(['The transaction failed due to a signature error'])
-            break
+            return [null, 'The transaction failed due to a signature error']
           case TransactionError.Reason.BAD_NONCE:
-            console.log(['The transaction failed because of a bad nonce. Please try again.'])
-            break
+            return [null, 'The transaction failed because of a bad nonce. Please try again.']
           case TransactionError.Reason.INSUFFICIENT_FUNDS:
-            console.log(['The transaction failed because of insufficient funds.'])
-            break
+            return [null, 'The transaction failed because of insufficient funds.']
           case TransactionError.Reason.INVALID_ACCOUNT:
-            console.log(['The transaction failed because of an invalid account. Please check your account values'])
-            break
+            return [null, 'The transaction failed because of an invalid account. Please check your account values']
           default:
-            console.log(['The transaction failed for an unknown reason'])
+            return [null, 'The transaction failed for an unknown reason']
         }
-        break
       case SubmitTransactionResponse.Result.REJECTED:
-        console.log(['The transaction was rejected by the configured webhook'])
-        break
+        return [null, 'The transaction was rejected by the configured webhook']
       case SubmitTransactionResponse.Result.INVOICE_ERROR:
-        console.log(['The transaction was rejected by the configured webhook because of an invoice error.'])
-        break
+        return [null, 'The transaction was rejected by the configured webhook because of an invoice error.']
       case SubmitTransactionResponse.Result.PAYER_REQUIRED:
-        console.log(['The transaction failed because the transaction subsidizer did not sign the transaction.'])
-        break
+        return [null, 'The transaction failed because the transaction subsidizer did not sign the transaction.']
     }
   }
 }

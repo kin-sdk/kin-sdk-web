@@ -41,7 +41,6 @@ export class KinWalletService {
   constructor(private readonly network: Network, private readonly baseUrl = 'https://services.kintegrate.dev/api/') {
     console.log(`KinWalletService: ${network?.name}`)
     this.client = new KinClient(network?.env)
-    this.getPrices()
   }
 
   api(path: string, params?: string) {

@@ -57,7 +57,7 @@ export function WalletTransactionDialog({
     setSuccess(null)
   }
 
-  const handleSubmitSuccess = ([res, err]) => {
+  const handleSubmitSuccess = ([res, err]: [string, string?]) => {
     enqueueSnackbar(res, { variant: 'success' })
     setSending(false)
     setSuccess(res)
@@ -81,7 +81,12 @@ export function WalletTransactionDialog({
     setSending(true)
     setDisableForm(true)
     resetFormState()
-    return sendTransaction(transaction).then(handleSubmitSuccess).catch(handleSubmitError)
+    return sendTransaction(transaction)
+      .then((res) => {
+        console.log('sendTransaction res', res)
+        return handleSubmitSuccess(res)
+      })
+      .catch(handleSubmitError)
   }
 
   const isValid = () => {

@@ -27,7 +27,7 @@ export function WalletListItem({
   info: AccountDetails
   createAccount?: (wallet: Wallet) => Promise<void>
   handleDelete?: (wallet: Wallet) => Promise<void>
-  handleTransaction?: (wallet: Wallet, transaction: WalletTransaction) => Promise<[string, string]>
+  handleTransaction?: (wallet: Wallet, transaction: WalletTransaction) => Promise<[string, string?]>
 }) {
   const [showDetails, setShowDetails] = useState(open)
   const toggleDetails = () => setShowDetails(() => !showDetails)

@@ -114,7 +114,7 @@ export class Keypair {
    * @returns {Keypair}
    */
   static random() {
-    let secret = nacl.randomBytes(32)
+    const secret = nacl.randomBytes(32)
     return this.fromRawEd25519Seed(secret)
   }
 

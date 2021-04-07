@@ -22,7 +22,7 @@ export interface WalletContextProps {
   addWallet?: ([WalletAddType, Wallet]) => Promise<[string, string?]>
   createAccount?: (wallet: Wallet) => Promise<void>
   deleteWallet?: (wallet: Wallet) => Promise<void>
-  sendTransaction?: (wallet: Wallet, tx: WalletTransaction) => Promise<void>
+  sendTransaction?: (wallet: Wallet, tx: WalletTransaction) => Promise<[string, string?]>
 }
 
 const WalletContext = createContext<WalletContextProps>(undefined)
@@ -54,7 +54,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
       .then(() => reload())
   }
 
-  const sendTransaction = (wallet: Wallet, tx: WalletTransaction): Promise<void> => {
+  const sendTransaction = (wallet: Wallet, tx: WalletTransaction): Promise<[string, string?]> => {
     return service?.client?.submitPayment({
       amount: tx.amount,
       destination: tx.destination,

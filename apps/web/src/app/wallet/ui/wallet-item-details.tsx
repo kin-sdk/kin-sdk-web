@@ -13,7 +13,7 @@ import { WalletTransactionDialog } from './wallet-transaction-dialog'
 
 export interface WalletItemDetailsProps {
   handleDelete: (wallet: Wallet) => Promise<void>
-  sendTransaction: (tx: WalletTransaction) => Promise<[string, string]>
+  sendTransaction: (tx: WalletTransaction) => Promise<[string, string?]>
   wallet: Wallet
 }
 

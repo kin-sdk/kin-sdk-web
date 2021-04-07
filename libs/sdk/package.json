@@ -1,4 +1,8 @@
 {
   "name": "@kin-wallet/sdk",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "license": "MIT",
+  "dependencies": {
+    "@kintegrate/google-protobuf": "^3.15.7"
+  }
 }

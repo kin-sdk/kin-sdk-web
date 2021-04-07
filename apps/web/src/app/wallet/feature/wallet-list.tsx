@@ -24,13 +24,14 @@ export function WalletList() {
     deleteWallet,
   } = useWallet()
 
-  const handleTransaction = (wallet: Wallet, tx: WalletTransaction): Promise<[string, string]> => {
+  const handleTransaction = (wallet: Wallet, tx: WalletTransaction): Promise<[string, string?]> => {
     return new Promise((resolve, reject) => {
       if (tx.destination.length < 10) {
         return reject([false, `Destination address too short`])
       }
-      return sendTransaction(wallet, tx).then(() => {
-        return ['Transaction Sent']
+      return sendTransaction(wallet, tx).then((res) => {
+        setTimeout(() => refresh(), 2000)
+        return resolve(res)
       })
     })
   }
