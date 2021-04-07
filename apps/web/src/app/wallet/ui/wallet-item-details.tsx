@@ -33,13 +33,13 @@ export function WalletItemDetails({ handleDelete, sendTransaction, wallet }: Wal
   }
 
   return (
-    <div>
+    <>
       <div className="flex justify-evenly">
         <WalletTransactionDialog wallet={wallet} type="receive" buttonLabel="Receive" title="Receive Kin" />
         <WalletTransactionDialog
           wallet={wallet}
-          type="send"
-          buttonLabel="Send"
+          type={wallet?.secret?.length ? 'send' : 'watch'}
+          buttonLabel={wallet?.secret?.length ? 'Send' : 'Watching'}
           title="Send Kin"
           sendTransaction={sendTransaction}
           disabled={!wallet?.secret}
@@ -66,6 +66,6 @@ export function WalletItemDetails({ handleDelete, sendTransaction, wallet }: Wal
           </Tooltip>
         </div>
       </div>
-    </div>
+    </>
   )
 }

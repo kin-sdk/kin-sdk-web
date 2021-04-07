@@ -65,6 +65,7 @@ export function NetworkDropdown({ selected, networks, onSelect }: NetworkSelectP
         aria-controls={open ? 'menu-list-grow' : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
+        disableFocusRipple
       >
         <NetworkLabel title={selected?.name} />
       </Button>

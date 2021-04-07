@@ -4,6 +4,7 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import GetAppIcon from '@material-ui/icons/GetApp'
 import SendIcon from '@material-ui/icons/Send'
+import VisibilityIcon from '@material-ui/icons/Visibility'
 import Alert from '@material-ui/lab/Alert'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
@@ -19,7 +20,7 @@ export interface WalletTransactionDialogProps {
   info?: AccountDetails
   sendTransaction?: (tx: WalletTransaction) => Promise<[string, string?]>
   title?: string
-  type?: 'receive' | 'send'
+  type?: 'receive' | 'send' | 'watch'
   wallet: Wallet
 }
 const initialValues = { destination: '', amount: '1', memo: '' }
@@ -95,6 +96,17 @@ export function WalletTransactionDialog({
     )
   }
 
+  function getIcon(type: 'receive' | 'send' | 'watch') {
+    switch (type) {
+      case 'receive':
+        return <GetAppIcon />
+      case 'watch':
+        return <VisibilityIcon />
+      case 'send':
+        return <SendIcon />
+    }
+  }
+
   return (
     <div>
       <Button
@@ -102,7 +114,7 @@ export function WalletTransactionDialog({
         disabled={disabled}
         variant="contained"
         color="secondary"
-        startIcon={type === 'receive' ? <GetAppIcon /> : <SendIcon />}
+        startIcon={getIcon(type)}
       >
         {buttonLabel}
       </Button>

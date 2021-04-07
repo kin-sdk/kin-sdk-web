@@ -57,6 +57,7 @@ export function WalletAddDropdown({ onSelect }: WalletAddSelectProps) {
         aria-controls={open ? 'menu-list-grow' : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
+        disableFocusRipple
       >
         <div className={'flex items-center space-x-2'}>
           <AddIcon />
