@@ -101,7 +101,7 @@ export function WalletTransactionDialog({
         onClick={handleToggle}
         disabled={disabled}
         variant="contained"
-        color="primary"
+        color="secondary"
         startIcon={type === 'receive' ? <GetAppIcon /> : <SendIcon />}
       >
         {buttonLabel}
@@ -132,11 +132,11 @@ export function WalletTransactionDialog({
           )}
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" disabled={sending} onClick={handleClose} color="primary">
+          <Button variant="contained" disabled={sending} onClick={handleClose} color="secondary">
             Close
           </Button>
           {type === 'send' && (
-            <Button type="submit" disabled={!isValid()} variant="contained" onClick={handleSubmit} color="primary">
+            <Button type="submit" disabled={!isValid()} variant="contained" onClick={handleSubmit} color="secondary">
               {type}
             </Button>
           )}

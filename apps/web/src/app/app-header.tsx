@@ -42,7 +42,7 @@ export function AppHeader() {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" color="secondary">
         <Toolbar className="flex justify-between items-center">
           <Typography variant="h6" className={''}>
             <Link to="/">Kin Wallet</Link>

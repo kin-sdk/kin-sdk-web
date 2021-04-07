@@ -58,7 +58,7 @@ export function WalletList() {
       ) : null}
       {loading ? (
         <div className="h-36 flex flex-col justify-center items-center">
-          <CircularProgress size={60} color="secondary" />
+          <CircularProgress size={60} />
         </div>
       ) : (
         <div className="divide-y divide-gray-800">

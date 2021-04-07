@@ -79,7 +79,7 @@ export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletA
         ) : null}
       </DialogContent>
       <DialogActions>
-        <Button variant="outlined" onClick={handleClose} color="primary">
+        <Button variant="contained" onClick={handleClose} color="secondary">
           Cancel
         </Button>
         <Button type="submit" variant="contained" onClick={handleSubmit} color="default">

@@ -24,7 +24,7 @@ export function WalletTransactionForm({ disableForm, transaction, onChange }: Wa
             autoFocus
             type="text"
             required
-            variant="outlined"
+            variant="standard"
             name="destination"
             disabled={disableForm}
             value={transaction?.destination}
@@ -38,7 +38,7 @@ export function WalletTransactionForm({ disableForm, transaction, onChange }: Wa
             label="Amount"
             type="number"
             required
-            variant="outlined"
+            variant="standard"
             name="amount"
             disabled={disableForm}
             value={transaction?.amount}
@@ -51,7 +51,7 @@ export function WalletTransactionForm({ disableForm, transaction, onChange }: Wa
             margin="dense"
             label="Memo"
             type="text"
-            variant="outlined"
+            variant="standard"
             name="memo"
             disabled={disableForm}
             value={transaction?.memo}

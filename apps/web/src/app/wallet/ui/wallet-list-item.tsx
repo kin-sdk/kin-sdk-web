@@ -45,7 +45,7 @@ export function WalletListItem({
       <div className="px-4 py-4 hover:bg-gray-700 cursor-pointer" onClick={toggleDetails}>
         <div className="flex justify-between items-center">
           <div className="flex justify-between items-center space-x-2">
-            <Avatar alt="Kin Logo" src="assets/kin-logo.svg" title="Kin Logo" />
+            <Avatar alt="Kin Logo" src="assets/kin-logo-small.png" title="Kin Logo" />
             <div className=" flex flex-col">
               <div className="flex space-x-2 text-xl items-center">
                 <div>{wallet.name}</div>
