@@ -3,4 +3,5 @@ export interface Wallet {
   name?: string
   secret?: string
   publicKey?: string
+  explorerUrl?: string
 }

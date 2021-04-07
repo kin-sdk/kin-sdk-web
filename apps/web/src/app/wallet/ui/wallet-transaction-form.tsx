@@ -1,4 +1,4 @@
-import { FormControl, FormGroup, FormLabel, TextField } from '@material-ui/core'
+import { FormControl, FormGroup, TextField } from '@material-ui/core'
 import React from 'react'
 import { WalletTransaction } from '../data-access'
 
@@ -18,9 +18,9 @@ export function WalletTransactionForm({ disableForm, transaction, onChange }: Wa
     <form noValidate autoComplete="off">
       <FormGroup>
         <FormControl>
-          <FormLabel>Destination</FormLabel>
           <TextField
             margin="dense"
+            label="Destination"
             autoFocus
             type="text"
             required

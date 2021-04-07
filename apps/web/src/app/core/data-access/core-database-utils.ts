@@ -28,7 +28,10 @@ export class Collection<T> {
   }
 
   findMany(): Promise<T[]> {
-    return this.collection?.find().exec()
+    return this.collection
+      ?.find()
+      .exec()
+      .then((items) => items.map((item) => item.toJSON()))
   }
 
   findOne(itemId: string): Promise<T> {

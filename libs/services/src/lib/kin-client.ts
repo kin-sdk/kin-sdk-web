@@ -305,6 +305,13 @@ export class KinClient {
     memo?: string
     secret: string
   }) {
+    console.log({
+      amount,
+      tokenAccount,
+      destination,
+      memo,
+      secret,
+    })
     const transaction = this.createSolanaTransaction({
       publicKey: Keypair.fromSecret(secret).publicKey,
       tokenAccount,
@@ -322,6 +329,7 @@ export class KinClient {
       pk = PrivateKey.fromBase58(secret)
     }
 
+    console.log('pk', pk)
     const req = new GetRecentBlockhashRequest()
 
     return this.submitAgoraReq(this.urls?.getRecentBlockhashURL, req.serializeBinary())
@@ -336,6 +344,7 @@ export class KinClient {
             verifySignatures: false,
           }),
         )
+        console.log(protoTx)
         return this.submitTransaction(protoTx)
       })
   }

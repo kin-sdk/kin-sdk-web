@@ -6,6 +6,7 @@ import { useNetwork, usePrices } from '../../network/data-access'
 import { createWallet } from './create-wallet'
 import { WalletAddType } from './interfaces/wallet-add-type'
 import { WalletStatus } from './interfaces/wallet-status.type'
+import { WalletTransaction } from './interfaces/wallet-transaction'
 
 export interface WalletContextProps {
   accountBalance?: Record<string, AccountBalance>
@@ -14,14 +15,14 @@ export interface WalletContextProps {
   wallets?: Wallet[]
   balance?: BalanceResult
   loading?: boolean
-  loadingBalance?: boolean
   error?: string
   totalBalance?: AccountBalance
   refresh?: () => Promise<void>
   reload?: () => Promise<void>
   addWallet?: ([WalletAddType, Wallet]) => Promise<[string, string?]>
   createAccount?: (wallet: Wallet) => Promise<void>
-  deleteWallet?: (wallet: Wallet) => Promise<boolean>
+  deleteWallet?: (wallet: Wallet) => Promise<void>
+  sendTransaction?: (wallet: Wallet, tx: WalletTransaction) => Promise<void>
 }
 
 const WalletContext = createContext<WalletContextProps>(undefined)
@@ -29,10 +30,9 @@ const WalletContext = createContext<WalletContextProps>(undefined)
 function WalletProvider({ children }: { children: ReactNode }) {
   const [db, loadingDb] = useDatabase()
   const { network, service } = useNetwork()
-  const { convertPrice, refreshPrices, prices } = usePrices()
+  const { convertPrice, refreshPrices } = usePrices()
 
   const [loading, setLoading] = useState<boolean>(true)
-  const [loadingBalance, setLoadingBalance] = useState<boolean>(true)
   const [error, setError] = useState<string>()
   const [wallets, setWallets] = useState(null)
   const [balance, setBalance] = useState<BalanceResult>(null)
@@ -50,7 +50,18 @@ function WalletProvider({ children }: { children: ReactNode }) {
         setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Submitted' }))
         return handleAccountRefresh(wallet)
       })
+      .then(() => refresh())
       .then(() => reload())
+  }
+
+  const sendTransaction = (wallet: Wallet, tx: WalletTransaction): Promise<void> => {
+    return service?.client?.submitPayment({
+      amount: tx.amount,
+      destination: tx.destination,
+      memo: tx.memo,
+      secret: wallet.secret,
+      tokenAccount: wallet.publicKey,
+    })
   }
 
   const resolveTokenAccount = (publicKey: string): Promise<{ balances?: any; error?: string }> | undefined => {
@@ -110,6 +121,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
     return db?.wallets
       ?.findMany()
       .then((items) => orderBy(items, 'name'))
+      .then((items) => items.map((item) => ({ ...item, explorerUrl: service?.getExplorerUrl(item?.publicKey) })))
       .then(setWallets)
       .then(() => {
         refresh()
@@ -117,10 +129,9 @@ function WalletProvider({ children }: { children: ReactNode }) {
       })
   }
 
-  const deleteWallet = async (wallet: Wallet): Promise<boolean> => {
-    const deleted = await db?.wallets?.deleteItem(wallet?.id)
+  const deleteWallet = async (wallet: Wallet): Promise<void> => {
+    await db?.wallets?.deleteItem(wallet?.id)
     await reload()
-    return !!deleted
   }
 
   const addWallet = async ([type, wallet]: [WalletAddType, Wallet]): Promise<[string, string?]> => {
@@ -132,10 +143,10 @@ function WalletProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setLoading(true)
-    if (db?.wallets && !loadingDb) {
+    if (db?.wallets && !loadingDb && service) {
       reload()
     }
-  }, [db, loadingDb])
+  }, [db, loadingDb, service])
 
   useEffect(() => {
     if (wallets && network && service) {
@@ -153,13 +164,13 @@ function WalletProvider({ children }: { children: ReactNode }) {
         totalBalance,
         error,
         loading,
-        loadingBalance,
         balance,
         wallets,
         refresh,
         reload,
         addWallet,
         deleteWallet,
+        sendTransaction,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import { AccountDetails } from '@kin-wallet/services'
+import { AccountDetails, Wallet } from '@kin-wallet/services'
 import { Button, DialogActions, DialogContent, LinearProgress } from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
@@ -17,19 +17,20 @@ export interface WalletTransactionDialogProps {
   buttonLabel?: string
   disabled?: boolean
   info?: AccountDetails
+  sendTransaction?: (tx: WalletTransaction) => Promise<[string, string?]>
   title?: string
   type?: 'receive' | 'send'
-  sendTransaction?: (transaction: WalletTransaction) => Promise<[string, string?]>
+  wallet: Wallet
 }
 const initialValues = { destination: '', amount: '1', memo: '' }
 
 export function WalletTransactionDialog({
   buttonLabel,
   disabled,
-  info,
   sendTransaction,
   title,
   type,
+  wallet,
 }: WalletTransactionDialogProps) {
   const { enqueueSnackbar } = useSnackbar()
   const [transaction, setTransaction] = useState<WalletTransaction>(initialValues)
@@ -108,9 +109,9 @@ export function WalletTransactionDialog({
         <DialogContent>
           {type === 'receive' && (
             <div className="flex flex-col items-center justify-center space-y-6">
-              <WalletAddress publicKey={info?.publicKey} explorerUrl={info?.explorerUrl} />
+              <WalletAddress publicKey={wallet?.publicKey} explorerUrl={wallet?.explorerUrl} />
               <div className="p-4 bg-white">
-                <QRCode value={info?.publicKey} />
+                <QRCode value={wallet?.publicKey} />
               </div>
             </div>
           )}

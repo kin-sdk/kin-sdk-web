@@ -17,19 +17,21 @@ export function WalletList() {
     accountStatus,
     totalBalance,
     createAccount,
+    sendTransaction,
     error,
     loading,
     refresh,
     deleteWallet,
   } = useWallet()
-  const handleTransaction = (wallet: Wallet, transaction: WalletTransaction): Promise<[string, string?]> => {
+
+  const handleTransaction = (wallet: Wallet, tx: WalletTransaction): Promise<[string, string]> => {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (transaction.destination.length < 10) {
-          return reject([false, `Destination address too short`])
-        }
-        return resolve([`Transaction sent.`])
-      }, 1000)
+      if (tx.destination.length < 10) {
+        return reject([false, `Destination address too short`])
+      }
+      return sendTransaction(wallet, tx).then(() => {
+        return ['Transaction Sent']
+      })
     })
   }
 
@@ -83,7 +85,7 @@ export function WalletList() {
           )}
         </div>
       )}
-      {/*<pre>{JSON.stringify(totalBalance, null, 2)}</pre>*/}
+      {/*<pre>{JSON.stringify(wallets, null, 2)}</pre>*/}
       {/*<pre>{JSON.stringify(accountStatus, null, 2)}</pre>*/}
     </Paper>
   )

@@ -4,7 +4,7 @@ import { useNetwork } from './network-provider'
 
 const PricesContext = createContext<{
   prices?: Prices
-  refreshPrices?: () => Promise<Prices>
+  refreshPrices?: () => Promise<void>
   convertPrice?: (kin: string) => AccountBalance
 }>(undefined)
 
@@ -12,12 +12,7 @@ function PricesProvider({ children }: { children: ReactNode }) {
   const [prices, setPrices] = useState<Prices>()
   const { network, service } = useNetwork()
 
-  const refreshPrices = () => {
-    return service?.getPrices().then((res) => {
-      setPrices(res)
-      return res
-    })
-  }
+  const refreshPrices = () => service?.getPrices().then(setPrices)
 
   const convertPrice = (kin: string): AccountBalance => {
     const kinInt = parseInt(kin, 10)

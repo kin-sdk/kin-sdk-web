@@ -58,4 +58,12 @@ export class KinWalletService {
       .get(`https://api.coingecko.com/api/v3/simple/price?ids=kin&vs_currencies=usd%2Cbtc&include_24hr_change=true`)
       .then((res) => res.data)
   }
+
+  getExplorerUrl(publicKey: string): string {
+    const baseUrl = `https://explorer.solana.com/address/${publicKey}`
+    const params =
+      this.network.env === KinEnvironment.Test ? `?cluster=custom&customUrl=https://local.validator.agorainfra.dev` : ''
+
+    return `${baseUrl}/tokens${params}`
+  }
 }
