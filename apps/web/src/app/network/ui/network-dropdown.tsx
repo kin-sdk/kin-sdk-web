@@ -14,7 +14,7 @@ function NetworkLabel({ title }: { title: string }) {
   return (
     <div className={'flex items-center space-x-2'}>
       <BiGlobe className="text-xl" />
-      <span className="hidden md:inline-block">{title || 'Loading'}</span>
+      <span className="">{title || 'Loading'}</span>
     </div>
   )
 }

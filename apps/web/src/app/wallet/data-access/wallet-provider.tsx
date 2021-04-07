@@ -2,6 +2,9 @@ import { AccountBalance, BalanceResult, Wallet } from '@kin-wallet/services'
 import { orderBy } from 'lodash'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { useDatabase } from '../../core/data-access'
+import { Database } from '../../core/data-access/core-database-utils'
+import { CoreDatabase } from '../../core/data-access/core-get-db'
+import { useDependencyInjector } from '../../core/data-access/core-injector'
 import { useNetwork, usePrices } from '../../network/data-access'
 import { createWallet } from './create-wallet'
 import { WalletAddType } from './interfaces/wallet-add-type'
@@ -28,7 +31,8 @@ export interface WalletContextProps {
 const WalletContext = createContext<WalletContextProps>(undefined)
 
 function WalletProvider({ children }: { children: ReactNode }) {
-  const [db, loadingDb] = useDatabase()
+  const injector = useDependencyInjector()
+  const db: Database = injector.get(CoreDatabase)
   const { network, service } = useNetwork()
   const { convertPrice, refreshPrices } = usePrices()
 
@@ -143,10 +147,10 @@ function WalletProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setLoading(true)
-    if (db?.wallets && !loadingDb && service) {
+    if (db?.wallets && service) {
       reload()
     }
-  }, [db, loadingDb, service])
+  }, [db, service])
 
   useEffect(() => {
     if (wallets && network && service) {
