@@ -1,7 +1,7 @@
 // package: kin.agora.account.v3
 // file: account/v3/account_service.proto
 
-import * as jspb from 'google-protobuf'
+import * as jspb from '@kintegrate/google-protobuf'
 import * as validate_validate_pb from '../../validate/validate_pb'
 import * as common_v3_model_pb from '../../common/v3/model_pb'
 

@@ -1,7 +1,7 @@
 // package: kin.agora.common.v4
 // file: common/v4/model.proto
 
-import * as jspb from 'google-protobuf'
+import * as jspb from '@kintegrate/google-protobuf'
 import * as validate_validate_pb from '../../validate/validate_pb'
 
 export class SolanaAccountId extends jspb.Message {

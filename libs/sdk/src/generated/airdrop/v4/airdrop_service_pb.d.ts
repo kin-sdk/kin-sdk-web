@@ -1,7 +1,7 @@
 // package: kin.agora.airdrop.v4
 // file: airdrop/v4/airdrop_service.proto
 
-import * as jspb from 'google-protobuf'
+import * as jspb from '@kintegrate/google-protobuf'
 import * as validate_validate_pb from '../../validate/validate_pb'
 import * as common_v4_model_pb from '../../common/v4/model_pb'
 
