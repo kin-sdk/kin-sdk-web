@@ -50,9 +50,9 @@ export function AppHeader() {
           <div className="flex items-center">
             <WalletAddDropdown onSelect={handleAdd} />
             <NetworkDropdown networks={networks} selected={network} onSelect={setNetwork} />
-            <Link to="/settings">
-              <SettingsIcon color="disabled" fontSize="small" />
-            </Link>
+            {/*<Link to="/settings">*/}
+            {/*  <SettingsIcon color="disabled" fontSize="small" />*/}
+            {/*</Link>*/}
           </div>
         </Toolbar>
       </AppBar>
