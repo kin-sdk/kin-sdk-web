@@ -68,7 +68,7 @@ export function WalletTransactionDialog({
       resetFormState()
       setDisableForm(false)
       handleClose()
-    }, 1000)
+    }, 2000)
   }
 
   const handleSubmitError = (err) => {
@@ -93,7 +93,11 @@ export function WalletTransactionDialog({
 
   const isValid = () => {
     return (
-      transaction?.destination?.length && transaction?.amount?.length && Number(transaction?.amount) > 0 && !sending
+      (transaction?.destination?.length &&
+        transaction?.amount?.length &&
+        Number(transaction?.amount) > 0 &&
+        !sending) ||
+      !!success
     )
   }
 
@@ -156,7 +160,7 @@ export function WalletTransactionDialog({
               disabled={!isValid()}
               variant="contained"
               onClick={handleSubmit}
-              color="secondary"
+              color="primary"
             >
               {type}
             </LoadingButton>

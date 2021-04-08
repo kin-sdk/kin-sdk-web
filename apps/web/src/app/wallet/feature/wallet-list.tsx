@@ -35,6 +35,11 @@ export function WalletList() {
     })
   }
 
+  const handleRefresh = () => {
+    enqueueSnackbar(`Refreshing...`, { variant: 'info' })
+    refresh().then()
+  }
+
   useEffect(() => {
     if (error) {
       enqueueSnackbar(`${error}`, { variant: 'error' })
@@ -43,13 +48,7 @@ export function WalletList() {
 
   return (
     <Paper elevation={5}>
-      <WalletListHeader
-        balance={totalBalance}
-        loading={loading}
-        onRefresh={() => {
-          refresh().then()
-        }}
-      />
+      <WalletListHeader balance={totalBalance} loading={loading} onRefresh={handleRefresh} />
       {error ? (
         <Alert variant="filled" className="m-4" severity="error">
           {error}

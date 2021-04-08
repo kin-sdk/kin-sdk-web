@@ -36,6 +36,19 @@ export interface Prices {
   }
 }
 
+export function getExplorerUrl(env: KinEnvironment, publicKey: string): string {
+  const baseUrl = `https://explorer.solana.com/address/${publicKey}`
+  const params = env === KinEnvironment.Test ? `?cluster=custom&customUrl=https://local.validator.agorainfra.dev` : ''
+
+  return `${baseUrl}/tokens${params}`
+}
+
+export function getPrices(): Promise<Prices> {
+  return axios
+    .get(`https://api.coingecko.com/api/v3/simple/price?ids=kin&vs_currencies=usd%2Cbtc&include_24hr_change=true`)
+    .then((res) => res.data)
+}
+
 export class KinClient {
   private readonly client: KinAgoraClient
 
@@ -75,17 +88,11 @@ export class KinClient {
   }
 
   getPrices(): Promise<Prices> {
-    return axios
-      .get(`https://api.coingecko.com/api/v3/simple/price?ids=kin&vs_currencies=usd%2Cbtc&include_24hr_change=true`)
-      .then((res) => res.data)
+    return getPrices()
   }
 
   getExplorerUrl(publicKey: string): string {
-    const baseUrl = `https://explorer.solana.com/address/${publicKey}`
-    const params =
-      this.network.env === KinEnvironment.Test ? `?cluster=custom&customUrl=https://local.validator.agorainfra.dev` : ''
-
-    return `${baseUrl}/tokens${params}`
+    return getExplorerUrl(this.network.env, publicKey)
   }
 
   createAccount(secret: string) {

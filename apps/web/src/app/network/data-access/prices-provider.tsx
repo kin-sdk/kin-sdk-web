@@ -1,5 +1,7 @@
 import { AccountBalance, Prices } from '@kin-sdk/client'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { useDatabase } from '../../core/data-access/core-injector'
+import { CoreService } from '../../core/data-access/core-service'
 import { useNetwork } from './network-provider'
 
 const PricesContext = createContext<{
@@ -8,8 +10,13 @@ const PricesContext = createContext<{
   convertPrice?: (kin: string) => AccountBalance
 }>(undefined)
 
+function roundDigits(number, digits) {
+  return (Math.round(number * 100) / 100).toFixed(digits)
+}
+
 function PricesProvider({ children }: { children: ReactNode }) {
-  const [prices, setPrices] = useState<Prices>()
+  const core: CoreService = useDatabase()
+  const [prices, setPrices] = useState<Prices>(core.prices)
   const { network, client } = useNetwork()
 
   const refreshPrices = () => client?.getPrices().then(setPrices)
@@ -18,13 +25,14 @@ function PricesProvider({ children }: { children: ReactNode }) {
     const kinInt = parseInt(kin, 10)
     return {
       kin,
-      btc: (prices?.kin?.btc & kinInt).toString(),
-      usd: (prices?.kin?.usd & kinInt).toString(),
+      usd: roundDigits(prices?.kin?.usd * kinInt, 2).toString(),
+      btc: (prices?.kin?.btc * kinInt).toString(),
     }
   }
 
   useEffect(() => {
     if (network && client) {
+      console.log('refresh')
       refreshPrices()
     }
   }, [network, client])
