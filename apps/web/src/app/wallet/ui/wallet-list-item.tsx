@@ -14,7 +14,6 @@ export function WalletListItem({
   balance,
   error,
   status,
-  info,
   createAccount,
   handleDelete,
   handleTransaction,
@@ -24,7 +23,6 @@ export function WalletListItem({
   error?: string
   status?: WalletStatus
   open?: boolean
-  info: AccountDetails
   createAccount?: (wallet: Wallet) => Promise<void>
   handleDelete?: (wallet: Wallet) => Promise<void>
   handleTransaction?: (wallet: Wallet, transaction: WalletTransaction) => Promise<[string, string?]>

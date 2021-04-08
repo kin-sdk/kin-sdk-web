@@ -1,5 +1,5 @@
 import { RxJsonSchema } from 'rxdb'
-import { Setting } from '../../settings/data-access'
+import { Setting } from '../../../../settings/data-access'
 
 export const settingsSchema: RxJsonSchema<Setting> = {
   title: 'Settings Schema',
