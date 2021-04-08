@@ -23,7 +23,7 @@ import {
   Transaction,
 } from '@kin-sdk/core'
 import { retry } from 'ts-retry-promise'
-
+const sleep = (seconds = 1) => new Promise((resolve) => setTimeout(resolve, seconds * 1000))
 import {
   serializeCreateAccountRequest,
   serializeGetBalanceRequest,
@@ -63,19 +63,30 @@ export class KinAgoraClient {
     await this.ensureServiceConfig()
     const owner = PrivateKey.fromString(secret)
 
-    const [result, error] = await this.createAccountTransaction(owner).then((tx) => this.createAccountRequest(tx))
-
     await retry(
-      () => {
-        console.log('Trying!!')
-        return this.resolveTokenAccounts(owner.publicKey().toBase58()).then((res) => {
-          console.log('resolve', res)
-          return res
-        })
-      },
-      { retries: 10, backoff: 'EXPONENTIAL' },
+      () =>
+        new Promise((resolve, reject) => {
+          return this.createAccountTransaction(owner)
+            .then((tx) => this.createAccountRequest(tx))
+            .then(([res, err]) => {
+              console.log('createAccountTransaction', [res, err])
+              return err ? reject(err) : resolve(res)
+            })
+        }),
+      { retries: 3, backoff: 'FIXED' },
     )
-    return [result, error]
+    await sleep(2)
+    await retry(
+      () =>
+        new Promise((resolve, reject) => {
+          return this.resolveTokenAccounts(owner.publicKey().toBase58()).then(([res, err]) => {
+            console.log('Resolve', { res, err })
+            return err ? reject(err) : resolve(res)
+          })
+        }),
+      { retries: 30, delay: 1000, backoff: 'LINEAR' },
+    )
+    return [null, null]
   }
 
   async getBalance(publicKey: string): Promise<[string, string?]> {

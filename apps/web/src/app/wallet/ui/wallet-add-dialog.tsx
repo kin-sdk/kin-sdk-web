@@ -1,7 +1,9 @@
 import { Wallet } from '@kin-sdk/client'
-import { Button, DialogActions, DialogContent, DialogContentText, TextField } from '@material-ui/core'
+import { Button, DialogActions, DialogContent, DialogContentText, LinearProgress, TextField } from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
+import LoadingButton from '@material-ui/lab/LoadingButton'
+
 import React, { useState } from 'react'
 import { WalletAddType } from '../data-access'
 
@@ -10,7 +12,7 @@ export interface WalletAddDialogProps {
   name?: string
   type: WalletAddType
   onClose: () => void
-  onSubmit: (wallet: Wallet) => void
+  onSubmit: (wallet: Wallet) => Promise<void>
 }
 
 function getContent(type: WalletAddType) {
@@ -28,14 +30,17 @@ export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletA
   const [accountName, setAccountName] = useState<string>(name)
   const [accountSecret, setAccountSecret] = useState<string>('')
   const [accountAddress, setAccountAddress] = useState<string>('')
+  const [creating, setCreating] = useState(false)
 
   const handleClose = () => onClose()
-  const handleSubmit = () =>
+  const handleSubmit = () => {
+    setCreating(true)
     onSubmit({
       publicKey: accountAddress,
       name: accountName,
       secret: accountSecret,
-    })
+    }).then()
+  }
 
   return (
     <Dialog aria-labelledby="simple-dialog-title" open={open}>
@@ -46,6 +51,7 @@ export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletA
         <DialogContentText>{getContent(type)}</DialogContentText>
         <TextField
           margin="dense"
+          disabled={creating}
           autoFocus={type === 'create'}
           label="Account Name"
           type="text"
@@ -58,6 +64,7 @@ export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletA
           <TextField
             autoFocus={type === 'import'}
             margin="dense"
+            disabled={creating}
             label="Secret"
             type="text"
             value={accountSecret}
@@ -70,6 +77,7 @@ export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletA
           <TextField
             autoFocus={type === 'watch'}
             margin="dense"
+            disabled={creating}
             label="Watch Address"
             type="text"
             value={accountAddress}
@@ -79,12 +87,19 @@ export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletA
         ) : null}
       </DialogContent>
       <DialogActions>
-        <Button variant="contained" onClick={handleClose} color="secondary">
+        <Button disabled={creating} variant="contained" onClick={handleClose} color="secondary">
           Cancel
         </Button>
-        <Button type="submit" variant="contained" onClick={handleSubmit} color="default">
+        <LoadingButton
+          pending={creating}
+          disabled={creating}
+          type="submit"
+          variant="contained"
+          onClick={handleSubmit}
+          color="primary"
+        >
           {type}
-        </Button>
+        </LoadingButton>
       </DialogActions>
     </Dialog>
   )

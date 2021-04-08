@@ -24,7 +24,7 @@ export function AppHeader() {
   }
 
   function handleOnClose(data: Wallet) {
-    addWallet([walletType, data])
+    return addWallet([walletType, data])
       .then(() => reload())
       .then(() => {
         setShowAddModal(false)

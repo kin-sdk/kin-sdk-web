@@ -61,6 +61,7 @@ export function NetworkDropdown({ selected, networks, onSelect }: NetworkSelectP
   return (
     <>
       <Button
+        color={'inherit'}
         ref={anchorRef}
         aria-controls={open ? 'menu-list-grow' : undefined}
         aria-haspopup="true"

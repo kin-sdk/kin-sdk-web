@@ -45,11 +45,6 @@ function WalletProvider({ children }: { children: ReactNode }) {
     setAccountError((current) => ({ ...current, [wallet.publicKey]: undefined }))
     return client
       .createAccount(wallet.secret)
-      .then((res) => {
-        setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Submitted' }))
-        return handleAccountRefresh(wallet)
-      })
-      .then((res) => setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Created' })))
       .then(() => sleep(2))
       .then(() => refresh())
       .then(() => reload())

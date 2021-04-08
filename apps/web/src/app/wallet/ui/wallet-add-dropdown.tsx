@@ -53,6 +53,7 @@ export function WalletAddDropdown({ onSelect }: WalletAddSelectProps) {
   return (
     <>
       <Button
+        color={'inherit'}
         ref={anchorRef}
         aria-controls={open ? 'menu-list-grow' : undefined}
         aria-haspopup="true"

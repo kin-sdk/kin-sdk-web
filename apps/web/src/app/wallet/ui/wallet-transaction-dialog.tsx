@@ -6,6 +6,7 @@ import GetAppIcon from '@material-ui/icons/GetApp'
 import SendIcon from '@material-ui/icons/Send'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import Alert from '@material-ui/lab/Alert'
+import LoadingButton from '@material-ui/lab/LoadingButton'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 
@@ -135,11 +136,12 @@ export function WalletTransactionDialog({
           {type === 'send' && (
             <div className="max-w-5xl md:max-w-2xl mx-auto ">
               <WalletTransactionForm disableForm={disableForm} transaction={transaction} onChange={setTransaction} />
-              <div className="my-6 h-12">
-                {sending ? <LinearProgress /> : ''}
-                {error && <Alert severity="error">{error}</Alert>}
-                {success && <Alert severity="success">{success}</Alert>}
-              </div>
+              {error || success ? (
+                <div className="my-6 h-12">
+                  {error && <Alert severity="error">{error}</Alert>}
+                  {success && <Alert severity="success">{success}</Alert>}
+                </div>
+              ) : null}
             </div>
           )}
         </DialogContent>
@@ -148,9 +150,16 @@ export function WalletTransactionDialog({
             Close
           </Button>
           {type === 'send' && (
-            <Button type="submit" disabled={!isValid()} variant="contained" onClick={handleSubmit} color="secondary">
+            <LoadingButton
+              pending={sending}
+              type="submit"
+              disabled={!isValid()}
+              variant="contained"
+              onClick={handleSubmit}
+              color="secondary"
+            >
               {type}
-            </Button>
+            </LoadingButton>
           )}
         </DialogActions>
       </Dialog>
