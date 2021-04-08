@@ -1,28 +1,24 @@
 import { bs58encode, CreateAccountResponse, SubmitTransactionResponse, TransactionError } from '@kin-sdk/core'
 
-export function handleCreateAccountResponse(res: CreateAccountResponse): { result?: any; error?: string } {
+export function handleCreateAccountResponse(res: CreateAccountResponse): [string, string?] {
   switch (res.getResult()) {
     case CreateAccountResponse.Result.OK:
-      return {
-        result: `Submitted transaction to create token account ${bs58encode(
+      return [
+        `Submitted transaction to create token account ${bs58encode(
           res.getAccountInfo().getAccountId().getValue_asU8(),
         )} with single commitment.`,
-      }
+      ]
     case CreateAccountResponse.Result.EXISTS:
-      return {
-        error: 'An account with the randomly generated address exists. Please try again.',
-      }
+      return [null, 'An account with the randomly generated address exists. Please try again.']
     case CreateAccountResponse.Result.PAYER_REQUIRED:
-      return {
-        error:
-          'The transaction to create a token account failed because the transaction subsidizer did not sign the transaction.',
-      }
+      return [
+        null,
+        'The transaction to create a token account failed because the transaction subsidizer did not sign the transaction.',
+      ]
     case CreateAccountResponse.Result.BAD_NONCE:
-      return {
-        error: 'The transaction to create a token account failed because of a bad nonce. Please try again.',
-      }
+      return [null, 'The transaction to create a token account failed because of a bad nonce. Please try again.']
     default:
-      return { error: 'Something went wrong. Please reload' }
+      return [null, 'Something went wrong. Please reload']
   }
 }
 

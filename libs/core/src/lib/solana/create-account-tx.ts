@@ -1,42 +1,45 @@
 import { AccountSize, AuthorityType, TokenProgram } from './token-program'
 import { PublicKey as SolanaPublicKey, SystemProgram, Transaction } from '@solana/web3.js'
 
+export interface ServiceConfigKeys {
+  subsidizer: SolanaPublicKey
+  tokenProgram: SolanaPublicKey
+  tokenKey: SolanaPublicKey
+}
+
 export function getCreateAccountTx(
   recentBlockhash: string,
-  tokenAccount: SolanaPublicKey,
   owner: SolanaPublicKey,
-  subsidizer: SolanaPublicKey,
-  tokenProgram: SolanaPublicKey,
-  token: SolanaPublicKey,
+  config: ServiceConfigKeys,
   minBalance: number,
 ): Transaction {
   return new Transaction({
-    feePayer: subsidizer,
+    feePayer: config.subsidizer,
     recentBlockhash: recentBlockhash,
   }).add(
     SystemProgram.createAccount({
-      fromPubkey: subsidizer,
-      newAccountPubkey: tokenAccount,
+      fromPubkey: config.subsidizer,
+      newAccountPubkey: owner,
       lamports: minBalance,
       space: AccountSize,
-      programId: tokenProgram,
+      programId: config.tokenProgram,
     }),
     TokenProgram.initializeAccount(
       {
-        account: tokenAccount,
-        mint: token,
+        account: owner,
+        mint: config.tokenKey,
         owner: owner,
       },
-      tokenProgram,
+      config.tokenProgram,
     ),
     TokenProgram.setAuthority(
       {
-        account: tokenAccount,
+        account: owner,
         currentAuthority: owner,
-        newAuthority: subsidizer,
+        newAuthority: config.subsidizer,
         authorityType: AuthorityType.CloseAccount,
       },
-      tokenProgram,
+      config.tokenProgram,
     ),
   )
 }

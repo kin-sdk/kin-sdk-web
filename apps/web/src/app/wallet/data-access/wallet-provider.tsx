@@ -63,7 +63,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
     })
   }
 
-  const resolveTokenAccount = (publicKey: string): Promise<{ balances?: any; error?: string }> | undefined => {
+  const resolveTokenAccount = (publicKey: string): Promise<[any[], string?]> => {
     return client.resolveTokenAccounts(publicKey)
   }
 
@@ -71,27 +71,27 @@ function WalletProvider({ children }: { children: ReactNode }) {
     let balance = '0'
     setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Loading' }))
     setAccountError((current) => ({ ...current, [wallet.publicKey]: null }))
-    const ta = await resolveTokenAccount(wallet.publicKey)
+    const [balances, error] = await resolveTokenAccount(wallet.publicKey)
 
-    if (ta.balances?.length) {
-      const found = ta.balances.find((item) => item.account === wallet.publicKey)
+    if (error) {
+      setAccountError((current) => ({ ...current, [wallet.publicKey]: error }))
+      setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Error' }))
+      return { error: error, balance }
+    }
+
+    if (balances?.length) {
+      const found = balances.find((item) => item.account === wallet.publicKey)
 
       if (found) {
         balance = found.balance
       }
 
-      ta.balances.map((res) => {
+      balances.map((res) => {
         setAccountBalance((current) => ({ ...current, [res.account]: convertPrice(res.balance) }))
         setAccountStatus((current) => ({ ...current, [res.account]: 'Active' }))
       })
 
-      setTotalBalance(ta.balances.reduce((acc, cur) => acc + parseInt(cur?.balance, 10), 0))
-    }
-
-    if (ta.error) {
-      setAccountError((current) => ({ ...current, [wallet.publicKey]: ta?.error }))
-      setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Error' }))
-      return { error: ta.error, balance }
+      setTotalBalance(balances.reduce((acc, cur) => acc + parseInt(cur?.balance, 10), 0))
     }
 
     return { balance }

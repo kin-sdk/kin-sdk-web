@@ -10,40 +10,32 @@ import {
   GetRecentBlockhashResponse,
   GetServiceConfigRequest,
   GetServiceConfigResponse,
-  Keypair,
   KinEnvironment,
-  kinToQuarks,
-  MemoProgram,
   PrivateKey,
   PublicKey,
   quarksToKin,
-  ResolveTokenAccountsRequest,
   ResolveTokenAccountsResponse,
+  ServiceConfigKeys,
   SolanaAccount,
   SolanaAccountId,
   SolanaPublicKey,
-  SolanaTransaction,
   SubmitTransactionResponse,
-  TokenProgram,
   Transaction,
 } from '@kin-sdk/core'
 
 import {
   serializeCreateAccountRequest,
   serializeGetBalanceRequest,
-  serializeGetRecentBlockHash,
+  serializeMinBalanceReq,
   serializeGetTokenAccountBalanceRequest,
+  serializeResolveTokenAccountsRequest,
+  serializeSubmitPaymentRequest,
+  serializeSubmitPaymentTransaction,
   serializeSubmitTransactionRequest,
 } from './kin-agora-request-serializers'
-import { handleCreateAccountResponse, handleSubmitTransactionResponse } from './kin-agora-response-handlers'
 
-export interface SubmitPaymentOptions {
-  amount: string
-  destination: string
-  tokenAccount: string
-  memo?: string
-  secret: string
-}
+import { handleCreateAccountResponse, handleSubmitTransactionResponse } from './kin-agora-response-handlers'
+import { SubmitPaymentOptions } from './submit-payment-options'
 
 export class KinAgoraClient {
   private serviceConfig: {
@@ -66,11 +58,40 @@ export class KinAgoraClient {
     this.urls = getAgoraUrls(env)
   }
 
-  private getRecentBlockhash() {
-    return agoraRequest(
-      this.urls?.getRecentBlockhashURL,
-      new GetRecentBlockhashRequest().serializeBinary(),
-    ).then((res) => GetRecentBlockhashResponse.deserializeBinary(res.data))
+  async createAccount(secret: string): Promise<[string, string?]> {
+    await this.ensureServiceConfig()
+    const owner = PrivateKey.fromString(secret)
+
+    return this.createAccountTransaction(owner).then(this.createAccountRequest)
+  }
+
+  async getBalance(publicKey: string): Promise<[string, string?]> {
+    return agoraRequest(this.urls?.getAccountInfoURL, serializeGetBalanceRequest(publicKey))
+      .then((res) => GetAccountInfoResponse.deserializeBinary(res.data))
+      .then((response) =>
+        response.getResult() === GetAccountInfoResponse.Result.NOT_FOUND
+          ? [null, `Account could not be found`]
+          : [response?.getAccountInfo()?.getBalance()],
+      )
+  }
+
+  async resolveTokenAccounts(publicKey: string): Promise<[any[], string?]> {
+    return agoraRequest(this.urls?.resolveTokenAccountsURL, serializeResolveTokenAccountsRequest(publicKey))
+      .then((res) => ResolveTokenAccountsResponse.deserializeBinary(res.data))
+      .then((res) => this.handleResolveTokenResponse(res.getTokenAccountsList()))
+  }
+
+  async submitPayment(options: SubmitPaymentOptions): Promise<[string, string?]> {
+    await this.ensureServiceConfig()
+    const [pk, transaction] = serializeSubmitPaymentTransaction(
+      options,
+      this.serviceConfig.subsidizer,
+      this.serviceConfig.tokenProgram,
+    )
+
+    return this.getRecentBlockhash().then((resp) =>
+      this.submitTransaction(serializeSubmitPaymentRequest(pk, transaction, resp)),
+    )
   }
 
   private async ensureServiceConfig() {
@@ -79,106 +100,54 @@ export class KinAgoraClient {
     }
   }
 
-  private async handleResolveTokenResponse(
-    tokenAccounts: SolanaAccountId[],
-  ): Promise<{ balances?: any; error?: string }> {
+  private async handleResolveTokenResponse(tokenAccounts: SolanaAccountId[]): Promise<[any[], string?]> {
     if (tokenAccounts.length == 0) {
-      return { error: `No Kin token accounts found` }
+      return [null, `No Kin token accounts found`]
     }
 
     const balances = await Promise.all(tokenAccounts.map((tokenAccount) => this.getTokenAccountBalance(tokenAccount)))
 
-    return { balances }
+    return [balances]
   }
 
-  private getTokenAccountBalance(tokenAccount: SolanaAccountId) {
-    return agoraRequest(this.urls?.getAccountInfoURL, serializeGetTokenAccountBalanceRequest(tokenAccount))
-      .then((res) => GetAccountInfoResponse.deserializeBinary(res.data))
-      .then((res) => ({
-        account: new PublicKey(Buffer.from(tokenAccount.getValue_asU8())).toBase58(),
-        balance: quarksToKin(res.getAccountInfo().getBalance()),
-      }))
+  private getServiceConfigKeys(owner: PrivateKey): ServiceConfigKeys {
+    const tokenProgram = new SolanaPublicKey(this.serviceConfig?.tokenProgram)
+    const tokenKey = new SolanaPublicKey(this.serviceConfig?.token)
+    const subsidizer: SolanaPublicKey = this.serviceConfig?.subsidizer
+      ? new SolanaPublicKey(this.serviceConfig?.subsidizer)
+      : owner.publicKey().solanaKey()
+
+    return { tokenKey, tokenProgram, subsidizer }
   }
 
   private async createAccountTransaction(owner: PrivateKey): Promise<Transaction> {
-    await this.ensureServiceConfig()
-    const tokenProgramKey = new SolanaPublicKey(this.serviceConfig?.tokenProgram)
-    const tokenKey = new SolanaPublicKey(this.serviceConfig?.token)
-
-    let subsidizerKey: SolanaPublicKey
-
-    if (this.serviceConfig?.subsidizer) {
-      subsidizerKey = new SolanaPublicKey(this.serviceConfig?.subsidizer)
-    } else {
-      subsidizerKey = owner.publicKey().solanaKey()
-    }
-
     return this.getRecentBlockhash()
       .then((res) => bs58encode(Buffer.from(res.getBlockhash()!.getValue_asU8())))
       .then((recentBlockhash) =>
-        agoraRequest(this.urls?.getMinBalanceURL, serializeGetRecentBlockHash())
+        agoraRequest(this.urls?.getMinBalanceURL, serializeMinBalanceReq())
           .then((res) => GetMinimumBalanceForRentExemptionResponse.deserializeBinary(res.data))
           .then((res) => {
             const tx = getCreateAccountTx(
               recentBlockhash,
               owner.publicKey().solanaKey(),
-              owner.publicKey().solanaKey(),
-              subsidizerKey,
-              tokenProgramKey,
-              tokenKey,
+              this.getServiceConfigKeys(owner),
               res.getLamports(),
             )
             tx.partialSign(new SolanaAccount(owner.secretKey()))
 
             const protoTx = new Transaction()
-            protoTx.setValue(
-              tx.serialize({
-                requireAllSignatures: false,
-                verifySignatures: false,
-              }),
-            )
+
+            protoTx.setValue(tx.serialize({ requireAllSignatures: false, verifySignatures: false }))
 
             return protoTx
           }),
       )
   }
 
-  private createAccountRequest(protoTx: Transaction): Promise<{ result?: any; error?: string }> {
+  private createAccountRequest(protoTx: Transaction): Promise<[string, string?]> {
     return agoraRequest(this.urls?.createAccountURL, serializeCreateAccountRequest(protoTx))
       .then((res) => CreateAccountResponse.deserializeBinary(res.data))
       .then((res) => handleCreateAccountResponse(res))
-  }
-
-  async createAccount(secret: string): Promise<{ result?: any; error?: string }> {
-    await this.ensureServiceConfig()
-    const owner = PrivateKey.fromString(secret)
-
-    return this.createAccountTransaction(owner).then((tx) => {
-      return this.createAccountRequest(tx)
-    })
-  }
-
-  resolveTokenAccounts(publicKey: string): Promise<{ balances?: any; error?: string }> {
-    const accountID = new SolanaAccountId()
-    accountID.setValue(PublicKey.fromBase58(publicKey.trim()).buffer)
-    const req = new ResolveTokenAccountsRequest()
-    req.setAccountId(accountID)
-
-    return agoraRequest(this.urls?.resolveTokenAccountsURL, req.serializeBinary())
-      .then((res) => ResolveTokenAccountsResponse.deserializeBinary(res.data))
-      .then((res) => this.handleResolveTokenResponse(res.getTokenAccountsList()))
-  }
-
-  getBalance(publicKey: string): Promise<[string, string?]> {
-    return agoraRequest(this.urls?.getAccountInfoURL, serializeGetBalanceRequest(publicKey))
-      .then((res) => GetAccountInfoResponse.deserializeBinary(res.data))
-      .then((response) => {
-        if (response.getResult() === GetAccountInfoResponse.Result.NOT_FOUND) {
-          return [null, `Account could not be found`]
-        }
-
-        return [response?.getAccountInfo()?.getBalance()]
-      })
   }
 
   private getServiceConfig() {
@@ -191,78 +160,20 @@ export class KinAgoraClient {
       }))
   }
 
-  private createSolanaTransaction({
-    publicKey,
-    tokenAccount,
-    destination,
-    kinAmount,
-    memo,
-    tokenProgram,
-    subsidizer,
-  }): SolanaTransaction {
-    const owner = PublicKey.fromBase58(publicKey).solanaKey()
-    let feePayer: SolanaPublicKey
-    if (subsidizer) {
-      feePayer = new SolanaPublicKey(subsidizer)
-    } else {
-      feePayer = owner
-    }
-    const instructions = []
-
-    if (memo?.length) {
-      instructions.push(MemoProgram.memo({ data: memo }))
-    }
-
-    instructions.push(
-      TokenProgram.transfer(
-        {
-          source: PublicKey.fromBase58(tokenAccount).solanaKey(),
-          dest: PublicKey.fromBase58(destination).solanaKey(),
-          owner,
-          amount: BigInt(kinToQuarks(kinAmount.toString())),
-        },
-        new SolanaPublicKey(tokenProgram),
-      ),
-    )
-
-    return new SolanaTransaction({
-      feePayer: feePayer,
-    }).add(...instructions)
+  private getRecentBlockhash() {
+    return agoraRequest(
+      this.urls?.getRecentBlockhashURL,
+      new GetRecentBlockhashRequest().serializeBinary(),
+    ).then((res) => GetRecentBlockhashResponse.deserializeBinary(res.data))
   }
 
-  async submitPayment({
-    amount,
-    tokenAccount,
-    destination,
-    memo,
-    secret,
-  }: SubmitPaymentOptions): Promise<[string, string?]> {
-    await this.ensureServiceConfig()
-    const pk: PrivateKey = PrivateKey.fromString(secret)
-    const transaction = this.createSolanaTransaction({
-      publicKey: Keypair.fromSecret(secret).publicKey,
-      tokenAccount,
-      destination,
-      kinAmount: amount,
-      memo,
-      subsidizer: this.serviceConfig?.subsidizer,
-      tokenProgram: this.serviceConfig?.tokenProgram,
-    })
-
-    return agoraRequest(this.urls?.getRecentBlockhashURL, new GetRecentBlockhashRequest().serializeBinary())
-      .then((res) => GetRecentBlockhashResponse.deserializeBinary(res.data))
-      .then((resp) => {
-        transaction.recentBlockhash = bs58encode(Buffer.from(resp.getBlockhash()!.getValue_asU8()))
-        transaction.partialSign(new SolanaAccount(pk.secretKey()))
-        const protoTx = new Transaction()
-        protoTx.setValue(
-          transaction.serialize({
-            requireAllSignatures: false,
-            verifySignatures: false,
-          }),
-        )
-        return this.submitTransaction(protoTx)
-      })
+  private getTokenAccountBalance(tokenAccount: SolanaAccountId) {
+    return agoraRequest(this.urls?.getAccountInfoURL, serializeGetTokenAccountBalanceRequest(tokenAccount))
+      .then((res) => GetAccountInfoResponse.deserializeBinary(res.data))
+      .then((res) => ({
+        account: new PublicKey(Buffer.from(tokenAccount.getValue_asU8())).toBase58(),
+        balance: quarksToKin(res.getAccountInfo().getBalance()),
+      }))
   }
 
   private submitTransaction(tx: Transaction): Promise<[string, string?]> {

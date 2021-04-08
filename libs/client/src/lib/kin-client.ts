@@ -1,6 +1,7 @@
 import { Keypair, KinEnvironment, Network, Wallet } from '@kin-sdk/core'
 import axios from 'axios'
-import { KinAgoraClient, SubmitPaymentOptions } from './agora/kin-agora-client'
+import { KinAgoraClient } from './agora/kin-agora-client'
+import { SubmitPaymentOptions } from './agora/submit-payment-options'
 
 export interface AccountBalance {
   kin?: string
