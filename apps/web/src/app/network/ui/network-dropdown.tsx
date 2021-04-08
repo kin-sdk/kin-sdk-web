@@ -1,4 +1,4 @@
-import { Network } from '@kin-sdk/services'
+import { Network } from '@kin-sdk/client'
 import { Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from '@material-ui/core'
 import { useSnackbar } from 'notistack'
 import React, { useEffect, useRef, useState } from 'react'

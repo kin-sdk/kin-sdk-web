@@ -1,4 +1,4 @@
-import { Wallet } from '@kin-sdk/services'
+import { Wallet } from '@kin-sdk/client'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { useSnackbar } from 'notistack'

@@ -1,4 +1,4 @@
-import { AccountBalance, AccountDetails, Wallet } from '@kin-sdk/services'
+import { AccountBalance, AccountDetails, Wallet } from '@kin-sdk/client'
 import { Avatar } from '@material-ui/core'
 import cx from 'classnames'
 import React, { useState } from 'react'

@@ -1,4 +1,4 @@
-import { AccountDetails, Wallet } from '@kin-sdk/services'
+import { AccountDetails, Wallet } from '@kin-sdk/client'
 import { Button, DialogActions, DialogContent, LinearProgress } from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'

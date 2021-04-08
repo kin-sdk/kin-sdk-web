@@ -1,4 +1,4 @@
-import { AccountBalance, Prices } from '@kin-sdk/services'
+import { AccountBalance, Prices } from '@kin-sdk/client'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { useNetwork } from './network-provider'
 

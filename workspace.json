@@ -118,38 +118,6 @@
         }
       }
     },
-    "services": {
-      "root": "libs/services",
-      "sourceRoot": "libs/services/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/services/**/*.ts"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/services"],
-          "options": {
-            "jestConfig": "libs/services/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "executor": "@nrwl/node:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/services",
-            "tsConfig": "libs/services/tsconfig.lib.json",
-            "packageJson": "libs/services/package.json",
-            "main": "libs/services/src/index.ts",
-            "assets": ["libs/services/*.md"]
-          }
-        }
-      }
-    },
     "core": {
       "root": "libs/core",
       "sourceRoot": "libs/core/src",
@@ -185,6 +153,38 @@
                 "output": "src/generated"
               }
             ]
+          }
+        }
+      }
+    },
+    "client": {
+      "root": "libs/client",
+      "sourceRoot": "libs/client/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/client/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/client"],
+          "options": {
+            "jestConfig": "libs/client/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/client",
+            "tsConfig": "libs/client/tsconfig.lib.json",
+            "packageJson": "libs/client/package.json",
+            "main": "libs/client/src/index.ts",
+            "assets": ["libs/client/*.md"]
           }
         }
       }

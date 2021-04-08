@@ -1,4 +1,4 @@
-import { Keypair, Wallet } from '@kin-sdk/services'
+import { Keypair, Wallet } from '@kin-sdk/client'
 
 /**
  * Some helper method to create a Wallet structure, based on our intent

@@ -1,4 +1,4 @@
-import { AccountBalance } from '@kin-sdk/services'
+import { AccountBalance } from '@kin-sdk/client'
 import IconButton from '@material-ui/core/IconButton'
 import RefreshIcon from '@material-ui/icons/Refresh'
 import React from 'react'

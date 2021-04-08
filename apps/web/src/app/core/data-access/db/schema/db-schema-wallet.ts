@@ -1,4 +1,4 @@
-import { Wallet } from '@kin-sdk/services'
+import { Wallet } from '@kin-sdk/client'
 import { RxJsonSchema } from 'rxdb'
 
 export const walletSchema: RxJsonSchema<Wallet> = {

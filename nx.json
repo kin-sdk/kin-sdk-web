@@ -33,10 +33,10 @@
       "tags": [],
       "implicitDependencies": ["web"]
     },
-    "services": {
+    "core": {
       "tags": []
     },
-    "core": {
+    "client": {
       "tags": []
     }
   }

@@ -1,4 +1,4 @@
-import { KinWalletService, Network, NETWORKS } from '@kin-sdk/services'
+import { KinWalletService, Network, NETWORKS } from '@kin-sdk/client'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { useSettings } from '../../settings/data-access'
 

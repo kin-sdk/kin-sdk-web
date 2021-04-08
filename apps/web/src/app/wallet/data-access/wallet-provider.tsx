@@ -1,4 +1,4 @@
-import { AccountBalance, Wallet } from '@kin-sdk/services'
+import { AccountBalance, Wallet } from '@kin-sdk/client'
 import { orderBy } from 'lodash'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
