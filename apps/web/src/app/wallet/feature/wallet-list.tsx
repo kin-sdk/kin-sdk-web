@@ -11,7 +11,6 @@ export function WalletList() {
   const { enqueueSnackbar } = useSnackbar()
   const {
     wallets,
-    balance,
     accountBalance,
     accountError,
     accountStatus,
@@ -73,7 +72,6 @@ export function WalletList() {
               <WalletListItem
                 key={wallet.id}
                 wallet={wallet}
-                info={balance?.addressMap[wallet.publicKey]}
                 balance={accountBalance[wallet.publicKey]}
                 open={!!accountError[wallet.publicKey]}
                 error={accountError[wallet.publicKey]}

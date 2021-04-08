@@ -1,12 +1,11 @@
 import { CssBaseline, ThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core'
 import { SnackbarProvider } from 'notistack'
 import React, { FC, useEffect, useState } from 'react'
-import { AppLayout } from './app-layout'
+import * as adapter from 'pouchdb-adapter-idb'
 
-import { DatabaseProvider } from './core/data-access'
-import { Database } from './core/data-access/core-database-utils'
-import { CoreDatabase } from './core/data-access/core-get-db'
+import { AppLayout } from './app-layout'
 import { InjectorProvider, useDependencyInjector } from './core/data-access/core-injector'
+import { CoreService } from './core/data-access/core-service'
 import { NetworkProvider, PricesProvider } from './network/data-access'
 import { SettingsProvider } from './settings/data-access'
 import { WalletProvider } from './wallet/data-access'
@@ -28,8 +27,8 @@ export const DatabaseGuard: FC = ({ children }) => {
   const injector = useDependencyInjector()
 
   useEffect(() => {
-    const db: CoreDatabase = injector.get(CoreDatabase)
-    db.load().then(setIsReady)
+    const db: CoreService = injector.get(CoreService)
+    db.load(adapter).then(setIsReady)
   }, [injector])
 
   return isReady ? (

@@ -1,8 +1,7 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
-import { useDatabase } from '../../core/data-access'
-import { Database } from '../../core/data-access/core-database-utils'
-import { CoreDatabase } from '../../core/data-access/core-get-db'
-import { useDependencyInjector } from '../../core/data-access/core-injector'
+import { Database } from '../../core/data-access'
+
+import { useDatabase } from '../../core/data-access/core-injector'
 import { Setting } from './interfaces/setting'
 
 export type AppSettingsNetwork = 'mainnet' | 'testnet'
@@ -18,8 +17,7 @@ const SettingsContext = createContext<{
 }>(undefined)
 
 function SettingsProvider({ children }: { children: ReactNode }) {
-  const injector = useDependencyInjector()
-  const db: Database = injector.get(CoreDatabase)
+  const db: Database = useDatabase()
   const [dbSettings, setDbSettings] = useState<Setting[]>([])
   const [settings, setSettings] = useState<AppSettings>({})
 

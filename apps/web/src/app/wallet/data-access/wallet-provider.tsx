@@ -1,10 +1,8 @@
-import { AccountBalance, BalanceResult, Wallet } from '@kin-wallet/services'
+import { AccountBalance, Wallet } from '@kin-wallet/services'
 import { orderBy } from 'lodash'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
-import { useDatabase } from '../../core/data-access'
-import { Database } from '../../core/data-access/core-database-utils'
-import { CoreDatabase } from '../../core/data-access/core-get-db'
-import { useDependencyInjector } from '../../core/data-access/core-injector'
+
+import { useDatabase } from '../../core/data-access/core-injector'
 import { useNetwork, usePrices } from '../../network/data-access'
 import { createWallet } from './create-wallet'
 import { WalletAddType } from './interfaces/wallet-add-type'
@@ -16,7 +14,6 @@ export interface WalletContextProps {
   accountError?: Record<string, string>
   accountStatus?: Record<string, WalletStatus>
   wallets?: Wallet[]
-  balance?: BalanceResult
   loading?: boolean
   error?: string
   totalBalance?: AccountBalance
@@ -31,15 +28,14 @@ export interface WalletContextProps {
 const WalletContext = createContext<WalletContextProps>(undefined)
 
 function WalletProvider({ children }: { children: ReactNode }) {
-  const injector = useDependencyInjector()
-  const db: Database = injector.get(CoreDatabase)
+  const db = useDatabase()
   const { network, service } = useNetwork()
   const { convertPrice, refreshPrices } = usePrices()
 
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>()
   const [wallets, setWallets] = useState(null)
-  const [balance, setBalance] = useState<BalanceResult>(null)
+
   const [totalBalance, setTotalBalance] = useState<AccountBalance>(null)
   const [accountBalance, setAccountBalance] = useState({})
   const [accountError, setAccountError] = useState({})
@@ -107,7 +103,6 @@ function WalletProvider({ children }: { children: ReactNode }) {
     if (!wallets?.length || !network || !service) {
       return Promise.resolve()
     }
-    setBalance(null)
     setError(null)
 
     // const status = wallets.reduce((acc, curr) => ({ ...acc, [curr.publicKey]: 'Loading' }), {})
@@ -168,7 +163,6 @@ function WalletProvider({ children }: { children: ReactNode }) {
         totalBalance,
         error,
         loading,
-        balance,
         wallets,
         refresh,
         reload,
