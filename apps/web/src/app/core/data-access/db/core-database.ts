@@ -1,4 +1,4 @@
-import { Wallet } from '@kin-wallet/sdk'
+import { Wallet } from '@kin-wallet/services'
 import { RxDatabase } from 'rxdb'
 
 import { Collection } from './core-collection'

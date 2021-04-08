@@ -1,4 +1,4 @@
-import { Wallet } from '@kin-wallet/sdk'
+import { Wallet } from '@kin-wallet/services'
 import { addRxPlugin, createRxDatabase } from 'rxdb'
 import { Setting } from '../../../settings/data-access'
 import { settingsSchema } from './schema/db-schema-settings'
