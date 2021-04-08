@@ -10,9 +10,9 @@ const PricesContext = createContext<{
 
 function PricesProvider({ children }: { children: ReactNode }) {
   const [prices, setPrices] = useState<Prices>()
-  const { network, service } = useNetwork()
+  const { network, client } = useNetwork()
 
-  const refreshPrices = () => service?.getPrices().then(setPrices)
+  const refreshPrices = () => client?.getPrices().then(setPrices)
 
   const convertPrice = (kin: string): AccountBalance => {
     const kinInt = parseInt(kin, 10)
@@ -24,10 +24,10 @@ function PricesProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    if (network && service) {
+    if (network && client) {
       refreshPrices()
     }
-  }, [network, service])
+  }, [network, client])
 
   return <PricesContext.Provider value={{ prices, refreshPrices, convertPrice }}>{children}</PricesContext.Provider>
 }

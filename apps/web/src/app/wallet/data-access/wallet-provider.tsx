@@ -29,7 +29,7 @@ const WalletContext = createContext<WalletContextProps>(undefined)
 
 function WalletProvider({ children }: { children: ReactNode }) {
   const db = useDatabase()
-  const { network, service } = useNetwork()
+  const { network, client } = useNetwork()
   const { convertPrice, refreshPrices } = usePrices()
 
   const [loading, setLoading] = useState<boolean>(true)
@@ -44,7 +44,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
   const createAccount = (wallet: Wallet): Promise<void> => {
     setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Creating' }))
     setAccountError((current) => ({ ...current, [wallet.publicKey]: undefined }))
-    return service?.client
+    return client
       .createAccount(wallet.secret)
       .then((res) => {
         setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Submitted' }))
@@ -55,7 +55,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
   }
 
   const sendTransaction = (wallet: Wallet, tx: WalletTransaction): Promise<[string, string?]> => {
-    return service?.client?.submitPayment({
+    return client?.submitPayment({
       amount: tx.amount,
       destination: tx.destination,
       memo: tx.memo,
@@ -65,7 +65,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
   }
 
   const resolveTokenAccount = (publicKey: string): Promise<{ balances?: any; error?: string }> | undefined => {
-    return service?.client.resolveTokenAccounts(publicKey)
+    return client.resolveTokenAccounts(publicKey)
   }
 
   const handleAccountRefresh = async (wallet: Wallet): Promise<{ balance?: string; error?: string }> => {
@@ -100,7 +100,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
 
   const refresh = async (): Promise<void> => {
     await refreshPrices()
-    if (!wallets?.length || !network || !service) {
+    if (!wallets?.length || !network || !client) {
       return Promise.resolve()
     }
     setError(null)
@@ -120,7 +120,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
     return db?.wallets
       ?.findMany()
       .then((items) => orderBy(items, 'name'))
-      .then((items) => items.map((item) => ({ ...item, explorerUrl: service?.getExplorerUrl(item?.publicKey) })))
+      .then((items) => items.map((item) => ({ ...item, explorerUrl: client?.getExplorerUrl(item?.publicKey) })))
       .then(setWallets)
       .then(() => {
         refresh()
@@ -142,16 +142,16 @@ function WalletProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setLoading(true)
-    if (db?.wallets && service) {
+    if (db?.wallets && client) {
       reload()
     }
-  }, [db, service])
+  }, [db, client])
 
   useEffect(() => {
-    if (wallets && network && service) {
+    if (wallets && network && client) {
       refresh()
     }
-  }, [wallets, network, service])
+  }, [wallets, network, client])
 
   return (
     <WalletContext.Provider
