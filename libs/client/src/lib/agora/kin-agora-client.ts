@@ -22,6 +22,7 @@ import {
   SubmitTransactionResponse,
   Transaction,
 } from '@kin-sdk/core'
+import { retry } from 'ts-retry-promise'
 
 import {
   serializeCreateAccountRequest,
@@ -62,7 +63,19 @@ export class KinAgoraClient {
     await this.ensureServiceConfig()
     const owner = PrivateKey.fromString(secret)
 
-    return this.createAccountTransaction(owner).then((tx) => this.createAccountRequest(tx))
+    const [result, error] = await this.createAccountTransaction(owner).then((tx) => this.createAccountRequest(tx))
+
+    await retry(
+      () => {
+        console.log('Trying!!')
+        return this.resolveTokenAccounts(owner.publicKey().toBase58()).then((res) => {
+          console.log('resolve', res)
+          return res
+        })
+      },
+      { retries: 10, backoff: 'EXPONENTIAL' },
+    )
+    return [result, error]
   }
 
   async getBalance(publicKey: string): Promise<[string, string?]> {

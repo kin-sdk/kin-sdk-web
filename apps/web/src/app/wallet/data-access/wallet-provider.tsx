@@ -7,7 +7,7 @@ import { useNetwork, usePrices } from '../../network/data-access'
 import { WalletAddType } from './interfaces/wallet-add-type'
 import { WalletStatus } from './interfaces/wallet-status.type'
 import { WalletTransaction } from './interfaces/wallet-transaction'
-
+const sleep = (seconds = 1) => new Promise((resolve) => setTimeout(resolve, seconds * 1000))
 export interface WalletContextProps {
   accountBalance?: Record<string, AccountBalance>
   accountError?: Record<string, string>
@@ -49,6 +49,8 @@ function WalletProvider({ children }: { children: ReactNode }) {
         setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Submitted' }))
         return handleAccountRefresh(wallet)
       })
+      .then((res) => setAccountStatus((current) => ({ ...current, [wallet.publicKey]: 'Created' })))
+      .then(() => sleep(2))
       .then(() => refresh())
       .then(() => reload())
   }
@@ -136,7 +138,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
     const newWallet = KinClient.createWallet(type, wallet)
     const created = await db?.wallets?.createItem(newWallet)
 
-    return Promise.resolve([created && `Wallet Created`, !created && 'Error creating wallet'])
+    return createAccount(created).then(() => [created && `Wallet Created`, !created && 'Error creating wallet'])
   }
 
   useEffect(() => {
