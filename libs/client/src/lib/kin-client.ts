@@ -1,6 +1,6 @@
-import { KinEnvironment, Network } from '@kin-sdk/core'
+import { Keypair, KinEnvironment, Network, Wallet } from '@kin-sdk/core'
 import axios from 'axios'
-import { KinAgoraClient, SubmitPaymentOptions } from './kin-agora-client'
+import { KinAgoraClient, SubmitPaymentOptions } from './agora/kin-agora-client'
 
 export interface AccountBalance {
   kin?: string
@@ -41,6 +41,36 @@ export class KinClient {
   constructor(private readonly network: Network) {
     console.log(`KinClient: ${network?.name}`)
     this.client = new KinAgoraClient(network?.env)
+  }
+
+  /**
+   * Simple helper method to create a Wallet structure, based on our intent
+   * @param {"create" | "import" | "watch"} type
+   * @param {Wallet} wallet
+   * @returns {Wallet}
+   */
+  static createWallet(type: 'create' | 'import' | 'watch', wallet: Wallet): Wallet {
+    switch (type) {
+      case 'create': {
+        const keys = Keypair.randomKeys()
+        return {
+          ...wallet,
+          ...keys,
+        }
+      }
+      case 'import': {
+        const keys = Keypair.fromSecret(wallet.secret)
+        return {
+          ...wallet,
+          ...keys,
+        }
+      }
+      case 'watch':
+        return {
+          ...wallet,
+          secret: '',
+        }
+    }
   }
 
   getPrices(): Promise<Prices> {

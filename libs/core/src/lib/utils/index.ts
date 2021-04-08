@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js'
+import * as bs58 from 'bs58'
 
 // kinToQuarks converts a string representation of kin
 // to the quark value.
@@ -24,4 +25,12 @@ export function elipsify(str = '', len = 10) {
     return str.substr(0, len) + '...' + str.substr(str.length - len, str.length)
   }
   return str
+}
+
+export function bs58decode(string: string): Buffer | undefined {
+  return bs58.decode(string)
+}
+
+export function bs58encode(buffer: Buffer | number[] | Uint8Array): string {
+  return bs58.encode(buffer)
 }
