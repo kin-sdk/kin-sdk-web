@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@kin-sdk/sdk": ["libs/sdk/src/index.ts"],
-      "@kin-sdk/services": ["libs/services/src/index.ts"]
+      "@kin-sdk/services": ["libs/services/src/index.ts"],
+      "@kin-sdk/core": ["libs/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

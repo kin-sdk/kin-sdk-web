@@ -1,7 +1,7 @@
 # Path to this plugin
 PROTOC_GEN_TS_PATH="./node_modules/.bin/protoc-gen-ts"
 
-SDK_PATH="libs/sdk"
+SDK_PATH="libs/core"
 # Directory to write generated code to (.js and .d.ts files)
 OUT_DIR="${SDK_PATH}/src/generated"
 

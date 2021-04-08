@@ -1,5 +1,5 @@
 DL_PATH="tmp/download"
-SDK_PATH="libs/sdk"
+SDK_PATH="libs/core"
 PROTO_COMMON_PATH="${SDK_PATH}/proto-common"
 
 mkdir -p "$PROTO_COMMON_PATH" "$SDK_PATH" "$DL_PATH"
