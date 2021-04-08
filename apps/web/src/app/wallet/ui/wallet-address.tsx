@@ -13,7 +13,7 @@ export function WalletAddress({ explorerUrl, publicKey }: { explorerUrl?: string
     <div className="flex space-x-2 text-xs text-gray-400 items-center">
       <CopyToClipboard text={publicKey} onCopy={onCopy}>
         <Tooltip TransitionComponent={Zoom} title="Click to copy" placement="top">
-          <button>
+          <button className="font-mono">
             <span className="hidden md:block">{publicKey}</span>
             <span className="block md:hidden">{elipsify(publicKey)}</span>
           </button>
