@@ -38,8 +38,7 @@ export function createNetwork(id: string, name: string, env: KinEnvironment): Ne
     explorerUrl: explorerUrls.get(env),
   }
 }
+export const KinProd: Network = createNetwork('mainnet', 'Mainnet', KinEnvironment.Prod)
+export const KinTest: Network = createNetwork('testnet', 'Testnet', KinEnvironment.Test)
 
-export const NETWORKS: Network[] = [
-  createNetwork('mainnet', 'Mainnet', KinEnvironment.Prod),
-  createNetwork('testnet', 'Testnet', KinEnvironment.Test),
-]
+export const NETWORKS: Network[] = [KinProd, KinTest]
