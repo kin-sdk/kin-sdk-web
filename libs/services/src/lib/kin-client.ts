@@ -31,7 +31,7 @@ import {
   TokenProgram,
   Transaction,
   TransactionError,
-} from '@kin-wallet/sdk'
+} from '@kin-sdk/sdk'
 import axios, { AxiosResponse } from 'axios'
 import * as bs58 from 'bs58'
 

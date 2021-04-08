@@ -1,5 +1,5 @@
 {
-  "name": "@kin-wallet/sdk",
+  "name": "@kin-sdk/sdk",
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {

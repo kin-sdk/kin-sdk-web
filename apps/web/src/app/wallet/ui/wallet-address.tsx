@@ -1,4 +1,4 @@
-import { elipsify } from '@kin-wallet/services'
+import { elipsify } from '@kin-sdk/services'
 import { Zoom } from '@material-ui/core'
 import Tooltip from '@material-ui/core/Tooltip'
 import { useSnackbar } from 'notistack'

@@ -1,4 +1,4 @@
-import { AccountBalance } from '@kin-wallet/services'
+import { AccountBalance } from '@kin-sdk/services'
 import cx from 'classnames'
 import React from 'react'
 

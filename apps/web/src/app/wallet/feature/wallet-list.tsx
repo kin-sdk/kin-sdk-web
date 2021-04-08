@@ -1,4 +1,4 @@
-import { Wallet } from '@kin-wallet/services'
+import { Wallet } from '@kin-sdk/services'
 import { CircularProgress, Paper, Typography } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 import { useSnackbar } from 'notistack'

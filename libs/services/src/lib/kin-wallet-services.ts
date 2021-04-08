@@ -1,4 +1,4 @@
-import { KinEnvironment, Network } from '@kin-wallet/sdk'
+import { KinEnvironment, Network } from '@kin-sdk/sdk'
 import axios from 'axios'
 import { KinClient } from './kin-client'
 

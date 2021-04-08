@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@kin-wallet/sdk": ["libs/sdk/src/index.ts"],
-      "@kin-wallet/services": ["libs/services/src/index.ts"]
+      "@kin-sdk/sdk": ["libs/sdk/src/index.ts"],
+      "@kin-sdk/services": ["libs/services/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
