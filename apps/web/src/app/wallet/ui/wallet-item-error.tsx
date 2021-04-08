@@ -11,7 +11,7 @@ export function WalletItemError({ error, createTokenAccount }: { error: string; 
     </div>
   ) : (
     <Alert severity="error" variant="outlined">
-      {error}
+      {typeof error === 'string' ? error : `An Error Occurred ${(error as any)?.message}`}
     </Alert>
   )
 }

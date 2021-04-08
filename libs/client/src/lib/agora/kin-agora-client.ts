@@ -62,7 +62,7 @@ export class KinAgoraClient {
     await this.ensureServiceConfig()
     const owner = PrivateKey.fromString(secret)
 
-    return this.createAccountTransaction(owner).then(this.createAccountRequest)
+    return this.createAccountTransaction(owner).then((tx) => this.createAccountRequest(tx))
   }
 
   async getBalance(publicKey: string): Promise<[string, string?]> {

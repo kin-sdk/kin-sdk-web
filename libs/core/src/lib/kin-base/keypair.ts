@@ -1,8 +1,7 @@
-import { sign, verify } from './signing'
-import * as bs58 from 'bs58'
-import { StrKey } from './strkey'
-
 import * as nacl from 'tweetnacl'
+import { bs58encode } from '../utils'
+import { sign, verify } from './signing'
+import { StrKey } from './strkey'
 
 export class SimpleKeypair {
   secret: string
@@ -82,7 +81,7 @@ export class Keypair {
 
     return {
       secret: keypair.secret(),
-      publicKey: bs58.encode(keypair._publicKey),
+      publicKey: bs58encode(keypair._publicKey),
     }
   }
 
@@ -92,7 +91,7 @@ export class Keypair {
    * @param {Buffer} rawSeed Raw 32-byte ed25519 secret key seed
    * @returns {Keypair}
    */
-  static fromRawEd25519Seed(rawSeed) {
+  static fromRawEd25519Seed(rawSeed): Keypair {
     return new this({ type: 'ed25519', secretKey: rawSeed })
   }
 
@@ -127,7 +126,7 @@ export class Keypair {
     const keypair = this.fromRawEd25519Seed(secret)
     return {
       secret: keypair.secret(),
-      publicKey: bs58.encode(keypair._publicKey),
+      publicKey: bs58encode(keypair._publicKey),
     }
   }
 

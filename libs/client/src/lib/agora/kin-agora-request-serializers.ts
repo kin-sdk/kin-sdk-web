@@ -70,7 +70,7 @@ export function serializeSubmitPaymentTransaction(
   subsidizer,
   tokenProgram,
 ): [PrivateKey, SolanaTransaction] {
-  const pk: PrivateKey = PrivateKey.fromString(secret)
+  const pk: PrivateKey = PrivateKey.fromSecret(secret)
   const transaction = createSolanaTransaction({
     publicKey: Keypair.fromSecret(secret).publicKey,
     tokenAccount,

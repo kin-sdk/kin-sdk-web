@@ -64,15 +64,16 @@ export function WalletListItem({
           </div>
         </div>
       </div>
-      {showDetails || error ? (
+      {error && (
         <div className="px-6 py-4 flex flex-col space-y-6">
-          {error ? (
-            <WalletItemError error={error} createTokenAccount={createTokenAccount} />
-          ) : (
-            <WalletItemDetails handleDelete={handleDelete} sendTransaction={sendTransaction} wallet={wallet} />
-          )}
+          <WalletItemError error={error} createTokenAccount={createTokenAccount} />
         </div>
-      ) : null}
+      )}
+      {showDetails && (
+        <div className="px-6 py-4 flex flex-col space-y-6">
+          <WalletItemDetails handleDelete={handleDelete} sendTransaction={sendTransaction} wallet={wallet} />
+        </div>
+      )}
     </div>
   )
 }

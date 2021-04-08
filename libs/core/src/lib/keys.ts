@@ -1,6 +1,6 @@
 import { StrKey, Keypair } from './kin-base'
 import { PublicKey as SolanaPublicKey } from '@solana/web3.js'
-import * as bs58 from 'bs58'
+import { bs58decode, bs58encode } from './utils'
 
 // PublicKey is a blockchain agnostic representation
 // of an ed25519 public key.
@@ -20,7 +20,7 @@ export class PublicKey {
       return new PublicKey(StrKey.decodeEd25519PublicKey(address))
     }
 
-    const decoded58 = bs58.decode(address)
+    const decoded58 = bs58decode(address)
     if (decoded58.length == 32) {
       return new PublicKey(decoded58)
     }
@@ -29,7 +29,7 @@ export class PublicKey {
   }
 
   static fromBase58(address: string): PublicKey {
-    const decoded58 = bs58.decode(address)
+    const decoded58 = bs58decode(address)
     if (decoded58.length == 32) {
       return new PublicKey(decoded58)
     }
@@ -38,11 +38,7 @@ export class PublicKey {
   }
 
   toBase58(): string {
-    return bs58.encode(this.buffer)
-  }
-
-  stellarAddress(): string {
-    return StrKey.encodeEd25519PublicKey(this.buffer)
+    return bs58encode(this.buffer)
   }
 
   equals(other: PublicKey): boolean {
@@ -67,6 +63,14 @@ export class PrivateKey {
     return new PrivateKey(Keypair.random())
   }
 
+  static fromSecret(secret: string): PrivateKey {
+    try {
+      return this.fromString(secret)
+    } catch (_) {
+      return this.fromBase58(secret)
+    }
+  }
+
   static fromString(seed: string): PrivateKey {
     if (seed[0] == 'S' && seed.length == 56) {
       return new PrivateKey(Keypair.fromSecretKeypair(seed))
@@ -77,7 +81,7 @@ export class PrivateKey {
   }
 
   static fromBase58(seed: string): PrivateKey {
-    const decoded58 = bs58.decode(seed)
+    const decoded58 = bs58decode(seed)
 
     if (decoded58.length == 32) {
       return new PrivateKey(Keypair.fromRawEd25519Seed(Buffer.from(decoded58)))
@@ -87,15 +91,13 @@ export class PrivateKey {
   }
 
   toBase58(): string {
-    return bs58.encode(this.kp.rawSecretKey())
+    return bs58encode(this.kp.rawSecretKey())
   }
 
   publicKey(): PublicKey {
     return new PublicKey(this.kp.rawPublicKey())
   }
-  stellarSeed(): string {
-    return this.kp.secret()
-  }
+
   secretKey(): Buffer {
     return Buffer.concat([this.kp.rawSecretKey(), this.kp.rawPublicKey()])
   }
