@@ -65,12 +65,12 @@ export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletA
 
   return (
     <Dialog aria-labelledby="simple-dialog-title" open={open}>
-      <DialogTitle id="simple-dialog-title" className="capitalize">
-        {type} Account
-      </DialogTitle>
-      <DialogContent>
-        <DialogContentText>{getContent(type)}</DialogContentText>
-        <form noValidate autoComplete="off" onSubmit={onSubmitForm}>
+      <form noValidate autoComplete="off" onSubmit={onSubmitForm}>
+        <DialogTitle id="simple-dialog-title" className="capitalize">
+          {type} Account
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>{getContent(type)}</DialogContentText>
           <FormGroup>
             <Controller
               name="name"
@@ -136,16 +136,16 @@ export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletA
               />
             )}
           </FormGroup>
-        </form>
-      </DialogContent>
-      <DialogActions>
-        <Button disabled={pending} variant="contained" onClick={handleClose} color="secondary">
-          Cancel
-        </Button>
-        <LoadingButton pending={pending} variant="contained" color="primary" type="submit" disabled={hasErrors}>
-          {type}
-        </LoadingButton>
-      </DialogActions>
+        </DialogContent>
+        <DialogActions>
+          <Button disabled={pending} variant="contained" onClick={handleClose} color="secondary">
+            Cancel
+          </Button>
+          <LoadingButton pending={pending} variant="contained" color="primary" type="submit" disabled={hasErrors}>
+            {type}
+          </LoadingButton>
+        </DialogActions>
+      </form>
     </Dialog>
   )
 }
