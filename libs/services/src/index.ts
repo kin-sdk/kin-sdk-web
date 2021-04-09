@@ -1,3 +1,4 @@
 export * from '@kin-wallet/sdk'
-export * from './lib/kin-wallet-services'
-export { KinClient } from './lib/kin-client'
+export * from './lib/kin'
+export * from './lib/wallet'
+export * from './lib/db'

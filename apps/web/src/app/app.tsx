@@ -8,7 +8,7 @@ import { InjectorProvider, useDependencyInjector } from './core/data-access/core
 import { CoreService } from './core/data-access/core-service'
 import { NetworkProvider, PricesProvider } from './network/data-access'
 import { SettingsProvider } from './settings/data-access'
-import { WalletProvider } from './wallet/data-access'
+import { WalletProvider } from './wallet/provider'
 
 const theme = createMuiTheme({
   palette: {
@@ -32,13 +32,15 @@ export const DatabaseGuard: FC = ({ children }) => {
   }, [injector])
 
   return isReady ? (
-    <SettingsProvider>
-      <NetworkProvider>
-        <PricesProvider>
-          <WalletProvider>{children}</WalletProvider>
-        </PricesProvider>
-      </NetworkProvider>
-    </SettingsProvider>
+    <InjectorProvider>
+      <SettingsProvider>
+        <NetworkProvider>
+          <PricesProvider>
+            <WalletProvider>{children}</WalletProvider>
+          </PricesProvider>
+        </NetworkProvider>
+      </SettingsProvider>
+    </InjectorProvider>
   ) : null
 }
 
@@ -47,11 +49,9 @@ export function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <SnackbarProvider maxSnack={5}>
-        <InjectorProvider>
-          <DatabaseGuard>
-            <AppLayout />
-          </DatabaseGuard>
-        </InjectorProvider>
+        <DatabaseGuard>
+          <AppLayout />
+        </DatabaseGuard>
       </SnackbarProvider>
     </ThemeProvider>
   )

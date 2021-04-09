@@ -1,7 +1,7 @@
 import { Wallet } from '@kin-wallet/sdk'
+import { Collection, createDatabase, Database } from '@kin-wallet/services'
 import { RxDatabase } from 'rxdb'
 import { Setting } from '../../settings/data-access'
-import { Collection, createDatabase, Database } from './db'
 
 export class CoreService implements Database {
   db: RxDatabase

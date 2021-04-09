@@ -1559,10 +1559,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@mindspace-io/react@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@mindspace-io/react/-/react-1.4.1.tgz#484f517883d3e3cf15e771c0971534181fefbe11"
-  integrity sha512-zCE4WAKJAKemo6W9CUZOtKWdKwKBYHXE5BdHz52xiQ9dKdT3L/sZ550pyB7kCFHwM7objj+3BL7NX6lPSvlMKg==
+"@mindspace-io/react@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@mindspace-io/react/-/react-1.4.2.tgz#d68838a89821563421a2272bbe91d11d6f8d0185"
+  integrity sha512-gfMeARGDZA1cJ2stuKbkM/k/6fIMxKmGvKQad0Lgrb+5hjlo2z/d1v3Gex69LiLh2P4vp9rzV609Utoi1dRwMA==
   dependencies:
     "@datorama/akita" ">6.1.1"
     immer ">8.0.0"

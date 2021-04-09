@@ -1,13 +1,17 @@
-import { AccountBalance, Wallet } from '@kin-wallet/services'
 import { orderBy } from 'lodash'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
+import {
+  AccountBalance,
+  Wallet,
+  createWallet,
+  WalletAddType,
+  WalletStatus,
+  WalletTransaction,
+} from '@kin-wallet/services'
+
 import { useDatabase } from '../../core/data-access/core-injector'
 import { useNetwork, usePrices } from '../../network/data-access'
-import { createWallet } from './create-wallet'
-import { WalletAddType } from './interfaces/wallet-add-type'
-import { WalletStatus } from './interfaces/wallet-status.type'
-import { WalletTransaction } from './interfaces/wallet-transaction'
 
 export interface WalletContextProps {
   accountBalance?: Record<string, AccountBalance>

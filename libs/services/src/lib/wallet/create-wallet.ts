@@ -3,28 +3,28 @@ import { Keypair, Wallet } from '@kin-wallet/sdk'
 /**
  * Some helper method to create a Wallet structure, based on our intent
  * @param {"create" | "import" | "watch"} type
- * @param {Wallet} wallet
+ * @param {Wallet} from
  * @returns {Wallet}
  */
-export function createWallet(type: 'create' | 'import' | 'watch', wallet: Wallet): Wallet {
+export function createWallet(type: 'create' | 'import' | 'watch', from: Wallet): Wallet {
   switch (type) {
     case 'watch':
       return {
-        name: wallet.name,
-        publicKey: wallet.publicKey,
+        name: from.name,
+        publicKey: from.publicKey,
         secret: '',
       }
     case 'import': {
-      const keys = Keypair.fromSecret(wallet.secret)
+      const keys = Keypair.fromSecret(from.secret)
       return {
-        name: wallet.name,
+        name: from.name,
         ...keys,
       }
     }
     case 'create': {
       const keys = Keypair.randomKeys()
       return {
-        name: wallet.name,
+        name: from.name,
         ...keys,
       }
     }
