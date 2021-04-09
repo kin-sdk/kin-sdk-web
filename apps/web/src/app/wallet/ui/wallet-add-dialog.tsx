@@ -6,7 +6,6 @@ import {
   DialogContentText,
   FormControl,
   FormGroup,
-  LinearProgress,
   TextField,
 } from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog'
@@ -16,7 +15,6 @@ import LoadingButton from '@material-ui/lab/LoadingButton'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { WalletAddType } from '../data-access'
-import { WalletAddForm } from './wallet-add-form'
 import { getWalletResolver, WalletAddFormInputs } from './wallet-form-validation'
 
 export interface WalletAddDialogProps {

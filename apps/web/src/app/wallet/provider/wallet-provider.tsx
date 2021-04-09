@@ -1,12 +1,11 @@
-import { AccountBalance, KinClient, Wallet } from '@kin-sdk/client'
+import { AccountBalance, createWallet, Wallet } from '@kin-sdk/client'
 import { orderBy } from 'lodash'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
 import { useDatabase } from '../../core/data-access/core-injector'
 import { useNetwork, usePrices } from '../../network/data-access'
-import { WalletAddType } from './interfaces/wallet-add-type'
-import { WalletStatus } from './interfaces/wallet-status.type'
-import { WalletTransaction } from './interfaces/wallet-transaction'
+import { WalletAddType, WalletStatus, WalletTransaction } from '../data-access'
+
 const sleep = (seconds = 1) => new Promise((resolve) => setTimeout(resolve, seconds * 1000))
 export interface WalletContextProps {
   accountBalance?: Record<string, AccountBalance>
@@ -130,7 +129,7 @@ function WalletProvider({ children }: { children: ReactNode }) {
   }
 
   const addWallet = async ([type, wallet]: [WalletAddType, Wallet]): Promise<[string, string?]> => {
-    const newWallet = KinClient.createWallet(type, wallet)
+    const newWallet = createWallet(type, wallet)
     const created = await db?.wallets?.createItem(newWallet)
 
     return createAccount(created).then(() => [created && `Wallet Created`, !created && 'Error creating wallet'])

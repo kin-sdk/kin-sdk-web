@@ -8,7 +8,7 @@ import { InjectorProvider, useDependencyInjector } from './core/data-access/core
 import { CoreService } from './core/data-access/core-service'
 import { NetworkProvider, PricesProvider } from './network/data-access'
 import { SettingsProvider } from './settings/data-access'
-import { WalletProvider } from './wallet/data-access'
+import { WalletProvider } from './wallet/provider'
 
 const theme = createMuiTheme({
   palette: {
