@@ -29,6 +29,7 @@ export function AppHeader() {
       .then(() => {
         setShowAddModal(false)
         enqueueSnackbar(`Account ${data?.name} added`, { variant: 'success' })
+        return
       })
       .catch((err) => {
         enqueueSnackbar(err, { variant: 'error' })
@@ -62,7 +63,7 @@ export function AppHeader() {
           type={walletType}
           open={showAddModal}
           onClose={() => setShowAddModal(false)}
-          onSubmit={(data) => handleOnClose(data)}
+          onSubmit={handleOnClose}
         />
       )}
     </>

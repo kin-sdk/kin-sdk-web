@@ -103,6 +103,7 @@ export class KinClient {
     return this.client.submitPayment(options)
   }
 
+  // getBalance
   resolveTokenAccounts(publicKey: string) {
     return this.client.resolveTokenAccounts(publicKey)
   }

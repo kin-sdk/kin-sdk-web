@@ -1,11 +1,23 @@
 import { Wallet } from '@kin-sdk/client'
-import { Button, DialogActions, DialogContent, DialogContentText, LinearProgress, TextField } from '@material-ui/core'
+import {
+  Button,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  FormControl,
+  FormGroup,
+  LinearProgress,
+  TextField,
+} from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import LoadingButton from '@material-ui/lab/LoadingButton'
 
 import React, { useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { WalletAddType } from '../data-access'
+import { WalletAddForm } from './wallet-add-form'
+import { getWalletResolver, WalletAddFormInputs } from './wallet-form-validation'
 
 export interface WalletAddDialogProps {
   open: boolean
@@ -27,20 +39,29 @@ function getContent(type: WalletAddType) {
 }
 
 export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletAddDialogProps) {
-  const [accountName, setAccountName] = useState<string>(name)
-  const [accountSecret, setAccountSecret] = useState<string>('')
-  const [accountAddress, setAccountAddress] = useState<string>('')
-  const [creating, setCreating] = useState(false)
+  const [wallet] = useState<Wallet>({ name })
+  const [pending, setPending] = useState<boolean>(false)
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<WalletAddFormInputs>({
+    defaultValues: {
+      name: wallet.name,
+    },
+    resolver: getWalletResolver(type),
+  })
 
+  const onSubmitForm = handleSubmit((data) => {
+    setPending(true)
+    onSubmit(data).then((res) => {
+      console.log('handleSubmit done', res)
+      setPending(false)
+    })
+  })
+
+  const hasErrors = Boolean(Object.values(errors).map((item) => !!item.message)?.length)
   const handleClose = () => onClose()
-  const handleSubmit = () => {
-    setCreating(true)
-    onSubmit({
-      publicKey: accountAddress,
-      name: accountName,
-      secret: accountSecret,
-    }).then()
-  }
 
   return (
     <Dialog aria-labelledby="simple-dialog-title" open={open}>
@@ -49,55 +70,79 @@ export function WalletAddDialog({ name, onClose, onSubmit, open, type }: WalletA
       </DialogTitle>
       <DialogContent>
         <DialogContentText>{getContent(type)}</DialogContentText>
-        <TextField
-          margin="dense"
-          disabled={creating}
-          autoFocus={type === 'create'}
-          label="Account Name"
-          type="text"
-          required={true}
-          value={accountName}
-          onChange={(e) => setAccountName(e.target?.value)}
-          fullWidth
-        />
-        {type === 'import' ? (
-          <TextField
-            autoFocus={type === 'import'}
-            margin="dense"
-            disabled={creating}
-            label="Secret"
-            type="text"
-            value={accountSecret}
-            onChange={(e) => setAccountSecret(e.target?.value)}
-            fullWidth
-          />
-        ) : null}
+        <form noValidate autoComplete="off" onSubmit={onSubmitForm}>
+          <FormGroup>
+            <Controller
+              name="name"
+              control={control}
+              defaultValue={wallet?.name}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <FormControl fullWidth>
+                  <TextField
+                    disabled={pending}
+                    label="Name"
+                    margin="normal"
+                    error={!!errors?.name?.message}
+                    helperText={errors?.name?.message}
+                    required
+                    {...field}
+                  />
+                </FormControl>
+              )}
+            />
 
-        {type === 'watch' ? (
-          <TextField
-            autoFocus={type === 'watch'}
-            margin="dense"
-            disabled={creating}
-            label="Watch Address"
-            type="text"
-            value={accountAddress}
-            onChange={(e) => setAccountAddress(e.target?.value)}
-            fullWidth
-          />
-        ) : null}
+            {type === 'import' && (
+              <Controller
+                name="secret"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <FormControl fullWidth>
+                    <TextField
+                      disabled={pending}
+                      hidden={type !== 'import'}
+                      label="Secret"
+                      margin="normal"
+                      error={!!errors?.secret?.message}
+                      helperText={errors?.secret?.message}
+                      required
+                      {...field}
+                    />
+                  </FormControl>
+                )}
+              />
+            )}
+
+            {type === 'watch' && (
+              <Controller
+                name="publicKey"
+                control={control}
+                defaultValue={wallet?.publicKey}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <FormControl fullWidth>
+                    <TextField
+                      disabled={pending}
+                      label="Public Key"
+                      margin="normal"
+                      error={!!errors?.publicKey?.message}
+                      helperText={errors?.publicKey?.message}
+                      required
+                      {...field}
+                    />
+                  </FormControl>
+                )}
+              />
+            )}
+          </FormGroup>
+        </form>
       </DialogContent>
       <DialogActions>
-        <Button disabled={creating} variant="contained" onClick={handleClose} color="secondary">
+        <Button disabled={pending} variant="contained" onClick={handleClose} color="secondary">
           Cancel
         </Button>
-        <LoadingButton
-          pending={creating}
-          disabled={creating}
-          type="submit"
-          variant="contained"
-          onClick={handleSubmit}
-          color="primary"
-        >
+        <LoadingButton pending={pending} variant="contained" color="primary" type="submit" disabled={hasErrors}>
           {type}
         </LoadingButton>
       </DialogActions>
