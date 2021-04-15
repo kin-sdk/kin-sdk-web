@@ -1,12 +1,12 @@
 import { Wallet } from '@kin-sdk/client'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
-import SettingsIcon from '@material-ui/icons/Settings'
 import { useSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNetwork } from './network/data-access'
 import { NetworkDropdown } from './network/ui'
-import { useWallet, WalletAddType } from './wallet/data-access'
+import { WalletAddType } from './wallet/data-access'
+import { useWallet } from './wallet/provider'
 import { WalletAddDialog, WalletAddDropdown } from './wallet/ui'
 
 export function AppHeader() {
@@ -29,6 +29,7 @@ export function AppHeader() {
       .then(() => {
         setShowAddModal(false)
         enqueueSnackbar(`Account ${data?.name} added`, { variant: 'success' })
+        return
       })
       .catch((err) => {
         enqueueSnackbar(err, { variant: 'error' })
@@ -62,7 +63,7 @@ export function AppHeader() {
           type={walletType}
           open={showAddModal}
           onClose={() => setShowAddModal(false)}
-          onSubmit={(data) => handleOnClose(data)}
+          onSubmit={handleOnClose}
         />
       )}
     </>

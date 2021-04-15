@@ -3,7 +3,8 @@ import { CircularProgress, Paper, Typography } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 import { useSnackbar } from 'notistack'
 import React, { useEffect } from 'react'
-import { useWallet, WalletTransaction } from '../data-access'
+import { WalletTransaction } from '../data-access'
+import { useWallet } from '../provider'
 
 import { WalletListHeader, WalletListItem } from '../ui'
 

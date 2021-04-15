@@ -1,16 +1,15 @@
 import { DependencyInjector, makeInjector } from '@mindspace-io/react'
 import React, { createContext, FC, useContext } from 'react'
-import { CoreService } from './core-service'
-
-const injector: DependencyInjector = makeInjector([CoreService])
+import { CoreDatabase } from './core-database'
 
 const InjectorContext = createContext<DependencyInjector>(null)
+const injector: DependencyInjector = makeInjector([CoreDatabase])
 
-const InjectorProvider: FC = ({ children }) => {
-  return <InjectorContext.Provider value={injector}>{children}</InjectorContext.Provider>
-}
+const InjectorProvider: FC = ({ children }) => (
+  <InjectorContext.Provider value={injector}>{children}</InjectorContext.Provider>
+)
 
 const useDependencyInjector = () => useContext(InjectorContext)
-const useDatabase = (): CoreService => injector.get(CoreService)
+const useDatabase = (): CoreDatabase => injector.get(CoreDatabase)
 
 export { useDatabase, useDependencyInjector, InjectorProvider }
