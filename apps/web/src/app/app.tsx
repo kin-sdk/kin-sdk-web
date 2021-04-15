@@ -1,14 +1,10 @@
 import { CssBaseline, ThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core'
 import { SnackbarProvider } from 'notistack'
-import React, { FC, useEffect, useState } from 'react'
-import * as adapter from 'pouchdb-adapter-idb'
+import React, { VFC } from 'react'
+import { AppGuard } from './app-guard'
 
 import { AppLayout } from './app-layout'
-import { InjectorProvider, useDependencyInjector } from './core/data-access/core-injector'
-import { CoreDatabase } from './core/data-access/core-database'
-import { NetworkProvider, PricesProvider } from './network/data-access'
-import { SettingsProvider } from './settings/data-access'
-import { WalletProvider } from './wallet/provider'
+import { InjectorProvider } from './core/data-access/core-injector'
 
 const theme = createMuiTheme({
   palette: {
@@ -22,37 +18,15 @@ const theme = createMuiTheme({
   },
 })
 
-export const DatabaseGuard: FC = ({ children }) => {
-  const [isReady, setIsReady] = useState<boolean>(false)
-  const injector = useDependencyInjector()
-
-  useEffect(() => {
-    const db: CoreDatabase = injector.get(CoreDatabase)
-    db.load(adapter).then(setIsReady)
-  }, [injector])
-
-  return isReady ? (
-    <SettingsProvider>
-      <NetworkProvider>
-        <PricesProvider>
-          <WalletProvider>{children}</WalletProvider>
-        </PricesProvider>
-      </NetworkProvider>
-    </SettingsProvider>
-  ) : null
-}
-
-export function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <SnackbarProvider maxSnack={5}>
-        <InjectorProvider>
-          <DatabaseGuard>
-            <AppLayout />
-          </DatabaseGuard>
-        </InjectorProvider>
-      </SnackbarProvider>
-    </ThemeProvider>
-  )
-}
+export const App: VFC = () => (
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <SnackbarProvider maxSnack={5}>
+      <InjectorProvider>
+        <AppGuard>
+          <AppLayout />
+        </AppGuard>
+      </InjectorProvider>
+    </SnackbarProvider>
+  </ThemeProvider>
+)
