@@ -1,9 +1,8 @@
 import { Wallet } from '@kin-sdk/client'
-import { Button, CircularProgress, Paper, Typography } from '@material-ui/core'
+import { CircularProgress, Paper, Typography } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 import { useSnackbar } from 'notistack'
 import React, { useEffect } from 'react'
-import { useWalletStore } from '../../core/data-access/core-injector'
 import { WalletTransaction } from '../data-access'
 import { useWallet } from '../provider'
 
@@ -11,7 +10,6 @@ import { WalletListHeader, WalletListItem } from '../ui'
 
 export function WalletList() {
   const { enqueueSnackbar } = useSnackbar()
-  const store = useWalletStore()
   const {
     wallets,
     accountBalance,
@@ -52,8 +50,6 @@ export function WalletList() {
   return (
     <Paper elevation={5}>
       <WalletListHeader balance={totalBalance} loading={loading} onRefresh={handleRefresh} />
-      <pre>{store?.balance}</pre>
-      <Button onClick={() => store.refreshPrices()}>Click</Button>
       {error ? (
         <Alert variant="filled" className="m-4" severity="error">
           {error}

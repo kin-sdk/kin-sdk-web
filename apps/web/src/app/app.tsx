@@ -5,7 +5,7 @@ import * as adapter from 'pouchdb-adapter-idb'
 
 import { AppLayout } from './app-layout'
 import { InjectorProvider, useDependencyInjector } from './core/data-access/core-injector'
-import { CoreService } from './core/data-access/core-service'
+import { CoreDatabase } from './core/data-access/core-database'
 import { NetworkProvider, PricesProvider } from './network/data-access'
 import { SettingsProvider } from './settings/data-access'
 import { WalletProvider } from './wallet/provider'
@@ -27,7 +27,7 @@ export const DatabaseGuard: FC = ({ children }) => {
   const injector = useDependencyInjector()
 
   useEffect(() => {
-    const db: CoreService = injector.get(CoreService)
+    const db: CoreDatabase = injector.get(CoreDatabase)
     db.load(adapter).then(setIsReady)
   }, [injector])
 
