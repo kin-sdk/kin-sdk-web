@@ -1,10 +1,9 @@
+import * as adapter from 'pouchdb-adapter-idb'
 import React, { FC, useEffect, useState } from 'react'
-import { CoreDatabase } from './core/data-access/core-database'
-import { useDependencyInjector } from './core/data-access/core-injector'
+import { CoreDatabase, CorePrices, useDependencyInjector } from './core/data-access'
 import { NetworkProvider, PricesProvider } from './network/data-access'
 import { SettingsProvider } from './settings/data-access'
 import { WalletProvider } from './wallet/provider'
-import * as adapter from 'pouchdb-adapter-idb'
 
 export const AppGuard: FC = ({ children }) => {
   const [isReady, setIsReady] = useState<boolean>(false)
@@ -12,7 +11,11 @@ export const AppGuard: FC = ({ children }) => {
 
   useEffect(() => {
     const db: CoreDatabase = injector.get(CoreDatabase)
-    db.load(adapter).then(setIsReady)
+    const prices: CorePrices = injector.get(CorePrices)
+
+    db.load(adapter)
+      .then(() => prices.load())
+      .then(setIsReady)
   }, [injector])
 
   return isReady ? (

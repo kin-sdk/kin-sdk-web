@@ -1,5 +1,6 @@
-import { AccountBalance, getPrices, Prices } from '@kin-sdk/client'
+import { AccountBalance, Prices } from '@kin-sdk/client'
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { useCorePrices } from '../../core/data-access'
 import { useNetwork } from './network-provider'
 
 const PricesContext = createContext<{
@@ -13,7 +14,8 @@ function roundDigits(number, digits) {
 }
 
 function PricesProvider({ children }: { children: ReactNode }) {
-  const [prices, setPrices] = useState<Prices>()
+  const corePrices = useCorePrices()
+  const [prices, setPrices] = useState<Prices>(corePrices?.prices)
   const { network, client } = useNetwork()
 
   const refreshPrices = () => client?.getPrices().then(setPrices)
@@ -33,12 +35,6 @@ function PricesProvider({ children }: { children: ReactNode }) {
       refreshPrices()
     }
   }, [network, client])
-
-  useEffect(() => {
-    if (!prices) {
-      getPrices().then(setPrices)
-    }
-  }, [prices, setPrices])
 
   return <PricesContext.Provider value={{ prices, refreshPrices, convertPrice }}>{children}</PricesContext.Provider>
 }
