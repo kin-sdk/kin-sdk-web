@@ -27,6 +27,10 @@ export function elipsify(str = '', len = 10) {
   return str
 }
 
+export function sleep(seconds = 1) {
+  return new Promise((resolve) => setTimeout(resolve, seconds * 1000))
+}
+
 export function bs58decode(string: string): Buffer | undefined {
   return bs58.decode(string)
 }

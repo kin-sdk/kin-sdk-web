@@ -22,8 +22,7 @@ import {
   SubmitTransactionResponse,
   Transaction,
 } from '@kin-sdk/core'
-import { retry } from 'ts-retry-promise'
-const sleep = (seconds = 1) => new Promise((resolve) => setTimeout(resolve, seconds * 1000))
+
 import {
   serializeCreateAccountRequest,
   serializeGetBalanceRequest,
@@ -63,30 +62,7 @@ export class KinAgoraClient {
     await this.ensureServiceConfig()
     const owner = PrivateKey.fromString(secret)
 
-    await retry(
-      () =>
-        new Promise((resolve, reject) => {
-          return this.createAccountTransaction(owner)
-            .then((tx) => this.createAccountRequest(tx))
-            .then(([res, err]) => {
-              console.log('createAccountTransaction', [res, err])
-              return err ? reject(err) : resolve(res)
-            })
-        }),
-      { retries: 3, backoff: 'FIXED' },
-    )
-    await sleep(2)
-    await retry(
-      () =>
-        new Promise((resolve, reject) => {
-          return this.resolveTokenAccounts(owner.publicKey().toBase58()).then(([res, err]) => {
-            console.log('Resolve', { res, err })
-            return err ? reject(err) : resolve(res)
-          })
-        }),
-      { retries: 30, delay: 1000, backoff: 'LINEAR' },
-    )
-    return [null, null]
+    return this.createAccountTransaction(owner).then((tx) => this.createAccountRequest(tx))
   }
 
   async getBalance(publicKey: string): Promise<[string, string?]> {
@@ -145,6 +121,7 @@ export class KinAgoraClient {
   }
 
   private async createAccountTransaction(owner: PrivateKey): Promise<Transaction> {
+    await this.ensureServiceConfig()
     return this.getRecentBlockhash()
       .then((res) => bs58encode(Buffer.from(res.getBlockhash()!.getValue_asU8())))
       .then((recentBlockhash) =>

@@ -31,8 +31,7 @@ function PricesProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (network && client) {
-      console.log('refresh')
-      refreshPrices()
+      refreshPrices().then()
     }
   }, [network, client])
 
