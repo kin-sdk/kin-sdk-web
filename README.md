@@ -1,90 +1,101 @@
-# KinWallet
+# kin-sdk
 
-This project was generated using [Nx](https://nx.dev).
+> Source code of the Kin Web SDK.
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+<p align="center"><img src="https://avatars.githubusercontent.com/u/82057512?s=450" width="450"></p>
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+## Packages
 
-## Adding capabilities to your workspace
+- [@kin-sdk/client](libs/client/README.md)
+- [@kin-sdk/core](libs/core/README.md)
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+## Demo applications
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+If you want to implement the Kin Web SDK in your applications, you probably want to start out with one of the demo applications:
 
-Below are our core plugins:
+- [Angular](https://github.com/kin-sdk/kin-sdk-demo-angular)
+- [React](https://github.com/kin-sdk/kin-sdk-demo-react)
+- [Vue](https://github.com/kin-sdk/kin-sdk-demo-vue)
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+If you want to use a framework that's not listed here, please follow the usage instructions down below.
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+## Usage
 
-## Generate an application
+In this section you can read how to use the Kin Web SDK in your project.
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+### Step 0: Install dependencies
 
-> You can use any of the plugins above to generate applications as well.
+You need to install the `@kin-sdk/client` package to your project:
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+```shell
+yarn add @kin-sdk/client
+# Or if you are using npm
+npm install @kin-sdk/client
+```
 
-## Generate a library
+### Step 1: Initializing the Kin Client
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+The first thing you need to do is import the `KinClient` and environment (`KinProd` or `KinTest`) into your project, and initialize a new instance of the client:
 
-> You can also use any of the plugins above to generate libraries as well.
+```typescript
+// Import the client
+import { KinClient, KinProd } from '@kin-sdk/client'
+// Create instance of client
+const client = new KinClient(KinProd)
+```
 
-Libraries are shareable across libraries and applications. They can be imported from `@kin-sdk/mylib`.
+### Step 2: Generate a new key pair
 
-## Development server
+In order to interact with the blockchain you need a key pair that consists of a `secret` and `publicKey`.
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+This account will generally be stored on the users' device, for instance using `IndexedDB`. Make sure that the user has a way to export their secret, so they won't lose access to their Kin.
 
-## Code scaffolding
+```typescript
+// Generate a new 'account' or 'key-pair'
+const account = KinClient.createWallet('create', { name: 'Account 1' })
+```
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+### Step 3: Create an account on Kin blockchain
 
-## Build
+Use the `secret` of the account you generated in the previous step to create the account on the blockchain.
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```typescript
+const [result, error] = await client.createAccount(account.secret)
+if (error) {
+  console.error(error)
+}
+```
 
-## Running unit tests
+### Step 4: Resolve token Accounts
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+The next step is resolving the token accounts. A token account is where the Kin is actually stored, as Kin is a token on the Solana blockchain. You can [read more details here](https://docs.kin.org/solana#token-accounts).
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+```typescript
+// Resolve token Accounts
+const accounts = await client.resolveTokenAccounts(account.publicKey)
+```
 
-## Running end-to-end tests
+### Step 5: Submit a payment.
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+After this is done, you are ready to submit a payment.
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+The memo field here is optional, the other fields are required.
 
-## Understand your workspace
+```typescript
+const secret = account.secret
+const tokenAccount = account.publicKey
+const amount = '1'
+const destination = 'Don8L4DTVrUrRAcVTsFoCRqei5Mokde3CV3K9Ut4nAGZ'
+const memo = 'One Kin as a Donation'
+await client.submitPayment({
+  secret,
+  tokenAccount,
+  amount,
+  destination,
+  memo,
+})
+```
 
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+## Support
 
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+If you have any issues feel free to join the `#kin-sdk` channel in the [Kintegrate Discord](https://discord.gg/UTHWjKccCJ).
