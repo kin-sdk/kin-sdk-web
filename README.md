@@ -6,8 +6,8 @@
 
 ## Packages
 
-- [@kin-sdk/client](libs/client/README.md)
-- [@kin-sdk/core](libs/core/README.md)
+- [@kin-sdk/client](packages/client/README.md)
+- [@kin-sdk/core](packages/core/README.md)
 
 ## Demo applications
 

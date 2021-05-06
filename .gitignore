@@ -38,5 +38,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-libs/core/proto
-libs/core/proto-common
+packages/core/proto
+packages/core/proto-common

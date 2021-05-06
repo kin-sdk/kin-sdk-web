@@ -7,7 +7,13 @@
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": { "defaultBase": "main" },
+  "affected": {
+    "defaultBase": "main"
+  },
+  "workspaceLayout": {
+    "libsDir": "packages",
+    "appsDir": "packages"
+  },
   "npmScope": "kin-sdk",
   "tasksRunnerOptions": {
     "default": {
@@ -20,5 +26,12 @@
       }
     }
   },
-  "projects": { "core": { "tags": [] }, "client": { "tags": [] } }
+  "projects": {
+    "core": {
+      "tags": []
+    },
+    "client": {
+      "tags": []
+    }
+  }
 }
