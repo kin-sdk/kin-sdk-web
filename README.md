@@ -1,8 +1,6 @@
 # kin-sdk
 
-> Source code of the Kin Web SDK.
-
-<p align="center"><img src="https://avatars.githubusercontent.com/u/82057512?s=450" width="450"></p>
+Source code of the Kin Web SDK.
 
 ## Packages
 
@@ -58,6 +56,8 @@ const account = KinClient.createWallet('create', { name: 'Account 1' })
 ### Step 3: Create an account on Kin blockchain
 
 Use the `secret` of the account you generated in the previous step to create the account on the blockchain.
+
+> Creating the account may take a little while (up to 30 seconds, possibly longer on a busy moment) after the `result` above has been returned. You can use the `resolveTokenAccounts` method (see next step) to make sure the account is in fact created. As soon as the account is created correctly, the `resolveTokenAccounts` method will return the address with the balance.
 
 ```typescript
 const [result, error] = await client.createAccount(account.secret)
