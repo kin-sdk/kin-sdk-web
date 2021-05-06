@@ -1,18 +1,13 @@
 {
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": {
-    "defaultBase": "main"
-  },
+  "affected": { "defaultBase": "main" },
   "npmScope": "kin-sdk",
   "tasksRunnerOptions": {
     "default": {
@@ -25,19 +20,5 @@
       }
     }
   },
-  "projects": {
-    "web": {
-      "tags": []
-    },
-    "web-e2e": {
-      "tags": [],
-      "implicitDependencies": ["web"]
-    },
-    "core": {
-      "tags": []
-    },
-    "client": {
-      "tags": []
-    }
-  }
+  "projects": { "core": { "tags": [] }, "client": { "tags": [] } }
 }
