@@ -6,7 +6,7 @@ import { Keypair, Wallet } from '@kin-sdk/core'
  * @param {Wallet} from
  * @returns {Wallet}
  */
-export function createWallet(type: 'create' | 'import' | 'watch', from: Wallet): Wallet {
+export function createWallet(type: 'create' | 'import' | 'watch', from: Wallet = {}): Wallet {
   switch (type) {
     case 'create': {
       const keys = Keypair.randomKeys()

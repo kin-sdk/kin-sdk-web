@@ -54,7 +54,7 @@ export class KinAgoraClient {
     getAccountInfoURL: string
   }
 
-  constructor(private readonly env: KinEnvironment) {
+  constructor(private readonly env: KinEnvironment, private readonly appIndex?: number) {
     this.urls = getAgoraUrls(env)
   }
 
