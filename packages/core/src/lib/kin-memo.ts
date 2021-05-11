@@ -2,7 +2,6 @@ import { MAX_TRANSACTION_TYPE, TransactionType } from './kin-constants'
 
 const magicByte = 0x1
 
-export const MAX_APP_INDEX = Math.pow(2, 16) - 1
 export const MAX_VERSION = 1
 
 // Memo implements the Agora memo specification.

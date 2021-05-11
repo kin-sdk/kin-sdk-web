@@ -1,4 +1,4 @@
-import { KinClient, Wallet } from '@kin-sdk/client'
+import { KinClient, KinClientOptions, Wallet } from '@kin-sdk/client'
 import React, { useEffect, useState, VFC } from 'react'
 import { AppWalletCreateAccount } from './app-wallet-create'
 import { AppWalletCreatePayment } from './app-wallet-payment'
@@ -6,18 +6,19 @@ import { AppWalletResolveAccount } from './app-wallet-tokens'
 import { KinNetwork } from './kin-utils'
 
 interface AppFooterProps {
+  options?: KinClientOptions
   network: KinNetwork
   wallet: Wallet
 }
 
-export const AppWallet: VFC<AppFooterProps> = ({ network, wallet }) => {
+export const AppWallet: VFC<AppFooterProps> = ({ network, options, wallet }) => {
   const [client, setClient] = useState<KinClient>(null)
   const [createAccountDone, setCreateAccountDone] = useState(false)
   const [resolveAccountDone, setResolveAccountDone] = useState(false)
 
   useEffect(() => {
     if (!client) {
-      setClient(() => new KinClient(network))
+      setClient(() => new KinClient(network, options))
     }
   }, [client, setClient])
 

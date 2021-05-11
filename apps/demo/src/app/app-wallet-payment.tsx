@@ -21,7 +21,6 @@ export const AppWalletCreatePayment: VFC<AppWalletCreatePaymentProps> = ({ clien
         tokenAccount: wallet.publicKey,
         destination,
         amount: '1',
-        memo: 'Donation for Don8'
       })
       setCreatePaymentStatus({ result, error })
       setCreatePaymentEnabled(true)
