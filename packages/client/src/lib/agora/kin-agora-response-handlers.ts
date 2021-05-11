@@ -26,7 +26,7 @@ export function handleSubmitTransactionResponse(res: SubmitTransactionResponse):
   switch (res.getResult()) {
     case SubmitTransactionResponse.Result.OK:
     case SubmitTransactionResponse.Result.ALREADY_SUBMITTED:
-      return ['The transaction is submitted', null]
+      return [bs58encode(res.getSignature().getValue_asU8()), null]
     case SubmitTransactionResponse.Result.FAILED:
       switch (res.getTransactionError().getReason()) {
         case TransactionError.Reason.UNAUTHORIZED:
