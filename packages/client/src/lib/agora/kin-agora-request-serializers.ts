@@ -14,6 +14,7 @@ import {
   SolanaTransaction,
   SubmitTransactionRequest,
   Transaction,
+  TransactionType,
 } from '@kin-sdk/core'
 import { createSolanaTransaction } from './kin-agora-helpers'
 import { SubmitPaymentOptions } from './submit-payment-options'
@@ -66,12 +67,14 @@ export function serializeResolveTokenAccountsRequest(publicKey: string) {
 }
 
 export function serializeSubmitPaymentTransaction(
-  { secret, tokenAccount, destination, amount, memo }: SubmitPaymentOptions,
+  { secret, tokenAccount, destination, amount, memo, type }: SubmitPaymentOptions,
   subsidizer,
   tokenProgram,
+  appIndex?: number,
 ): [PrivateKey, SolanaTransaction] {
   const pk: PrivateKey = PrivateKey.fromSecret(secret)
   const transaction = createSolanaTransaction({
+    type: type || TransactionType.P2P,
     publicKey: Keypair.fromSecret(secret).publicKey,
     tokenAccount,
     destination,
@@ -79,6 +82,7 @@ export function serializeSubmitPaymentTransaction(
     memo,
     subsidizer,
     tokenProgram,
+    appIndex,
   })
 
   return [pk, transaction]

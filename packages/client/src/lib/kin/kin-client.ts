@@ -1,7 +1,7 @@
-import { KinEnvironment, Network, PrivateKey } from '@kin-sdk/core'
+import { KinEnvironment, Network, PrivateKey, TransactionType } from '@kin-sdk/core'
 import axios from 'axios'
 import { retry } from 'ts-retry-promise'
-import { KinAgoraClient } from '../agora/kin-agora-client'
+import { KinAgoraClient, KinAgoraClientOptions } from '../agora/kin-agora-client'
 import { SubmitPaymentOptions } from '../agora/submit-payment-options'
 
 const sleep = (seconds = 1) => new Promise((resolve) => setTimeout(resolve, seconds * 1000))
@@ -51,12 +51,16 @@ export function getPrices(): Promise<Prices> {
     .then((res) => res.data)
 }
 
+export interface KinClientOptions extends KinAgoraClientOptions {
+  appIndex?: number
+}
+
 export class KinClient {
   private readonly client: KinAgoraClient
 
-  constructor(private readonly network: Network) {
-    console.log(`KinClient: ${network?.name}`)
-    this.client = new KinAgoraClient(network?.env)
+  constructor(private readonly network: Network, private readonly options: KinClientOptions = {}) {
+    this.client = new KinAgoraClient(network?.env, this.options)
+    console.log(`KinClient: ${network?.name}`, this.options)
   }
 
   getPrices(): Promise<Prices> {

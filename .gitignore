@@ -40,3 +40,5 @@ Thumbs.db
 
 packages/core/proto
 packages/core/proto-common
+
+apps/demo/.env

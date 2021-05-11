@@ -1,7 +1,10 @@
 {
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
@@ -9,10 +12,6 @@
   },
   "affected": {
     "defaultBase": "main"
-  },
-  "workspaceLayout": {
-    "libsDir": "packages",
-    "appsDir": "packages"
   },
   "npmScope": "kin-sdk",
   "tasksRunnerOptions": {
@@ -26,12 +25,23 @@
       }
     }
   },
+  "workspaceLayout": {
+    "libsDir": "packages",
+    "appsDir": "apps"
+  },
   "projects": {
+    "client": {
+      "tags": []
+    },
     "core": {
       "tags": []
     },
-    "client": {
+    "demo": {
       "tags": []
+    },
+    "demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["demo"]
     }
   }
 }

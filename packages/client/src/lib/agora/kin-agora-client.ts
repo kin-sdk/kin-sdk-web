@@ -21,13 +21,14 @@ import {
   SolanaPublicKey,
   SubmitTransactionResponse,
   Transaction,
+  TransactionType,
 } from '@kin-sdk/core'
 
 import {
   serializeCreateAccountRequest,
   serializeGetBalanceRequest,
-  serializeMinBalanceReq,
   serializeGetTokenAccountBalanceRequest,
+  serializeMinBalanceReq,
   serializeResolveTokenAccountsRequest,
   serializeSubmitPaymentRequest,
   serializeSubmitPaymentTransaction,
@@ -36,6 +37,10 @@ import {
 
 import { handleCreateAccountResponse, handleSubmitTransactionResponse } from './kin-agora-response-handlers'
 import { SubmitPaymentOptions } from './submit-payment-options'
+
+export interface KinAgoraClientOptions {
+  appIndex?: number
+}
 
 export class KinAgoraClient {
   private serviceConfig: {
@@ -54,7 +59,7 @@ export class KinAgoraClient {
     getAccountInfoURL: string
   }
 
-  constructor(private readonly env: KinEnvironment) {
+  constructor(private readonly env: KinEnvironment, private readonly options?: KinAgoraClientOptions) {
     this.urls = getAgoraUrls(env)
   }
 
@@ -87,6 +92,7 @@ export class KinAgoraClient {
       options,
       this.serviceConfig.subsidizer,
       this.serviceConfig.tokenProgram,
+      this.options.appIndex,
     )
 
     return this.getRecentBlockhash().then((resp) =>

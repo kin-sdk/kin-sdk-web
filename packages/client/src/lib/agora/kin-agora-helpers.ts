@@ -1,6 +1,15 @@
-import { kinToQuarks, MemoProgram, PublicKey, SolanaPublicKey, SolanaTransaction, TokenProgram } from '@kin-sdk/core'
+import {
+  kinToQuarks,
+  Memo,
+  MemoProgram,
+  PublicKey,
+  SolanaPublicKey,
+  SolanaTransaction,
+  TokenProgram,
+} from '@kin-sdk/core'
 
 export function createSolanaTransaction({
+  type,
   publicKey,
   tokenAccount,
   destination,
@@ -8,6 +17,7 @@ export function createSolanaTransaction({
   memo,
   tokenProgram,
   subsidizer,
+  appIndex,
 }): SolanaTransaction {
   const owner = PublicKey.fromBase58(publicKey).solanaKey()
   let feePayer: SolanaPublicKey
@@ -20,6 +30,10 @@ export function createSolanaTransaction({
 
   if (memo?.length) {
     instructions.push(MemoProgram.memo({ data: memo }))
+  } else  if (appIndex) {
+    const fk = Buffer.alloc(29)
+    const kinMemo = Memo.new(1, type, appIndex, fk)
+    instructions.push(MemoProgram.memo({ data: kinMemo.buffer.toString('base64') }))
   }
 
   instructions.push(
