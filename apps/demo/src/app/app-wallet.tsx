@@ -13,7 +13,7 @@ interface AppFooterProps {
 
 export const AppWallet: VFC<AppFooterProps> = ({ network, options, wallet }) => {
   const [client, setClient] = useState<KinClient>(null)
-  const [createAccountDone, setCreateAccountDone] = useState(false)
+  const [showSecret, setShowSecret] = useState(false)
   const [resolveAccountDone, setResolveAccountDone] = useState(false)
 
   useEffect(() => {
@@ -27,9 +27,16 @@ export const AppWallet: VFC<AppFooterProps> = ({ network, options, wallet }) => 
       <div className="card-header">
         <h3 className="my-2 p-0">Network: {network?.name}</h3>
         <h5 className="my-2 p-0">Public Key: {wallet?.publicKey}</h5>
+        {showSecret ? (
+          <h5 className="my-2 p-0">Secret: {wallet?.secret}</h5>
+        ) : (
+          <button onClick={() => setShowSecret(true)} className="btn btn-secondary">
+            Show Secret
+          </button>
+        )}
       </div>
       <div className="card-body">
-        <AppWalletCreateAccount client={client} wallet={wallet} done={setCreateAccountDone} />
+        <AppWalletCreateAccount client={client} wallet={wallet} />
 
         <AppWalletResolveAccount client={client} wallet={wallet} done={setResolveAccountDone} />
         {resolveAccountDone && <AppWalletCreatePayment client={client} wallet={wallet} done={setResolveAccountDone} />}

@@ -4,7 +4,7 @@ import { AppWallet } from './app-wallet'
 import { KinNetwork } from './kin-utils'
 
 const ENV_APP_INDEX = process.env.NX_KIN_APP_INDEX || null
-const ENV_NETWORK = process.env.NX_KIN_NETWORK || 'Prod'
+const ENV_NETWORK = process.env.NX_KIN_NETWORK || 'Test'
 const ENV_SECRET = process.env.NX_KIN_WALLET_SECRET || null
 
 const envNetwork: KinNetwork = ENV_NETWORK === 'Test' ? KinTest : KinProd
@@ -21,20 +21,21 @@ export const App: VFC = () => {
     }
   }, [wallet, setWallet])
 
-  const generateWallet = () => setWallet(() => ENV_SECRET ? createWallet('import', { secret: ENV_SECRET }) :  createWallet('create'))
+  const generateWallet = () =>
+    setWallet(() => (ENV_SECRET ? createWallet('import', { secret: ENV_SECRET }) : createWallet('create')))
 
   return (
     <div className="d-flex flex-column h-100 px-3 container-fluid">
       <div className="flex-shrink-0">
         <AppWallet network={network} options={options} wallet={wallet} />
       </div>
-      { !ENV_SECRET &&
+      {!ENV_SECRET && (
         <div className="text-center mt-3">
           <button onClick={generateWallet} className="btn btn-sm btn-primary mb-3">
             Generate Wallet
           </button>
         </div>
-      }
+      )}
     </div>
   )
 }

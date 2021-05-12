@@ -2,12 +2,11 @@ import { KinClient, Wallet } from '@kin-sdk/client'
 import React, { useState, VFC } from 'react'
 
 export interface AppWalletCreateAccountProps {
-  done: (done: boolean) => void
   client: KinClient
   wallet: Wallet
 }
 
-export const AppWalletCreateAccount: VFC<AppWalletCreateAccountProps> = ({ client, done, wallet }) => {
+export const AppWalletCreateAccount: VFC<AppWalletCreateAccountProps> = ({ client, wallet }) => {
   const [createAccountEnabled, setCreateAccountEnabled] = useState(true)
   const [createAccountStatus, setCreateAccountStatus] = useState(null)
   const createAccount = async () => {
@@ -19,7 +18,6 @@ export const AppWalletCreateAccount: VFC<AppWalletCreateAccountProps> = ({ clien
       if (error) {
         setCreateAccountEnabled(true)
       }
-      done(!!result)
     } catch (error) {
       setCreateAccountStatus({ error })
       setCreateAccountEnabled(true)
