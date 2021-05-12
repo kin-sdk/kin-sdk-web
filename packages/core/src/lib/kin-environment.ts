@@ -20,11 +20,12 @@ export function getAgoraUrls(env: KinEnvironment) {
 
   return {
     createAccountURL: `${url}/api/kin.agora.account.v4.Account/CreateAccount`,
-    resolveTokenAccountsURL: `${url}/api/kin.agora.account.v4.Account/ResolveTokenAccounts`,
     getAccountInfoURL: `${url}/api/kin.agora.account.v4.Account/GetAccountInfo`,
+    requestAirdropURL: `${url}/api/kin.agora.airdrop.v4.Airdrop/RequestAirdrop`,
     getServiceConfigURL: `${url}/api/kin.agora.transaction.v4.Transaction/GetServiceConfig`,
     getRecentBlockhashURL: `${url}/api/kin.agora.transaction.v4.Transaction/GetRecentBlockhash`,
     getMinBalanceURL: `${url}/api/kin.agora.transaction.v4.Transaction/GetMinimumBalanceForRentExemption`,
+    resolveTokenAccountsURL: `${url}/api/kin.agora.account.v4.Account/ResolveTokenAccounts`,
     submitTransactionURL: `${url}/api/kin.agora.transaction.v4.Transaction/SubmitTransaction`,
   }
 }

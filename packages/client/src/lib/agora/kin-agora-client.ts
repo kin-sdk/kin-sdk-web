@@ -14,6 +14,7 @@ import {
   PrivateKey,
   PublicKey,
   quarksToKin,
+  RequestAirdropResponse,
   ResolveTokenAccountsResponse,
   ServiceConfigKeys,
   SolanaAccount,
@@ -21,11 +22,11 @@ import {
   SolanaPublicKey,
   SubmitTransactionResponse,
   Transaction,
-  TransactionType,
 } from '@kin-sdk/core'
 
 import {
   serializeCreateAccountRequest,
+  serializeRequestAirdropRequest,
   serializeGetBalanceRequest,
   serializeGetTokenAccountBalanceRequest,
   serializeMinBalanceReq,
@@ -35,7 +36,11 @@ import {
   serializeSubmitTransactionRequest,
 } from './kin-agora-request-serializers'
 
-import { handleCreateAccountResponse, handleSubmitTransactionResponse } from './kin-agora-response-handlers'
+import {
+  handleCreateAccountResponse,
+  handleRequestAirdropResponse,
+  handleSubmitTransactionResponse,
+} from './kin-agora-response-handlers'
 import { SubmitPaymentOptions } from './submit-payment-options'
 
 export interface KinAgoraClientOptions {
@@ -50,13 +55,14 @@ export class KinAgoraClient {
   }
 
   private readonly urls: {
+    createAccountURL: string
+    getAccountInfoURL: string
+    requestAirdropURL: string
+    getMinBalanceURL: string
     getRecentBlockhashURL: string
     getServiceConfigURL: string
-    createAccountURL: string
-    getMinBalanceURL: string
-    submitTransactionURL: string
     resolveTokenAccountsURL: string
-    getAccountInfoURL: string
+    submitTransactionURL: string
   }
 
   constructor(private readonly env: KinEnvironment, private readonly options?: KinAgoraClientOptions) {
@@ -84,6 +90,12 @@ export class KinAgoraClient {
     return agoraRequest(this.urls?.resolveTokenAccountsURL, serializeResolveTokenAccountsRequest(publicKey))
       .then((res) => ResolveTokenAccountsResponse.deserializeBinary(res.data))
       .then((res) => this.handleResolveTokenResponse(res.getTokenAccountsList()))
+  }
+
+  requestAirdrop(publicKey: string, amount: string): Promise<[string, string?]> {
+    return agoraRequest(this.urls?.requestAirdropURL, serializeRequestAirdropRequest(publicKey, amount))
+      .then((res) => RequestAirdropResponse.deserializeBinary(res.data))
+      .then((res) => handleRequestAirdropResponse(res))
   }
 
   async submitPayment(options: SubmitPaymentOptions): Promise<[string, string?]> {

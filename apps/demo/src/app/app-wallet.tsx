@@ -1,5 +1,6 @@
-import { KinClient, KinClientOptions, Wallet } from '@kin-sdk/client'
+import { KinClient, KinClientOptions, KinEnvironment, Wallet } from '@kin-sdk/client'
 import React, { useEffect, useState, VFC } from 'react'
+import { AppWalletRequestAirdrop } from './app-wallet-airdrop'
 import { AppWalletCreateAccount } from './app-wallet-create'
 import { AppWalletCreatePayment } from './app-wallet-payment'
 import { AppWalletResolveAccount } from './app-wallet-tokens'
@@ -22,6 +23,8 @@ export const AppWallet: VFC<AppFooterProps> = ({ network, options, wallet }) => 
     }
   }, [client, setClient])
 
+  const isTest = network.env === KinEnvironment.Test
+
   return (
     <div className="card">
       <div className="card-header">
@@ -40,6 +43,7 @@ export const AppWallet: VFC<AppFooterProps> = ({ network, options, wallet }) => 
 
         <AppWalletResolveAccount client={client} wallet={wallet} done={setResolveAccountDone} />
         {resolveAccountDone && <AppWalletCreatePayment client={client} wallet={wallet} done={setResolveAccountDone} />}
+        {isTest && <AppWalletRequestAirdrop client={client} wallet={wallet} />}
       </div>
     </div>
   )

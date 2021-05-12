@@ -6,8 +6,10 @@ import {
   GetAccountInfoRequest,
   GetMinimumBalanceForRentExemptionRequest,
   Keypair,
+  kinToQuarks,
   PrivateKey,
   PublicKey,
+  RequestAirdropRequest,
   ResolveTokenAccountsRequest,
   SolanaAccount,
   SolanaAccountId,
@@ -25,6 +27,17 @@ export function serializeCreateAccountRequest(protoTx: Transaction) {
   createReq.setCommitment(Commitment.SINGLE)
 
   return createReq.serializeBinary()
+}
+
+export function serializeRequestAirdropRequest(publicKey: string, amount: string) {
+  const accountId = new SolanaAccountId()
+  accountId.setValue(PublicKey.fromBase58(publicKey).buffer)
+
+  const req = new RequestAirdropRequest()
+  req.setAccountId(accountId)
+  req.setCommitment(Commitment.SINGLE)
+  req.setQuarks(kinToQuarks(amount).toNumber())
+  return req.serializeBinary()
 }
 
 export function serializeGetTokenAccountBalanceRequest(tokenAccount: SolanaAccountId) {

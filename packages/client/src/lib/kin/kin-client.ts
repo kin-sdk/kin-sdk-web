@@ -134,7 +134,10 @@ export class KinClient {
     return this.client.submitPayment(options)
   }
 
-  // getBalance
+  requestAirdrop(publicKey: string, amount: string) {
+    return this.client.requestAirdrop(publicKey, amount)
+  }
+
   resolveTokenAccounts(publicKey: string) {
     return this.client.resolveTokenAccounts(publicKey)
   }

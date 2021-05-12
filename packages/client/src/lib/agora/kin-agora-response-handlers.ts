@@ -1,4 +1,23 @@
-import { bs58encode, CreateAccountResponse, SubmitTransactionResponse, TransactionError } from '@kin-sdk/core'
+import {
+  bs58encode,
+  CreateAccountResponse,
+  RequestAirdropResponse,
+  SubmitTransactionResponse,
+  TransactionError,
+} from '@kin-sdk/core'
+
+export function handleRequestAirdropResponse(res: RequestAirdropResponse): [string, string?] {
+  switch (res.getResult()) {
+    case RequestAirdropResponse.Result.OK:
+      return ['OK']
+    case RequestAirdropResponse.Result.NOT_FOUND:
+      return [null, 'NOT_FOUND']
+    case RequestAirdropResponse.Result.INSUFFICIENT_KIN:
+      return [null, 'INSUFFICIENT_KIN']
+    default:
+      return [null, 'UNEXPECTED_ERROR']
+  }
+}
 
 export function handleCreateAccountResponse(res: CreateAccountResponse): [string, string?] {
   switch (res.getResult()) {
