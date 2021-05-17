@@ -3,7 +3,7 @@ import React, { useEffect, useState, VFC } from 'react'
 import { AppWalletRequestAirdrop } from './app-wallet-airdrop'
 import { AppWalletCreateAccount } from './app-wallet-create'
 import { AppWalletCreatePayment } from './app-wallet-payment'
-import { AppWalletResolveAccount } from './app-wallet-tokens'
+import { AppWalletGetBalances } from './app-wallet-tokens'
 import { KinNetwork } from './kin-utils'
 
 interface AppFooterProps {
@@ -15,7 +15,7 @@ interface AppFooterProps {
 export const AppWallet: VFC<AppFooterProps> = ({ network, options, wallet }) => {
   const [client, setClient] = useState<KinClient>(null)
   const [showSecret, setShowSecret] = useState(false)
-  const [resolveAccountDone, setResolveAccountDone] = useState(false)
+  const [getBalancesDone, setGetBalancesDone] = useState(false)
 
   useEffect(() => {
     if (!client) {
@@ -41,9 +41,9 @@ export const AppWallet: VFC<AppFooterProps> = ({ network, options, wallet }) => 
       <div className="card-body">
         <AppWalletCreateAccount client={client} wallet={wallet} />
 
-        <AppWalletResolveAccount client={client} wallet={wallet} done={setResolveAccountDone} />
-        {resolveAccountDone && <AppWalletCreatePayment client={client} wallet={wallet} done={setResolveAccountDone} />}
+        <AppWalletGetBalances client={client} wallet={wallet} done={setGetBalancesDone} />
         {isTest && <AppWalletRequestAirdrop client={client} wallet={wallet} />}
+        <AppWalletCreatePayment client={client} wallet={wallet} done={setGetBalancesDone} />
       </div>
     </div>
   )

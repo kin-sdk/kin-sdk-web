@@ -33,12 +33,12 @@ export const AppWalletCreatePayment: VFC<AppWalletCreatePaymentProps> = ({ clien
 
   return (
     <div>
-      <input className='form-control' value={destination} onChange={e => setDestination(e?.target?.value)}/>
-      <hr/>
+      <input className="form-control" value={destination} onChange={(e) => setDestination(e?.target?.value)} />
+      <hr />
       <button onClick={createPayment} className="btn btn-sm btn-primary mb-2" disabled={!createPaymentEnabled}>
         Create Payment
       </button>
-      <pre>createPaymentStatus: {JSON.stringify(createPaymentStatus, null, 2)}</pre>
+      <pre>createPayment: {JSON.stringify(createPaymentStatus, null, 2)}</pre>
     </div>
   )
 }

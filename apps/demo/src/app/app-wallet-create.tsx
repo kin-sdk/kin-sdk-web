@@ -29,7 +29,7 @@ export const AppWalletCreateAccount: VFC<AppWalletCreateAccountProps> = ({ clien
       <button onClick={createAccount} className="btn btn-sm btn-primary mb-2" disabled={!createAccountEnabled}>
         Create Account
       </button>
-      <pre>createAccountStatus: {JSON.stringify(createAccountStatus, null, 2)}</pre>
+      <pre>createAccount: {JSON.stringify(createAccountStatus, null, 2)}</pre>
     </div>
   )
 }

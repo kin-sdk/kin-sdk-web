@@ -22,11 +22,7 @@ export function handleRequestAirdropResponse(res: RequestAirdropResponse): [stri
 export function handleCreateAccountResponse(res: CreateAccountResponse): [string, string?] {
   switch (res.getResult()) {
     case CreateAccountResponse.Result.OK:
-      return [
-        `Submitted transaction to create token account ${bs58encode(
-          res.getAccountInfo().getAccountId().getValue_asU8(),
-        )} with single commitment.`,
-      ]
+      return [bs58encode(res.getAccountInfo().getAccountId().getValue_asU8()), null]
     case CreateAccountResponse.Result.EXISTS:
       return [null, 'An account with the randomly generated address exists. Please try again.']
     case CreateAccountResponse.Result.PAYER_REQUIRED:

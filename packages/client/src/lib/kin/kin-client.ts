@@ -76,7 +76,7 @@ export class KinClient {
   }
 
   async hasTokenAccounts(publicKey: string) {
-    const [tokenAccounts] = await this.client.resolveTokenAccounts(publicKey)
+    const [tokenAccounts] = await this.client.getBalances(publicKey)
     return !!tokenAccounts
   }
 
@@ -101,7 +101,7 @@ export class KinClient {
 
             if (found >= required) {
               console.log(`Found token accounts!`)
-              return this.client.resolveTokenAccounts(publicKey)
+              return this.client.getBalances(publicKey)
             }
 
             const foundTokenAccounts = await this.hasTokenAccounts(publicKey)
@@ -124,7 +124,7 @@ export class KinClient {
         return [null, e]
       }
     } else {
-      const [tokenAccounts] = await this.client.resolveTokenAccounts(publicKey)
+      const [tokenAccounts] = await this.client.getBalances(publicKey)
       console.log(`FOUND token Accounts`, publicKey, tokenAccounts)
       return [tokenAccounts]
     }
@@ -139,6 +139,11 @@ export class KinClient {
   }
 
   resolveTokenAccounts(publicKey: string) {
-    return this.client.resolveTokenAccounts(publicKey)
+    console.warn(`DEPRECATED Method 'resolveTokenAccounts'. Use 'getBalances' instead.`)
+    return this.getBalances(publicKey)
+  }
+
+  getBalances(publicKey: string) {
+    return this.client.getBalances(publicKey)
   }
 }

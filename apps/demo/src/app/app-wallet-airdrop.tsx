@@ -31,7 +31,7 @@ export const AppWalletRequestAirdrop: VFC<AppWalletRequestAirdropProps> = ({ cli
       <button onClick={requestAirdrop} className="btn btn-sm btn-primary mb-2" disabled={!requestAirdropEnabled}>
         Request Airdrop
       </button>
-      <pre>requestAirdropStatus: {JSON.stringify(requestAirdropStatus, null, 2)}</pre>
+      <pre>requestAirdrop: {JSON.stringify(requestAirdropStatus, null, 2)}</pre>
     </div>
   )
 }

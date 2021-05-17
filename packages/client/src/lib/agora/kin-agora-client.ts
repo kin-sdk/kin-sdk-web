@@ -46,6 +46,10 @@ import { SubmitPaymentOptions } from './submit-payment-options'
 export interface KinAgoraClientOptions {
   appIndex?: number
 }
+export interface KinAccountBalance {
+  account?: string
+  balance?: string
+}
 
 export class KinAgoraClient {
   private serviceConfig: {
@@ -61,7 +65,7 @@ export class KinAgoraClient {
     getMinBalanceURL: string
     getRecentBlockhashURL: string
     getServiceConfigURL: string
-    resolveTokenAccountsURL: string
+    getBalancesURL: string
     submitTransactionURL: string
   }
 
@@ -86,8 +90,8 @@ export class KinAgoraClient {
       )
   }
 
-  async resolveTokenAccounts(publicKey: string): Promise<[any[], string?]> {
-    return agoraRequest(this.urls?.resolveTokenAccountsURL, serializeResolveTokenAccountsRequest(publicKey))
+  async getBalances(publicKey: string): Promise<[KinAccountBalance[], string?]> {
+    return agoraRequest(this.urls?.getBalancesURL, serializeResolveTokenAccountsRequest(publicKey))
       .then((res) => ResolveTokenAccountsResponse.deserializeBinary(res.data))
       .then((res) => this.handleResolveTokenResponse(res.getTokenAccountsList()))
   }
@@ -118,12 +122,12 @@ export class KinAgoraClient {
     }
   }
 
-  private async handleResolveTokenResponse(tokenAccounts: SolanaAccountId[]): Promise<[any[], string?]> {
-    if (tokenAccounts.length == 0) {
+  private async handleResolveTokenResponse(accounts: SolanaAccountId[]): Promise<[KinAccountBalance[], string?]> {
+    if (accounts.length == 0) {
       return [null, `No Kin token accounts found`]
     }
 
-    const balances = await Promise.all(tokenAccounts.map((tokenAccount) => this.getTokenAccountBalance(tokenAccount)))
+    const balances = await Promise.all(accounts.map((account) => this.getTokenAccountBalance(account)))
 
     return [balances]
   }
@@ -186,7 +190,7 @@ export class KinAgoraClient {
     ).then((res) => GetRecentBlockhashResponse.deserializeBinary(res.data))
   }
 
-  private getTokenAccountBalance(tokenAccount: SolanaAccountId) {
+  private getTokenAccountBalance(tokenAccount: SolanaAccountId): Promise<KinAccountBalance> {
     return agoraRequest(this.urls?.getAccountInfoURL, serializeGetTokenAccountBalanceRequest(tokenAccount))
       .then((res) => GetAccountInfoResponse.deserializeBinary(res.data))
       .then((res) => ({
