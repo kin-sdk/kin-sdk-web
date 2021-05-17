@@ -9,13 +9,14 @@ export interface AppWalletRequestAirdropProps {
 export const AppWalletRequestAirdrop: VFC<AppWalletRequestAirdropProps> = ({ client, wallet }) => {
   const [requestAirdropEnabled, setRequestAirdropEnabled] = useState(true)
   const [requestAirdropStatus, setRequestAirdropStatus] = useState(null)
-  const [destination, setDestination] = useState('HaYyB4xCVvLtnJ15pwrL2Tz641kskrjaU2JMh4fM6qyp')
+  const [destination, setDestination] = useState<string>(wallet?.publicKey)
+  const [amount, setAmount] = useState<string>('1000')
 
   const requestAirdrop = async () => {
     setRequestAirdropEnabled(false)
     setRequestAirdropStatus({ status: 'requestAirdrop Started' })
     try {
-      const [result, error] = await client.requestAirdrop(wallet.publicKey, '1000')
+      const [result, error] = await client.requestAirdrop(wallet.publicKey, amount)
       setRequestAirdropStatus({ result, error })
       setRequestAirdropEnabled(true)
     } catch (error) {
@@ -26,7 +27,12 @@ export const AppWalletRequestAirdrop: VFC<AppWalletRequestAirdropProps> = ({ cli
 
   return (
     <div>
-      <input className="form-control" value={destination} onChange={(e) => setDestination(e?.target?.value)} />
+      <div>
+        <input className="form-control" value={destination} onChange={(e) => setDestination(e?.target?.value)} />
+      </div>
+      <div>
+        <input className="form-control" value={amount} onChange={(e) => setAmount(e?.target?.value)} />
+      </div>
       <hr />
       <button onClick={requestAirdrop} className="btn btn-sm btn-primary mb-2" disabled={!requestAirdropEnabled}>
         Request Airdrop

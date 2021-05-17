@@ -7,26 +7,20 @@ export interface AppWalletCreateAccountProps {
 }
 
 export const AppWalletCreateAccount: VFC<AppWalletCreateAccountProps> = ({ client, wallet }) => {
-  const [createAccountEnabled, setCreateAccountEnabled] = useState(true)
   const [createAccountStatus, setCreateAccountStatus] = useState(null)
   const createAccount = async () => {
-    setCreateAccountEnabled(false)
     setCreateAccountStatus({ status: 'createAccount Started' })
     try {
       const [result, error] = await client.createAccount(wallet.secret)
       setCreateAccountStatus({ result, error })
-      if (error) {
-        setCreateAccountEnabled(true)
-      }
     } catch (error) {
       setCreateAccountStatus({ error })
-      setCreateAccountEnabled(true)
     }
   }
 
   return (
     <div>
-      <button onClick={createAccount} className="btn btn-sm btn-primary mb-2" disabled={!createAccountEnabled}>
+      <button onClick={createAccount} className="btn btn-sm btn-primary mb-2">
         Create Account
       </button>
       <pre>createAccount: {JSON.stringify(createAccountStatus, null, 2)}</pre>
