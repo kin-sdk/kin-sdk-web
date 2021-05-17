@@ -129,8 +129,15 @@ export class KinClient {
     }
   }
 
-  submitPayment(options: SubmitPaymentOptions): Promise<[string, string?]> {
-    return this.client.submitPayment(options)
+  async submitPayment(options: SubmitPaymentOptions): Promise<[string, string?]> {
+    const [desination, error] = await this.client.getBalances(options.destination)
+    if (error) {
+      return [null, error]
+    }
+    if (!desination.length || !desination[0].account) {
+      return [null, `Error fetching balance for Destination Account`]
+    }
+    return this.client.submitPayment({ ...options, destination: desination[0].account })
   }
 
   requestAirdrop(publicKey: string, amount: string): Promise<[string, string?]> {
