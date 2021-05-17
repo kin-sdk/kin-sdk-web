@@ -66,13 +66,13 @@ if (error) {
 }
 ```
 
-### Step 4: Resolve token Accounts
+### Step 4: Get balances
 
-The next step is resolving the token accounts. A token account is where the Kin is actually stored, as Kin is a token on the Solana blockchain. You can [read more details here](https://docs.kin.org/solana#token-accounts).
+The next step is retrieving the balances. Kin is a token on the Solana blockchain, and your Solana Account can consist of various 'balances' or 'token accounts'. You can [read more details here](https://docs.kin.org/solana#token-accounts).
 
 ```typescript
 // Retrieve balances from account
-const accounts = await client.getBalances(account.publicKey)
+const balances = await client.getBalances(account.publicKey)
 ```
 
 ### Step 5: Submit a payment.
