@@ -1,10 +1,9 @@
-import { KinEnvironment, Network, PrivateKey, TransactionType } from '@kin-sdk/core'
+import { KinEnvironment, Network, PrivateKey } from '@kin-sdk/core'
 import axios from 'axios'
 import { retry } from 'ts-retry-promise'
-import { KinAgoraClient, KinAgoraClientOptions } from '../agora/kin-agora-client'
+import { KinAccountBalance, KinAgoraClient, KinAgoraClientOptions } from '../agora/kin-agora-client'
 import { SubmitPaymentOptions } from '../agora/submit-payment-options'
 
-const sleep = (seconds = 1) => new Promise((resolve) => setTimeout(resolve, seconds * 1000))
 export interface AccountBalance {
   kin?: string
   usd?: string
@@ -71,16 +70,16 @@ export class KinClient {
     return getExplorerUrl(this.network.env, publicKey)
   }
 
-  createAccount(secret: string) {
+  createAccount(secret: string): Promise<[string, string?]> {
     return this.client.createAccount(secret)
   }
 
-  async hasTokenAccounts(publicKey: string) {
+  async hasTokenAccounts(publicKey: string): Promise<boolean> {
     const [tokenAccounts] = await this.client.getBalances(publicKey)
     return !!tokenAccounts
   }
 
-  async ensureAccount(secret: string): Promise<[any[], string?]> {
+  async ensureAccount(secret: string): Promise<[KinAccountBalance[], string?]> {
     const owner = PrivateKey.fromString(secret)
     const publicKey = owner.publicKey().toBase58()
     const hasTokenAccounts = await this.hasTokenAccounts(publicKey)
@@ -130,11 +129,11 @@ export class KinClient {
     }
   }
 
-  submitPayment(options: SubmitPaymentOptions) {
+  submitPayment(options: SubmitPaymentOptions): Promise<[string, string?]> {
     return this.client.submitPayment(options)
   }
 
-  requestAirdrop(publicKey: string, amount: string) {
+  requestAirdrop(publicKey: string, amount: string): Promise<[string, string?]> {
     return this.client.requestAirdrop(publicKey, amount)
   }
 
@@ -143,7 +142,7 @@ export class KinClient {
     return this.getBalances(publicKey)
   }
 
-  getBalances(publicKey: string) {
+  getBalances(publicKey: string): Promise<[KinAccountBalance[], string?]> {
     return this.client.getBalances(publicKey)
   }
 }
