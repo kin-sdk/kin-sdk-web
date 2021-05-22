@@ -28,6 +28,13 @@ export interface BalanceResult {
   total: AccountBalance
 }
 
+export interface EnsureAccountOptions {
+  backoff?: 'FIXED' | 'EXPONENTIAL' | 'LINEAR'
+  delay?: number
+  retries?: number
+  confirmations?: number
+}
+
 export interface Prices {
   kin: {
     btc: number
@@ -79,7 +86,14 @@ export class KinClient {
     return !!tokenAccounts
   }
 
-  async ensureAccount(secret: string): Promise<[KinAccountBalance[], string?]> {
+  async ensureAccount(
+    secret: string,
+    { backoff, confirmations, delay, retries }: EnsureAccountOptions,
+  ): Promise<[KinAccountBalance[], string?]> {
+    confirmations = confirmations || 5
+    retries = retries || 20
+    delay = delay || 500
+    backoff = backoff || 'LINEAR'
     const owner = PrivateKey.fromString(secret)
     const publicKey = owner.publicKey().toBase58()
     const hasTokenAccounts = await this.hasTokenAccounts(publicKey)
@@ -90,21 +104,19 @@ export class KinClient {
 
       let counter = 0
       let found = 0
-      const required = 5
 
       try {
         await retry(
           async () => {
             counter++
-            console.log(`Finding token Accounts ${found}/${required} in ${counter}`)
+            console.log(`Finding token Accounts found ${found} of ${confirmations} (attempt ${counter})`)
 
-            if (found >= required) {
-              console.log(`Found token accounts!`)
+            if (found >= confirmations) {
+              console.log(`Found the required amount of token accounts!`)
               return this.client.getBalances(publicKey)
             }
 
             const foundTokenAccounts = await this.hasTokenAccounts(publicKey)
-            console.log('foundTokenAccounts', foundTokenAccounts)
 
             return new Promise((resolve, reject) => {
               if (!foundTokenAccounts) {
@@ -117,7 +129,7 @@ export class KinClient {
               }
             })
           },
-          { retries: 9, delay: 500, backoff: 'LINEAR' },
+          { retries, delay, backoff },
         )
       } catch (e) {
         return [null, e]
