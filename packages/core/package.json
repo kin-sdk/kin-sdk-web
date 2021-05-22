@@ -1,6 +1,6 @@
 {
   "name": "@kin-sdk/core",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "license": "MIT",
   "dependencies": {
     "@kintegrate/google-protobuf": "^3.15.7"
