@@ -5,11 +5,13 @@ import {
   GetAccountInfoResponse,
   getAgoraUrls,
   getCreateAccountTx,
+  GetHistoryResponse,
   GetMinimumBalanceForRentExemptionResponse,
   GetRecentBlockhashRequest,
   GetRecentBlockhashResponse,
   GetServiceConfigRequest,
   GetServiceConfigResponse,
+  HistoryItem,
   KinEnvironment,
   PrivateKey,
   PublicKey,
@@ -26,10 +28,11 @@ import {
 
 import {
   serializeCreateAccountRequest,
-  serializeRequestAirdropRequest,
   serializeGetBalanceRequest,
+  serializeGetHistoryRequest,
   serializeGetTokenAccountBalanceRequest,
   serializeMinBalanceReq,
+  serializeRequestAirdropRequest,
   serializeResolveTokenAccountsRequest,
   serializeSubmitPaymentRequest,
   serializeSubmitPaymentTransaction,
@@ -65,6 +68,7 @@ export class KinAgoraClient {
     getMinBalanceURL: string
     getRecentBlockhashURL: string
     getServiceConfigURL: string
+    getHistoryURL: string
     getBalancesURL: string
     submitTransactionURL: string
   }
@@ -87,6 +91,16 @@ export class KinAgoraClient {
         response.getResult() === GetAccountInfoResponse.Result.NOT_FOUND
           ? [null, `Account could not be found`]
           : [response?.getAccountInfo()?.getBalance()],
+      )
+  }
+
+  async getHistory(publicKey: string): Promise<[HistoryItem[], string?]> {
+    return agoraRequest(this.urls?.getHistoryURL, serializeGetHistoryRequest(publicKey))
+      .then((res) => GetHistoryResponse.deserializeBinary(res.data))
+      .then((response) =>
+        response.getResult() === GetHistoryResponse.Result.NOT_FOUND
+          ? [null, `Account could not be found`]
+          : [response?.getItemsList()],
       )
   }
 
@@ -119,6 +133,18 @@ export class KinAgoraClient {
   private async ensureServiceConfig() {
     if (!this.serviceConfig) {
       this.serviceConfig = await this.getServiceConfig()
+      console.log(
+        'serviceConfig',
+        JSON.stringify(
+          {
+            subsidizer: bs58encode(this.serviceConfig.subsidizer),
+            token: bs58encode(this.serviceConfig.token),
+            tokenProgram: bs58encode(this.serviceConfig.tokenProgram),
+          },
+          null,
+          2,
+        ),
+      )
     }
   }
 

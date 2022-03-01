@@ -4,6 +4,7 @@ import {
   Commitment,
   CreateAccountRequest,
   GetAccountInfoRequest,
+  GetHistoryRequest,
   GetMinimumBalanceForRentExemptionRequest,
   Keypair,
   kinToQuarks,
@@ -55,6 +56,15 @@ export function serializeGetBalanceRequest(publicKey: string) {
   const req = new GetAccountInfoRequest()
   req.setAccountId(accountId)
   req.setCommitment(Commitment.SINGLE)
+  return req.serializeBinary()
+}
+
+export function serializeGetHistoryRequest(publicKey: string) {
+  const accountId = new SolanaAccountId()
+  accountId.setValue(PublicKey.fromBase58(publicKey).buffer)
+
+  const req = new GetHistoryRequest()
+  req.setAccountId(accountId)
   return req.serializeBinary()
 }
 

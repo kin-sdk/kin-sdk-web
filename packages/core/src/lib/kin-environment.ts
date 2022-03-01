@@ -24,6 +24,7 @@ export function getAgoraUrls(env: KinEnvironment) {
     requestAirdropURL: `${url}/api/kin.agora.airdrop.v4.Airdrop/RequestAirdrop`,
     getServiceConfigURL: `${url}/api/kin.agora.transaction.v4.Transaction/GetServiceConfig`,
     getRecentBlockhashURL: `${url}/api/kin.agora.transaction.v4.Transaction/GetRecentBlockhash`,
+    getHistoryURL: `${url}/api/kin.agora.transaction.v4.Transaction/GetHistory`,
     getMinBalanceURL: `${url}/api/kin.agora.transaction.v4.Transaction/GetMinimumBalanceForRentExemption`,
     getBalancesURL: `${url}/api/kin.agora.account.v4.Account/ResolveTokenAccounts`,
     submitTransactionURL: `${url}/api/kin.agora.transaction.v4.Transaction/SubmitTransaction`,

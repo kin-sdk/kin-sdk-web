@@ -1,4 +1,4 @@
-import { KinEnvironment, Network, PrivateKey } from '@kin-sdk/core'
+import { bs58encode, HistoryItem, KinEnvironment, Network, PrivateKey } from '@kin-sdk/core'
 import axios from 'axios'
 import { retry } from 'ts-retry-promise'
 import { KinAccountBalance, KinAgoraClient, KinAgoraClientOptions } from '../agora/kin-agora-client'
@@ -67,6 +67,20 @@ export class KinClient {
   constructor(private readonly network: Network, private readonly options: KinClientOptions = {}) {
     this.client = new KinAgoraClient(network?.env, this.options)
     console.log(`KinClient: ${network?.name}`, this.options)
+    // this.getHistory('Don8L4DTVrUrRAcVTsFoCRqei5Mokde3CV3K9Ut4nAGZ').then((res) => {
+    //   res.map((item) => {
+    //     console.log('-----')
+    //     console.log(
+    //       item.getPaymentsList().map((payment) => ({
+    //         destination: bs58encode(Buffer.from(payment.getDestination().getValue_asU8())),
+    //         source: bs58encode(Buffer.from(payment.getSource().getValue_asU8())),
+    //         index: payment.getIndex(),
+    //         amount: payment.getAmount(),
+    //       })),
+    //     )
+    //     console.log('Item getSolanaTransaction', item.getSolanaTransaction())
+    //   })
+    // })
   }
 
   getPrices(): Promise<Prices> {
@@ -79,6 +93,14 @@ export class KinClient {
 
   createAccount(secret: string): Promise<[string, string?]> {
     return this.client.createAccount(secret)
+  }
+
+  async getHistory(publicKey: string): Promise<HistoryItem[]> {
+    const [res, err] = await this.client.getHistory(publicKey)
+    if (err) {
+      throw new Error(err)
+    }
+    return res
   }
 
   async hasTokenAccounts(publicKey: string): Promise<boolean> {
