@@ -76,8 +76,9 @@ export class KinAgoraClient {
   async createAccount(secret: string): Promise<[string, string?]> {
     await this.ensureServiceConfig()
     const owner = PrivateKey.fromString(secret)
+    const appIndex = this.options.appIndex || null
 
-    return this.createAccountTransaction(owner).then((tx) => this.createAccountRequest(tx))
+    return this.createAccountTransaction(owner, appIndex).then((tx) => this.createAccountRequest(tx))
   }
 
   async getBalance(publicKey: string): Promise<[string, string?]> {
@@ -142,7 +143,7 @@ export class KinAgoraClient {
     return { tokenKey, tokenProgram, subsidizer }
   }
 
-  private async createAccountTransaction(owner: PrivateKey): Promise<Transaction> {
+  private async createAccountTransaction(owner: PrivateKey, appIndex?: number): Promise<Transaction> {
     await this.ensureServiceConfig()
     return this.getRecentBlockhash()
       .then((res) => bs58encode(Buffer.from(res.getBlockhash()!.getValue_asU8())))
@@ -155,6 +156,7 @@ export class KinAgoraClient {
               owner.publicKey().solanaKey(),
               this.getServiceConfigKeys(owner),
               res.getLamports(),
+              appIndex,
             )
             tx.partialSign(new SolanaAccount(owner.secretKey()))
 

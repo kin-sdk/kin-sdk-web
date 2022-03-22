@@ -1,4 +1,6 @@
 import { AccountSize, AuthorityType, TokenProgram } from './token-program'
+import { MemoProgram } from './memo-program'
+import { createKinMemo, TransactionType } from '@kin-tools/kin-memo'
 import { PublicKey as SolanaPublicKey, SystemProgram, Transaction } from '@solana/web3.js'
 
 export interface ServiceConfigKeys {
@@ -12,11 +14,27 @@ export function getCreateAccountTx(
   owner: SolanaPublicKey,
   config: ServiceConfigKeys,
   minBalance: number,
+  appIndex?: number,
 ): Transaction {
-  return new Transaction({
+  const transaction = new Transaction({
     feePayer: config.subsidizer,
     recentBlockhash: recentBlockhash,
-  }).add(
+  })
+
+  if (appIndex && appIndex > 0) {
+    transaction.add(
+      MemoProgram.memo({
+        data: createKinMemo({
+          appIndex,
+          type: TransactionType.None,
+        }),
+      }),
+    )
+  } else {
+    console.log('No appIndex')
+  }
+
+  transaction.add(
     SystemProgram.createAccount({
       fromPubkey: config.subsidizer,
       newAccountPubkey: owner,
@@ -42,4 +60,6 @@ export function getCreateAccountTx(
       config.tokenProgram,
     ),
   )
+
+  return transaction
 }
