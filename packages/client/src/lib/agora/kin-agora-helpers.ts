@@ -28,9 +28,7 @@ export function createSolanaTransaction({
   }
   const instructions = []
 
-  if (memo?.length) {
-    instructions.push(MemoProgram.memo({ data: memo }))
-  } else  if (appIndex) {
+  if (appIndex) {
     const fk = Buffer.alloc(29)
     const kinMemo = Memo.new(1, type, appIndex, fk)
     instructions.push(MemoProgram.memo({ data: kinMemo.buffer.toString('base64') }))
@@ -47,6 +45,10 @@ export function createSolanaTransaction({
       new SolanaPublicKey(tokenProgram),
     ),
   )
+
+  if (memo?.length) {
+    instructions.push(MemoProgram.memo({ data: memo }))
+  }
 
   return new SolanaTransaction({ feePayer: feePayer }).add(...instructions)
 }
